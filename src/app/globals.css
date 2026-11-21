@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #09090b;
+}
+
+html {
+  background-color: #ffffff;
+  color: #09090b;
+  scroll-behavior: smooth;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+body {
+  background-color: #ffffff;
+  color: #09090b;
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  button {
+    font-family: inherit;
+  }
+}
+
+/* Enforce crisp contrast on dark CTA buttons and badges */
+.text-white {
+  color: #ffffff !important;
+}
+
+/* Ensure dark elements and buttons always render white text */
+.bg-zinc-950,
+.bg-zinc-900,
+.bg-zinc-800 {
+  color: #ffffff !important;
+}
+
+.bg-zinc-950 a,
+.bg-zinc-950 span:not([class*="text-emerald"]):not([class*="text-zinc"]),
+.bg-zinc-900 a,
+.bg-zinc-900 span:not([class*="text-emerald"]):not([class*="text-zinc"]),
+.bg-zinc-800 a,
+.bg-zinc-800 span:not([class*="text-emerald"]):not([class*="text-zinc"]) {
+  color: #ffffff;
+}
+
+/* Explicit responsive display helpers to avoid mobile overflow */
+.hidden {
+  display: none !important;
+}
+
+@media (min-width: 768px) {
+  .md\:flex {
+    display: flex !important;
+  }
+  .md\:hidden {
+    display: none !important;
+  }
+  .md\:inline {
+    display: inline !important;
+  }
+}
+
+/* Tabular figures for numbers and technical data */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Apple Glassmorphism specification */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(228, 228, 231, 0.9);
+  box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.05);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid #e4e4e7;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-2px);
+  border-color: #18181b;
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.08);
+}
+
+/* Custom crisp technical scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4d4d8;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #71717a;
+}
+
+/* Engineering grid background pattern */
+.grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
+}
