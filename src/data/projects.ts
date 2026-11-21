@@ -156,4 +156,25 @@ export const projects: Project[] = [
     githubUrl: undefined,
     screenType: "web",
   },
+  {
+    id: "pranaya-pradhan",
+    title: "Designer Personal Portfolio",
+    type: "Design Showcase Portfolio",
+    category: "Web Applications",
+    year: "2026",
+    tagline: "Personal portfolio for designer Pranaya Pradhan showcasing spatial UI and brand craft",
+    description:
+      "A bespoke personal portfolio crafted for designer Pranaya Pradhan, featuring high-resolution design case studies, interactive UI prototypes, and typography-first visual storytelling.",
+    highlights: [
+      "Editorial Portfolio Showcase: Curated brand identity, product design, and mobile UI case studies",
+      "Fluid Interaction Design: High-performance animations and zero-layout-shift image galleries",
+      "Mobile-Responsive Layout: Clean touch-friendly navigation across all viewport sizes",
+    ],
+    techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vercel"],
+    image:
+      "https://res.cloudinary.com/dk6m1qejk/image/upload/v1795297734/Screenshot_2026-11-22_031732_vixvyi.png",
+    liveUrl: "https://pranay-portfolio-ashy-nine.vercel.app/",
+    githubUrl: undefined,
+    screenType: "web",
+  },
 ];
