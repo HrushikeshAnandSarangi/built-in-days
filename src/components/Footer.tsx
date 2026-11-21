@@ -19,22 +19,22 @@ export function Footer() {
 
           <div className="flex items-center gap-5 sm:gap-6 shrink-0 text-zinc-700">
             <a href="#services" className="hover:text-zinc-950 hover:underline underline-offset-4 decoration-zinc-300 transition-colors">
-              [ services ]
+              Services
             </a>
             <a href="#testimonials" className="hover:text-zinc-950 hover:underline underline-offset-4 decoration-zinc-300 transition-colors">
-              [ testimonials ]
+              Testimonials
             </a>
             <a href="#projects" className="hover:text-zinc-950 hover:underline underline-offset-4 decoration-zinc-300 transition-colors">
-              [ projects ]
+              Projects
             </a>
             <a href="#contact" className="hover:text-zinc-950 hover:underline underline-offset-4 decoration-zinc-300 transition-colors">
-              [ contact ]
+              Contact
             </a>
             <a
               href="#"
-              className="inline-flex items-center gap-1 text-zinc-900 hover:text-emerald-700 transition-colors font-medium"
+              className="inline-flex items-center gap-1 text-zinc-900 hover:text-emerald-700 transition-colors font-medium hover:underline underline-offset-4 decoration-zinc-300"
             >
-              <span>[ top ↗ ]</span>
+              <span>Top ↗</span>
               <ArrowUp className="w-3.5 h-3.5" />
             </a>
           </div>

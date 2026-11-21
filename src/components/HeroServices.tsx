@@ -55,9 +55,9 @@ export function HeroServices() {
 
             <a
               href="#projects"
-              className="inline-flex items-center gap-2 px-4 sm:px-5 py-3 sm:py-3.5 rounded-xl bg-zinc-100 hover:bg-zinc-200 text-zinc-900 font-mono text-xs transition-all border border-zinc-200"
+              className="inline-flex items-center gap-2 px-4 sm:px-5 py-3 sm:py-3.5 rounded-xl bg-zinc-100 hover:bg-zinc-200 text-zinc-900 font-medium text-xs sm:text-[13px] transition-all border border-zinc-200"
             >
-              <span>[ view projects ]</span>
+              <span>View Projects ↗</span>
             </a>
           </div>
         </div>
@@ -67,19 +67,12 @@ export function HeroServices() {
           <IsometricHeroVisual />
         </div>
 
-        {/* SECTION: THREE MAJOR SERVICES (BUILD, FIX, BENCHMARK) */}
+        {/* SECTION: THREE MAJOR SERVICES */}
         <div id="services" className="mt-24 sm:mt-32 scroll-mt-24">
           <div className="pb-6 sm:pb-8 border-b border-zinc-200">
-            <div className="type-eyebrow mb-2">
-              // core services
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.04em] leading-[1.0] text-zinc-950 text-balance">
-              Three Services. High Precision. Zero Clutter.
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.04em] leading-[1.0] text-zinc-950">
+              Services
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-zinc-600 max-w-[60ch] leading-[1.5] tracking-[-0.015em] text-pretty">
-              Whether you need a brand new product shipped from scratch, an existing application
-              accelerated, or an empirical diagnostic benchmark report identifying bottlenecks.
-            </p>
           </div>
 
           {/* Three Service Pillars Grid */}
@@ -89,7 +82,7 @@ export function HeroServices() {
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="font-mono text-xs font-bold text-zinc-950 px-3 py-1 rounded-full bg-white border border-zinc-200">
-                    [ 01 · BUILD ]
+                    01 · Build
                   </span>
                   <span className="text-[11px] font-mono text-zinc-500">
                     Web & Cross-Platform
@@ -154,7 +147,7 @@ export function HeroServices() {
                   className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-zinc-950 hover:bg-zinc-800 transition-colors text-xs font-mono font-medium shadow-sm"
                   style={{ color: "#ffffff", backgroundColor: "#09090b" }}
                 >
-                  <span style={{ color: "#ffffff" }}>[ build app ↗ ]</span>
+                  <span style={{ color: "#ffffff" }}>Build app ↗</span>
                 </a>
               </div>
             </div>
@@ -164,7 +157,7 @@ export function HeroServices() {
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="font-mono text-xs font-bold text-zinc-950 px-3 py-1 rounded-full bg-white border border-zinc-200">
-                    [ 02 · FIX & ACCELERATE ]
+                    02 · Accelerate
                   </span>
                   <span className="text-[11px] font-mono text-emerald-700 font-semibold">
                     Speed Rescue
@@ -229,7 +222,7 @@ export function HeroServices() {
                   className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-zinc-950 hover:bg-zinc-800 transition-colors text-xs font-mono font-medium shadow-sm"
                   style={{ color: "#ffffff", backgroundColor: "#09090b" }}
                 >
-                  <span style={{ color: "#ffffff" }}>[ accelerate ↗ ]</span>
+                  <span style={{ color: "#ffffff" }}>Accelerate app ↗</span>
                 </a>
               </div>
             </div>
@@ -239,7 +232,7 @@ export function HeroServices() {
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="font-mono text-xs font-bold text-zinc-950 px-3 py-1 rounded-full bg-white border border-zinc-200">
-                    [ 03 · BENCHMARK & AUDIT ]
+                    03 · Benchmark
                   </span>
                   <span className="text-[11px] font-mono text-zinc-500">
                     Deep Diagnostics
@@ -304,7 +297,7 @@ export function HeroServices() {
                   className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-zinc-950 hover:bg-zinc-800 transition-colors text-xs font-mono font-medium shadow-sm"
                   style={{ color: "#ffffff", backgroundColor: "#09090b" }}
                 >
-                  <span style={{ color: "#ffffff" }}>[ benchmark app ↗ ]</span>
+                  <span style={{ color: "#ffffff" }}>Benchmark app ↗</span>
                 </a>
               </div>
             </div>

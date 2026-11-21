@@ -26,28 +26,19 @@ export function ProjectsSection() {
     <section id="projects" className="py-24 bg-zinc-50/50 border-t border-zinc-200 scroll-mt-16">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-zinc-200">
-          <div>
-            <div className="type-eyebrow mb-2">
-              // selected work
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.04em] leading-[1.0] text-zinc-950 text-balance">
-              Web Platforms & Cross-Platform Software
-            </h2>
-            <p className="mt-3 text-sm sm:text-base text-zinc-600 max-w-[58ch] leading-[1.5] tracking-[-0.015em] text-pretty">
-              Production web applications, offline-first operating systems, and high-performance
-              platforms built for real users and verified under real-world traffic.
-            </p>
-          </div>
+        <div className="flex items-center justify-between gap-6 pb-6 sm:pb-8 border-b border-zinc-200">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.04em] leading-[1.0] text-zinc-950">
+            Projects
+          </h2>
 
           <a
             href="https://github.com/hrushikeshsarangi7"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-zinc-300 text-zinc-900 text-xs font-mono font-medium hover:border-zinc-950 transition-colors shrink-0"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-zinc-300 text-zinc-900 text-xs sm:text-[13px] font-medium hover:border-zinc-950 transition-colors shrink-0 shadow-2xs"
           >
             <GithubIcon className="w-3.5 h-3.5" />
-            <span>[ github.com/hrushikeshsarangi7 ↗ ]</span>
+            <span>github.com/hrushikeshsarangi7 ↗</span>
           </a>
         </div>
 
@@ -69,7 +60,7 @@ export function ProjectsSection() {
                 }`}
                 style={selectedCategory === cat ? { color: "#ffffff", backgroundColor: "#09090b" } : {}}
               >
-                [ {cat.toLowerCase()} ]
+                {cat}
               </button>
             ))}
           </div>
@@ -100,7 +91,7 @@ export function ProjectsSection() {
             style={{ color: "#ffffff", backgroundColor: "#09090b" }}
           >
             <GithubIcon className="w-3.5 h-3.5 text-zinc-300" />
-            <span style={{ color: "#ffffff" }}>[ view repositories ↗ ]</span>
+            <span style={{ color: "#ffffff" }}>View repositories ↗</span>
           </a>
         </div>
 
@@ -129,8 +120,8 @@ export function ProjectsSection() {
             >
               <span>
                 {isExpanded
-                  ? `[ collapse to top 3 ↑ ]`
-                  : `[ expand all ${filteredProjects.length} projects ↓ ]`}
+                  ? "Collapse to top 3 ↑"
+                  : `Expand all ${filteredProjects.length} projects ↓`}
               </span>
               {isExpanded ? (
                 <ChevronUp className="w-4 h-4 text-zinc-600" />

@@ -92,7 +92,7 @@ export function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
               className="px-3 py-2.5 rounded-xl hover:bg-black/[0.04] flex items-center justify-between text-zinc-900"
             >
-              <span>[ 01 · Services (Build, Fix, Audit) ]</span>
+              <span>01 · Services</span>
               <ArrowUpRight className="w-4 h-4 text-zinc-400" />
             </a>
             <a
@@ -100,7 +100,7 @@ export function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
               className="px-3 py-2.5 rounded-xl hover:bg-black/[0.04] flex items-center justify-between text-zinc-900"
             >
-              <span>[ 02 · Client Testimonials ]</span>
+              <span>02 · Testimonials</span>
               <ArrowUpRight className="w-4 h-4 text-zinc-400" />
             </a>
             <a
@@ -108,7 +108,7 @@ export function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
               className="px-3 py-2.5 rounded-xl hover:bg-black/[0.04] flex items-center justify-between text-zinc-900"
             >
-              <span>[ 03 · Selected Projects ]</span>
+              <span>03 · Projects</span>
               <ArrowUpRight className="w-4 h-4 text-zinc-400" />
             </a>
 
@@ -117,10 +117,10 @@ export function Navbar() {
               <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full inline-flex items-center justify-between px-4 py-3 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-mono text-xs font-medium transition-colors shadow-sm"
+                className="w-full inline-flex items-center justify-between px-4 py-3 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-medium text-xs sm:text-[13px] transition-colors shadow-sm"
                 style={{ color: "#ffffff", backgroundColor: "#09090b" }}
               >
-                <span style={{ color: "#ffffff" }}>[ Get in touch ↗ ]</span>
+                <span style={{ color: "#ffffff" }}>Get in touch ↗</span>
                 <ArrowUpRight className="w-4 h-4 text-zinc-300" />
               </a>
             </div>

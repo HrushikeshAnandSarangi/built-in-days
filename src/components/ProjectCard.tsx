@@ -32,7 +32,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
         <div className="flex items-center gap-2">
           <span className="text-xs font-mono text-zinc-600">
-            [ {project.category.toLowerCase()} ]
+            {project.category}
           </span>
           <span className="text-xs font-mono text-zinc-400">·</span>
           <span className="text-xs font-mono text-zinc-600">{project.year}</span>
@@ -62,7 +62,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                   className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-zinc-200 bg-zinc-50 hover:bg-zinc-100 text-zinc-900 text-xs font-mono transition-colors"
                 >
                   <GithubIcon className="w-3.5 h-3.5" />
-                  <span>[ github ↗ ]</span>
+                  <span>GitHub ↗</span>
                 </a>
               )}
               {hasLiveLink && (
@@ -73,7 +73,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                   className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-zinc-950 bg-zinc-950 hover:bg-zinc-800 text-xs font-mono transition-colors shadow-sm"
                   style={{ color: "#ffffff", backgroundColor: "#09090b" }}
                 >
-                  <span style={{ color: "#ffffff" }}>[ live app ↗ ]</span>
+                  <span style={{ color: "#ffffff" }}>Live app ↗</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-zinc-300" />
                 </a>
               )}
@@ -112,15 +112,15 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </div>
         </div>
 
-        {/* Tech Stack Brackets */}
+        {/* Tech Stack */}
         <div className="mt-6 pt-4 border-t border-zinc-100 flex flex-wrap items-center gap-2">
           <span className="text-xs font-mono text-zinc-400">// stack:</span>
           {project.techStack.map((tech) => (
             <span
               key={tech}
-              className="text-xs font-mono text-zinc-700 px-2 py-0.5 rounded bg-zinc-100 border border-zinc-200"
+              className="text-xs font-mono text-zinc-700 px-2.5 py-0.5 rounded bg-zinc-100 border border-zinc-200"
             >
-              [ {tech.toLowerCase()} ]
+              {tech}
             </span>
           ))}
         </div>
