@@ -5,9 +5,11 @@ import { projects } from "@/data/projects";
 import { ProjectCard } from "./ProjectCard";
 import { GithubIcon } from "./icons";
 import { DiagnosticAuditAnimation } from "./SiteAnimations";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 export function ProjectsSection() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   const uniqueCategories = Array.from(new Set(projects.map((p) => p.category)));
   const categories = uniqueCategories.length > 1 ? ["All", ...uniqueCategories] : uniqueCategories;
@@ -16,6 +18,9 @@ export function ProjectsSection() {
     selectedCategory === "All"
       ? projects
       : projects.filter((p) => p.category === selectedCategory);
+
+  // Limit to top 3 projects by default, expand to all when toggled
+  const displayedProjects = isExpanded ? filteredProjects : filteredProjects.slice(0, 3);
 
   return (
     <section id="projects" className="py-24 bg-zinc-50/50 border-t border-zinc-200 scroll-mt-16">
@@ -53,7 +58,10 @@ export function ProjectsSection() {
               <button
                 key={cat}
                 type="button"
-                onClick={() => setSelectedCategory(cat)}
+                onClick={() => {
+                  setSelectedCategory(cat);
+                  setIsExpanded(false);
+                }}
                 className={`px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all shrink-0 border ${
                   selectedCategory === cat
                     ? "bg-zinc-950 text-white border-zinc-950 font-semibold shadow-sm"
@@ -96,12 +104,42 @@ export function ProjectsSection() {
           </a>
         </div>
 
-        {/* Projects Cards List */}
+        {/* Projects Cards List (limited to top 3 by default) */}
         <div className="grid grid-cols-1 gap-10 mt-6">
-          {filteredProjects.map((project, idx) => (
+          {displayedProjects.map((project, idx) => (
             <ProjectCard key={project.id} project={project} index={idx} />
           ))}
         </div>
+
+        {/* Expand / Collapse Button when more than 3 projects exist */}
+        {filteredProjects.length > 3 && (
+          <div className="mt-12 flex justify-center">
+            <button
+              type="button"
+              onClick={() => {
+                if (isExpanded) {
+                  setIsExpanded(false);
+                  const el = document.getElementById("projects");
+                  if (el) el.scrollIntoView({ behavior: "smooth" });
+                } else {
+                  setIsExpanded(true);
+                }
+              }}
+              className="glass-pill px-7 py-3 h-auto text-xs font-mono font-medium gap-2.5 hover:scale-[1.02] active:scale-[0.98] border-zinc-300 shadow-sm"
+            >
+              <span>
+                {isExpanded
+                  ? `[ collapse to top 3 ↑ ]`
+                  : `[ expand all ${filteredProjects.length} projects ↓ ]`}
+              </span>
+              {isExpanded ? (
+                <ChevronUp className="w-4 h-4 text-zinc-600" />
+              ) : (
+                <ChevronDown className="w-4 h-4 text-emerald-600" />
+              )}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
