@@ -34,8 +34,8 @@ export function Navbar() {
           </span>
         </a>
 
-        {/* Desktop Nav Links (Hidden on mobile, visible on md+) */}
-        <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-xs font-mono uppercase tracking-wider text-zinc-600">
+        {/* Desktop Nav Links (Services, Testimonials, Projects - Contact removed) */}
+        <nav className="hidden md:flex items-center gap-7 lg:gap-9 text-xs font-mono uppercase tracking-wider text-zinc-600">
           <a
             href="#services"
             className="hover:text-zinc-950 transition-colors py-1"
@@ -54,23 +54,17 @@ export function Navbar() {
           >
             Projects
           </a>
-          <a
-            href="#contact"
-            className="hover:text-zinc-950 transition-colors py-1"
-          >
-            Contact
-          </a>
         </nav>
 
         {/* Action Area & Mobile Hamburger */}
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-          {/* Testimonials Button (Replaced Contact Button per user request) */}
+          {/* Black CTA Button: Replaced with 'Get in touch', hidden on smaller screens */}
           <a
-            href="#testimonials"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-zinc-950 hover:bg-zinc-800 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-sm text-xs font-mono font-medium"
+            href="#contact"
+            className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-zinc-950 hover:bg-zinc-800 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-sm text-xs font-mono font-medium"
             style={{ color: "#ffffff", backgroundColor: "#09090b" }}
           >
-            <span style={{ color: "#ffffff" }}>[ testimonials ↗ ]</span>
+            <span style={{ color: "#ffffff" }}>[ get in touch ↗ ]</span>
           </a>
 
           {/* Hamburger Icon: Strictly for smaller screens only (md:hidden) */}
@@ -117,14 +111,19 @@ export function Navbar() {
               <span>[ 03 · Selected Projects ]</span>
               <ArrowUpRight className="w-4 h-4 text-zinc-400" />
             </a>
-            <a
-              href="#contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2.5 rounded-xl hover:bg-black/[0.04] flex items-center justify-between text-zinc-900"
-            >
-              <span>[ 04 · Direct Contact ]</span>
-              <ArrowUpRight className="w-4 h-4 text-zinc-400" />
-            </a>
+
+            {/* In smaller screens, black CTA button is inside the hamburger dropdown */}
+            <div className="pt-2 mt-1 border-t border-zinc-200/80">
+              <a
+                href="#contact"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full inline-flex items-center justify-between px-4 py-3 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-mono text-xs font-medium transition-colors shadow-sm"
+                style={{ color: "#ffffff", backgroundColor: "#09090b" }}
+              >
+                <span style={{ color: "#ffffff" }}>[ Get in touch ↗ ]</span>
+                <ArrowUpRight className="w-4 h-4 text-zinc-300" />
+              </a>
+            </div>
           </nav>
         </div>
       )}

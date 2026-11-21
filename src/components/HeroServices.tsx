@@ -59,14 +59,6 @@ export function HeroServices() {
             >
               <span>[ view projects ]</span>
             </a>
-
-            <a
-              href="#services"
-              className="inline-flex items-center gap-1.5 px-3 py-3 text-zinc-500 hover:text-zinc-900 font-mono text-xs transition-colors"
-            >
-              <span>services & scope</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </a>
           </div>
         </div>
 
