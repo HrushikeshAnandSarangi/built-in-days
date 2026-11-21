@@ -4,6 +4,7 @@ import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
+import { ScrollTransition } from "@/components/ScrollTransition";
 
 export default function Home() {
   return (
@@ -11,20 +12,28 @@ export default function Home() {
       {/* Joined Frosted Glass Floating Navbar */}
       <Navbar />
 
-      {/* Section 1: Hero & Three Core Services (Build, Fix & Accelerate, Benchmark & Audit) */}
+      {/* Section 1: Hero (Side-by-Side on desktop with live status bar) & Services Showcase */}
       <HeroServices />
 
       {/* Section 2: Client Testimonials & Verified Outcomes */}
-      <TestimonialsSection />
+      <ScrollTransition>
+        <TestimonialsSection />
+      </ScrollTransition>
 
       {/* Section 3: Selected Projects Showcase (Top 3 with expand accordion) */}
-      <ProjectsSection />
+      <ScrollTransition>
+        <ProjectsSection />
+      </ScrollTransition>
 
       {/* Section 4: Direct Intake & Contact */}
-      <ContactSection />
+      <ScrollTransition>
+        <ContactSection />
+      </ScrollTransition>
 
-      {/* Minimalist Engineering Footer */}
-      <Footer />
+      {/* Minimalist Charles Honig Style Footer with My Story, Experience, Awards */}
+      <ScrollTransition>
+        <Footer />
+      </ScrollTransition>
     </main>
   );
 }
