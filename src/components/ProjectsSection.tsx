@@ -28,13 +28,13 @@ export function ProjectsSection() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-zinc-200">
           <div>
-            <div className="text-xs font-mono text-zinc-400 uppercase tracking-widest mb-1">
+            <div className="type-eyebrow mb-2">
               // selected work
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-950">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.04em] leading-[1.0] text-zinc-950 text-balance">
               Web Platforms & Cross-Platform Software
             </h2>
-            <p className="mt-2 text-sm sm:text-base text-zinc-600 max-w-xl">
+            <p className="mt-3 text-sm sm:text-base text-zinc-600 max-w-[58ch] leading-[1.5] tracking-[-0.015em] text-pretty">
               Production web applications, offline-first operating systems, and high-performance
               platforms built for real users and verified under real-world traffic.
             </p>

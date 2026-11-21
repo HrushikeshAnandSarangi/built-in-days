@@ -10,24 +10,24 @@ export function Footer() {
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-8 border-b border-zinc-100">
           <div className="flex flex-wrap items-center gap-2 text-zinc-800">
             <span className="w-2 h-2 rounded-full bg-emerald-600" />
-            <span className="font-bold text-zinc-950 tracking-tight text-sm">
+            <span className="font-bold text-zinc-950 tracking-[-0.03em] text-sm">
               Hrushikesh Anand Sarangi
             </span>
             <span className="text-zinc-400">/</span>
-            <span className="text-zinc-500">Systems & Web Software</span>
+            <span className="text-zinc-500 font-sans tracking-[-0.01em]">Systems & Web Software</span>
           </div>
 
           <div className="flex items-center gap-5 sm:gap-6 shrink-0 text-zinc-700">
-            <a href="#services" className="hover:text-zinc-950 transition-colors">
+            <a href="#services" className="hover:text-zinc-950 hover:underline underline-offset-4 decoration-zinc-300 transition-colors">
               [ services ]
             </a>
-            <a href="#testimonials" className="hover:text-zinc-950 transition-colors">
+            <a href="#testimonials" className="hover:text-zinc-950 hover:underline underline-offset-4 decoration-zinc-300 transition-colors">
               [ testimonials ]
             </a>
-            <a href="#projects" className="hover:text-zinc-950 transition-colors">
+            <a href="#projects" className="hover:text-zinc-950 hover:underline underline-offset-4 decoration-zinc-300 transition-colors">
               [ projects ]
             </a>
-            <a href="#contact" className="hover:text-zinc-950 transition-colors">
+            <a href="#contact" className="hover:text-zinc-950 hover:underline underline-offset-4 decoration-zinc-300 transition-colors">
               [ contact ]
             </a>
             <a

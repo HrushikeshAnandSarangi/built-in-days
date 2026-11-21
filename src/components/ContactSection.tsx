@@ -23,7 +23,7 @@ export function ContactSection() {
           {/* Left Column: Editorial Headline, Large Email, and Social Links */}
           <div className="flex-1 space-y-8">
             {/* Elegant Serif Headline */}
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-zinc-950 tracking-tight leading-[1.18] max-w-xl">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-zinc-950 tracking-[-0.03em] leading-[1.12] max-w-xl text-balance">
               Have a project in mind or just want to say hi?
             </h2>
 
@@ -31,7 +31,7 @@ export function ContactSection() {
             <div className="flex items-center gap-3">
               <a
                 href={`mailto:${directEmail}`}
-                className="text-2xl sm:text-3xl md:text-4xl font-serif text-zinc-900 hover:text-emerald-700 transition-colors tracking-tight underline-offset-8 hover:underline"
+                className="text-2xl sm:text-3xl md:text-4xl font-serif text-zinc-950 hover:text-emerald-700 transition-colors tracking-[-0.025em] underline-offset-8 hover:underline"
               >
                 {directEmail}
               </a>

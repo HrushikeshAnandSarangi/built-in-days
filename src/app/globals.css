@@ -9,7 +9,7 @@ html {
   background-color: #ffffff;
   color: #09090b;
   scroll-behavior: smooth;
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01", "tnum";
 }
 
 body {
@@ -20,6 +20,47 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.015em;
+}
+
+/* ========================================================================== */
+/* Swiss Neo-Grotesque Typographic Hierarchy (Jai Tekchandani / Diatype system)*/
+/* ========================================================================== */
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+  letter-spacing: -0.04em;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum";
+}
+
+p {
+  text-wrap: pretty;
+  letter-spacing: -0.015em;
+}
+
+/* Precision micro-labels & technical metadata */
+.type-eyebrow {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #71717a;
+}
+
+/* Display hero typography with signature tight leading */
+.type-display {
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+  text-wrap: balance;
+}
+
+/* Section titles */
+.type-headline {
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  text-wrap: balance;
 }
 
 @layer base {

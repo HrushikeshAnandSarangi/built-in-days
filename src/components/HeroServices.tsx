@@ -27,14 +27,14 @@ export function HeroServices() {
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Clean, editorial hero statement */}
         <div className="max-w-4xl">
-          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-zinc-950 leading-[1.08]">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.25rem] font-bold tracking-[-0.045em] text-zinc-950 leading-[0.96] text-balance">
             I build your application, and make your software{" "}
-            <span className="text-emerald-600 underline decoration-emerald-200 decoration-wavy underline-offset-4">
+            <span className="text-emerald-600 underline decoration-emerald-200 decoration-wavy underline-offset-8">
               faster
             </span>.
           </h1>
 
-          <p className="mt-6 text-base sm:text-lg md:text-xl text-zinc-600 leading-relaxed max-w-[62ch]">
+          <p className="mt-6 text-base sm:text-lg md:text-[1.18rem] text-zinc-600 leading-[1.5] tracking-[-0.015em] max-w-[54ch] text-pretty">
             Independent engineer shipping full-stack web applications, Tauri cross-platform
             desktop software, and high-performance backends. Delivered in days with strict
             architecture, zero fluff, and measurably reduced latency.
@@ -70,13 +70,13 @@ export function HeroServices() {
         {/* SECTION: THREE MAJOR SERVICES (BUILD, FIX, BENCHMARK) */}
         <div id="services" className="mt-24 sm:mt-32 scroll-mt-24">
           <div className="pb-6 sm:pb-8 border-b border-zinc-200">
-            <div className="text-xs font-mono text-zinc-400 uppercase tracking-widest mb-1">
+            <div className="type-eyebrow mb-2">
               // core services
             </div>
-            <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-zinc-950">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.04em] leading-[1.0] text-zinc-950 text-balance">
               Three Services. High Precision. Zero Clutter.
             </h2>
-            <p className="mt-2 text-sm sm:text-base text-zinc-600 max-w-2xl">
+            <p className="mt-3 text-sm sm:text-base text-zinc-600 max-w-[60ch] leading-[1.5] tracking-[-0.015em] text-pretty">
               Whether you need a brand new product shipped from scratch, an existing application
               accelerated, or an empirical diagnostic benchmark report identifying bottlenecks.
             </p>

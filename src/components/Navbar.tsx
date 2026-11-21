@@ -28,29 +28,29 @@ export function Navbar() {
           href="#"
           className="text-zinc-950 font-bold tracking-tight text-sm sm:text-base hover:text-emerald-700 transition-colors flex items-center gap-1.5 shrink-0"
         >
-          <span className="font-semibold text-zinc-950">Hrushikesh</span>
-          <span className="text-zinc-400 font-normal hidden sm:inline text-xs font-mono">
+          <span className="font-bold text-zinc-950 tracking-[-0.03em]">Hrushikesh</span>
+          <span className="text-zinc-400 font-normal hidden sm:inline text-xs font-mono tracking-normal">
             / engineering
           </span>
         </a>
 
-        {/* Desktop Nav Links (Services, Testimonials, Projects - Contact removed) */}
-        <nav className="hidden md:flex items-center gap-7 lg:gap-9 text-xs font-mono uppercase tracking-wider text-zinc-600">
+        {/* Desktop Nav Links (Services, Testimonials, Projects) */}
+        <nav className="hidden md:flex items-center gap-7 lg:gap-8 text-[12px] font-sans font-semibold uppercase tracking-[0.04em] text-zinc-600">
           <a
             href="#services"
-            className="hover:text-zinc-950 transition-colors py-1"
+            className="hover:text-zinc-950 hover:underline underline-offset-4 decoration-zinc-300 transition-colors py-1"
           >
             Services
           </a>
           <a
             href="#testimonials"
-            className="hover:text-zinc-950 transition-colors py-1"
+            className="hover:text-zinc-950 hover:underline underline-offset-4 decoration-zinc-300 transition-colors py-1"
           >
             Testimonials
           </a>
           <a
             href="#projects"
-            className="hover:text-zinc-950 transition-colors py-1"
+            className="hover:text-zinc-950 hover:underline underline-offset-4 decoration-zinc-300 transition-colors py-1"
           >
             Projects
           </a>
@@ -61,10 +61,10 @@ export function Navbar() {
           {/* Black CTA Button: Replaced with 'Get in touch', hidden on smaller screens */}
           <a
             href="#contact"
-            className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-zinc-950 hover:bg-zinc-800 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-sm text-xs font-mono font-medium"
+            className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-zinc-950 hover:bg-zinc-800 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-sm text-xs sm:text-[13px] font-medium tracking-[-0.01em]"
             style={{ color: "#ffffff", backgroundColor: "#09090b" }}
           >
-            <span style={{ color: "#ffffff" }}>[ get in touch ↗ ]</span>
+            <span style={{ color: "#ffffff" }}>Get in touch ↗</span>
           </a>
 
           {/* Hamburger Icon: Strictly for smaller screens only (md:hidden) */}

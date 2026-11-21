@@ -43,10 +43,10 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         {/* Title & Tagline & Conditional Action Links */}
         <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-6 border-b border-zinc-100">
           <div>
-            <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-950">
+            <h3 className="text-2xl sm:text-3xl font-bold tracking-[-0.035em] leading-[1.05] text-zinc-950">
               {project.title}
             </h3>
-            <p className="text-xs font-mono text-emerald-700 font-medium mt-1">
+            <p className="text-xs sm:text-[13px] font-sans font-medium text-emerald-700 tracking-[-0.01em] mt-1">
               {project.tagline}
             </p>
           </div>
@@ -98,7 +98,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
         {/* Narrative Description & Highlights */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-2">
-          <div className="lg:col-span-6 text-sm text-zinc-600 leading-relaxed">
+          <div className="lg:col-span-6 text-xs sm:text-[13.5px] text-zinc-600 leading-[1.55] tracking-[-0.015em] text-pretty">
             {project.description}
           </div>
 
