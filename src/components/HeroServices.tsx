@@ -2,7 +2,7 @@
 
 import React from "react";
 import { ArrowUpRight, Check, ArrowRight } from "lucide-react";
-import { IsometricHeroVisual } from "./IsometricHeroVisual";
+import { DeskDeveloperIllustration } from "./DeskDeveloperIllustration";
 import {
   BeanbagBuildAnimation,
   JetpackSpeedAnimation,
@@ -22,61 +22,85 @@ export function HeroServices() {
   return (
     <section className="relative pt-28 md:pt-36 pb-20 bg-white">
       {/* Structural subtle grid */}
-      <div className="absolute inset-0 grid-pattern pointer-events-none opacity-30" />
+      <div className="absolute inset-0 grid-pattern pointer-events-none opacity-25" />
 
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Clean, editorial hero statement */}
-        <div className="max-w-4xl">
-          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-zinc-950 leading-[1.08]">
-            I build your application, and make your software{" "}
-            <span className="text-emerald-600 underline decoration-emerald-200 decoration-wavy underline-offset-4">
-              faster
-            </span>.
-          </h1>
+        {/* ============================================================== */}
+        {/* EDITORIAL HERO SECTION (SPLIT LAYOUT WITH HAND-DRAWN ART)       */}
+        {/* ============================================================== */}
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10 lg:gap-14 pt-4 pb-12">
+          {/* Left Column: Editorial Statement, Action CTAs & Clients Row */}
+          <div className="flex-1 max-w-2xl">
+            {/* Editorial Serif Headline */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-serif text-zinc-950 tracking-tight leading-[1.18]">
+              Based at NIT Rourkela, I&apos;m an independent systems and full-stack engineer
+              building production applications and making software{" "}
+              <span className="text-emerald-700 italic">measurably faster</span>.
+            </h1>
 
-          <p className="mt-6 text-base sm:text-lg md:text-xl text-zinc-600 leading-relaxed max-w-[62ch]">
-            Independent engineer shipping full-stack web applications, Tauri cross-platform
-            desktop software, and high-performance backends. Delivered in days with strict
-            architecture, zero fluff, and measurably reduced latency.
-          </p>
+            <p className="mt-5 text-sm sm:text-base text-zinc-600 leading-relaxed max-w-xl font-sans">
+              Shipping full-stack web applications, Tauri cross-platform desktop software, and
+              high-performance backends. Delivered in days with strict architecture and zero fluff.
+            </p>
 
-          {/* Direct Action Links */}
-          <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-8">
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl bg-zinc-950 hover:bg-zinc-800 transition-all shadow-sm hover:scale-[1.01] active:scale-[0.99] text-xs sm:text-sm font-medium"
-              style={{ color: "#ffffff" }}
-            >
-              <span style={{ color: "#ffffff", fontWeight: 500 }}>
-                Work Together
-              </span>
-              <ArrowUpRight className="w-4 h-4 text-zinc-300" />
-            </a>
+            {/* Direct Action Links */}
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-8">
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl bg-zinc-950 hover:bg-zinc-800 transition-all shadow-sm hover:scale-[1.01] active:scale-[0.99] text-xs sm:text-sm font-medium"
+                style={{ color: "#ffffff", backgroundColor: "#09090b" }}
+              >
+                <span style={{ color: "#ffffff", fontWeight: 500 }}>
+                  Work Together
+                </span>
+                <ArrowUpRight className="w-4 h-4 text-zinc-300" />
+              </a>
 
-            <a
-              href="#projects"
-              className="inline-flex items-center gap-2 px-4 sm:px-5 py-3 sm:py-3.5 rounded-xl bg-zinc-100 hover:bg-zinc-200 text-zinc-900 font-mono text-xs transition-all border border-zinc-200"
-            >
-              <span>[ view projects ]</span>
-            </a>
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-2 px-4 sm:px-5 py-3 sm:py-3.5 rounded-xl bg-zinc-100 hover:bg-zinc-200 text-zinc-900 font-mono text-xs transition-all border border-zinc-200"
+              >
+                <span>[ view projects ]</span>
+              </a>
 
-            <a
-              href="#services"
-              className="inline-flex items-center gap-1.5 px-3 py-3 text-zinc-500 hover:text-zinc-900 font-mono text-xs transition-colors"
-            >
-              <span>services & scope</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </a>
+              <a
+                href="#services"
+                className="inline-flex items-center gap-1.5 px-3 py-3 text-zinc-500 hover:text-zinc-900 font-mono text-xs transition-colors"
+              >
+                <span>services & scope</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+
+            {/* Clients & Collaborators Row */}
+            <div className="mt-12 pt-8 border-t border-zinc-200/80">
+              <div className="text-[11px] font-mono uppercase tracking-widest text-zinc-400 mb-3">
+                // clients & systems i&apos;ve worked with
+              </div>
+              <div className="flex flex-wrap items-center gap-x-6 sm:gap-x-8 gap-y-3 text-xs sm:text-sm font-mono text-zinc-500 font-semibold tracking-wider">
+                <span className="hover:text-zinc-950 transition-colors">NIT ROURKELA</span>
+                <span className="text-zinc-300">·</span>
+                <span className="hover:text-zinc-950 transition-colors">IEEE INDISCON</span>
+                <span className="text-zinc-300">·</span>
+                <span className="hover:text-zinc-950 transition-colors">SYSMEX</span>
+                <span className="text-zinc-300">·</span>
+                <span className="hover:text-zinc-950 transition-colors">AURIC AI</span>
+                <span className="text-zinc-300">·</span>
+                <span className="hover:text-zinc-950 transition-colors">RESTORA</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Hand-Drawn Animated Developer at Desk Illustration */}
+          <div className="shrink-0 flex justify-center lg:justify-end">
+            <DeskDeveloperIllustration className="w-72 sm:w-80 md:w-92 h-64 sm:h-76" />
           </div>
         </div>
 
-        {/* MAIN CENTERPIECE OF HERO: Seamless Borderless Isometric Engineering SVG */}
-        <div className="mt-8 sm:mt-12">
-          <IsometricHeroVisual />
-        </div>
-
-        {/* SECTION: THREE MAJOR SERVICES (BUILD, FIX, BENCHMARK) */}
-        <div id="services" className="mt-24 sm:mt-32 scroll-mt-24">
+        {/* ============================================================== */}
+        {/* SECTION: THREE MAJOR SERVICES (BUILD, FIX, BENCHMARK)           */}
+        {/* ============================================================== */}
+        <div id="services" className="mt-20 sm:mt-28 scroll-mt-24">
           <div className="pb-6 sm:pb-8 border-b border-zinc-200">
             <div className="text-xs font-mono text-zinc-400 uppercase tracking-widest mb-1">
               // core services
