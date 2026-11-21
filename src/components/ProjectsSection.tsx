@@ -9,12 +9,8 @@ import { DiagnosticAuditAnimation } from "./SiteAnimations";
 export function ProjectsSection() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
-  const categories = [
-    "All",
-    "Web Applications",
-    "Tauri Cross-Platform",
-    "Developer Tools & APIs",
-  ];
+  const uniqueCategories = Array.from(new Set(projects.map((p) => p.category)));
+  const categories = uniqueCategories.length > 1 ? ["All", ...uniqueCategories] : uniqueCategories;
 
   const filteredProjects =
     selectedCategory === "All"
@@ -31,18 +27,18 @@ export function ProjectsSection() {
               // selected work
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-950">
-              Web Platforms & Cross-Platform Desktop Apps
+              Web Platforms & Cross-Platform Software
             </h2>
             <p className="mt-2 text-sm sm:text-base text-zinc-600 max-w-xl">
-              Production web applications, Tauri 2.0 desktop tools, and distributed APIs built
-              for real users with high concurrency and measurable speed.
+              Production web applications, offline-first operating systems, and high-performance
+              platforms built for real users and verified under real-world traffic.
             </p>
           </div>
 
           <a
             href="https://github.com/hrushikeshsarangi7"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-zinc-300 text-zinc-900 text-xs font-mono font-medium hover:border-zinc-950 transition-colors shrink-0"
           >
             <GithubIcon className="w-3.5 h-3.5" />
@@ -50,24 +46,26 @@ export function ProjectsSection() {
           </a>
         </div>
 
-        {/* Category Filters in clean bracketed style */}
-        <div className="flex items-center gap-2 overflow-x-auto py-6 no-scrollbar">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              type="button"
-              onClick={() => setSelectedCategory(cat)}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all shrink-0 border ${
-                selectedCategory === cat
-                  ? "bg-zinc-950 text-white border-zinc-950 font-semibold shadow-sm"
-                  : "bg-white text-zinc-600 border-zinc-200 hover:border-zinc-400 hover:text-zinc-950"
-              }`}
-              style={selectedCategory === cat ? { color: "#ffffff", backgroundColor: "#09090b" } : {}}
-            >
-              [ {cat.toLowerCase()} ]
-            </button>
-          ))}
-        </div>
+        {/* Dynamic Category Filters in clean bracketed style */}
+        {categories.length > 0 && (
+          <div className="flex items-center gap-2 overflow-x-auto py-6 no-scrollbar">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                type="button"
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all shrink-0 border ${
+                  selectedCategory === cat
+                    ? "bg-zinc-950 text-white border-zinc-950 font-semibold shadow-sm"
+                    : "bg-white text-zinc-600 border-zinc-200 hover:border-zinc-400 hover:text-zinc-950"
+                }`}
+                style={selectedCategory === cat ? { color: "#ffffff", backgroundColor: "#09090b" } : {}}
+              >
+                [ {cat.toLowerCase()} ]
+              </button>
+            ))}
+          </div>
+        )}
 
         {/* Verification banner with Diagnostic Audit Animation */}
         <div className="my-6 rounded-3xl border border-zinc-200 bg-white p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
@@ -89,7 +87,7 @@ export function ProjectsSection() {
           <a
             href="https://github.com/hrushikeshsarangi7"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-xs font-mono font-medium transition-colors shrink-0 shadow-sm"
             style={{ color: "#ffffff", backgroundColor: "#09090b" }}
           >

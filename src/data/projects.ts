@@ -2,119 +2,158 @@ export interface Project {
   id: string;
   title: string;
   type: string;
-  category: "Web Applications" | "Tauri Cross-Platform" | "Developer Tools & APIs";
+  category: string;
   year: string;
   tagline: string;
   description: string;
   highlights: string[];
   techStack: string[];
-  cloudinaryImage: string;
+  image: string;
   githubUrl?: string;
   liveUrl?: string;
-  screenType: "web" | "desktop" | "dashboard";
+  screenType?: "web" | "desktop" | "dashboard";
 }
 
 export const projects: Project[] = [
   {
-    id: "oxide",
-    title: "Oxide Cloud",
-    type: "Web Platform & Deployment Suite",
-    category: "Web Applications",
+    id: "restora",
+    title: "Restora",
+    type: "Offline-First Restaurant POS & Operating System",
+    category: "Cross-Platform Desktop & Mobile",
     year: "2026",
-    tagline: "Self-hosted deployment console with zero-overhead container virtualization",
+    tagline: "Offline-first restaurant POS application served across macOS, Linux, Windows, and Android",
     description:
-      "A full-stack deployment platform combining a reactive Next.js web console with a Rust/Axum orchestration backend, Pingora reverse proxy, and Nix reproducible builds. Features real-time log streaming, subdomain routing, and Prometheus metrics telemetry.",
+      "A high-reliability, offline-first Point of Sale (POS) and restaurant operations application engineered to function seamlessly without persistent internet access. Delivers sub-millisecond local order processing, visual floor table management, real-time Kitchen Display Systems (KDS), credit tracking (Udhaari), inventory synchronization, and bi-directional multi-terminal sync across 4 operating systems.",
     highlights: [
-      "Next.js web dashboard with real-time deployment status and build logs",
-      "O(1) lock-free subdomain routing holding 270ns lookup latency",
-      "Nix-built static images reducing container footprints from 2.19 GB to 814 kB",
-      "Full Docker/Bollard container isolation with automated SSL termination",
+      "4-Platform Cross-Compilation: Unified architecture serving native macOS, Windows, Linux, and Android clients",
+      "Offline-First Reliability: Local embedded database with conflict-free background sync queues when reconnecting",
+      "Interactive Table & Floor Mapping: Real-time table occupancy status, order timers, and multi-floor routing",
+      "End-to-End Restaurant Workflow: Integrated order portal, kitchen display routing, udhaari ledger, and Power BI analytics export",
     ],
-    techStack: ["Next.js", "TypeScript", "Rust", "Axum", "Pingora", "Tokio", "PostgreSQL", "Nix"],
-    cloudinaryImage:
-      "https://res.cloudinary.com/dydvuhg9x/image/upload/v1724391200/portfolio/oxide-preview.webp",
-    githubUrl: "https://github.com/hrushikeshsarangi7/oxide",
-    screenType: "web",
-  },
-  {
-    id: "polynotes",
-    title: "Polynotes",
-    type: "Cross-Platform Desktop Application",
-    category: "Tauri Cross-Platform",
-    year: "2026",
-    tagline: "Sub-4s on-device speech transcription desktop suite built with Tauri 2.0",
-    description:
-      "A native cross-platform desktop application for macOS, Windows, and Linux that runs speech-to-text entirely on client hardware. Integrates whisper.cpp via native C++ FFI bindings with WebRTC-VAD silence stripping and multilingual code-switching across 6+ Indian languages.",
-    highlights: [
-      "Lightweight desktop binary under 25MB with zero Electron runtime memory bloat",
-      "2-4s end-to-end transcription latency on standard CPU hardware",
-      "Zero recurring cloud API token fees and 100% offline privacy",
-      "Cross-platform file export, audio timeline scrubbing, and hotkey triggers",
+    techStack: [
+      "Tauri 2.0",
+      "Rust",
+      "TypeScript",
+      "React",
+      "Tailwind CSS",
+      "SQLite",
+      "Android",
+      "Local-First Sync",
     ],
-    techStack: ["Tauri 2.0", "Rust", "SolidJS", "whisper.cpp", "C++ FFI", "Tokio", "WebRTC-VAD"],
-    cloudinaryImage:
-      "https://res.cloudinary.com/dydvuhg9x/image/upload/v1724391200/portfolio/polynotes-preview.webp",
-    githubUrl: "https://github.com/hrushikeshsarangi7/polynotes",
+    image:
+      "https://res.cloudinary.com/dk6m1qejk/image/upload/v1795296524/copy_of_whatsapp_image_2026-11-22_at_013610_jnvct7.jpg",
+    githubUrl: undefined,
+    liveUrl: undefined,
     screenType: "desktop",
   },
   {
-    id: "auric-spatial",
-    title: "Auric Geospatial",
-    type: "Collaborative Web Data Engine",
+    id: "edustarr",
+    title: "EduStarr",
+    type: "EdTech & Assessment Platform",
     category: "Web Applications",
     year: "2026",
-    tagline: "Real-time satellite imagery annotation verification system with MCP agent pipelines",
+    tagline: "Business website for ESAT mock exam preparation and student evaluation",
     description:
-      "Built the end-to-end web data pipeline and spatial database engine behind an automated satellite imagery annotation-verification system, collapsing a 5-step manual review workflow into a unified single-pane web flow for 10+ concurrent analysts with Google Earth live synchronization.",
+      "A comprehensive educational assessment platform designed for competitive ESAT mock exam preparation. Built with high-throughput test engines, real-time question timers, automated score tabulation, and granular student performance analytics.",
     highlights: [
-      "Custom MCP servers providing agent-based access to internal spatial datasets",
-      "Centralized spatial database engine supporting concurrent query, edit, and render without stale reads",
-      "Live synchronization with Google Earth desktop and web viewer sessions",
-      "Interactive multi-layer geospatial map viewer with polygon vector annotation",
+      "Real-Time Mock Exam Simulation: Timed assessment modules with dynamic question sequencing",
+      "Instant Analytical Feedback: Score breakdowns, percentile tracking, and section-by-section analysis",
+      "High-Performance Web Portal: Fast, responsive interface engineered for desktop and tablet exam takers",
+      "Secure Assessment Delivery: Anti-cheat safeguards, session persistence, and instant result generation",
     ],
-    techStack: ["Next.js", "TypeScript", "PostGIS", "MCP Servers", "Python", "Google Earth API"],
-    cloudinaryImage:
-      "https://res.cloudinary.com/dydvuhg9x/image/upload/v1724391200/portfolio/auric-preview.webp",
+    techStack: ["Next.js", "TypeScript", "React", "Tailwind CSS", "PostgreSQL", "Node.js"],
+    image:
+      "https://res.cloudinary.com/dk6m1qejk/image/upload/v1773235623/portfolio/projects/oxsty8gk0pt2lv6nfqcv.png",
+    liveUrl: "https://www.edustarr.in/",
+    githubUrl: undefined,
     screenType: "web",
   },
   {
-    id: "n6t-health",
-    title: "N6T EHR Bridge",
-    type: "Healthcare Web & Lab Integration",
+    id: "ieee-indiscon-2025",
+    title: "IEEE Indiscon 2025",
+    type: "International Conference Portal",
     category: "Web Applications",
     year: "2025",
-    tagline: "Automated EHR integration and real-time laboratory reporting for 3 hospital networks",
+    tagline: "Official international conference web platform for IEEE Indiscon 2025",
     description:
-      "Engineered the full-stack bridge integrating automated Sysmex laboratory analyzers directly with hospital Electronic Health Records (EHR). Eliminated manual transcription from the critical diagnostic path and provided production web dashboards for hospital lab staff.",
+      "The official web presence and conference portal for IEEE Indiscon 2025, a prestigious international academic and industry conference. Handles paper submission guidelines, speaker profiles, track schedules, committee listings, and delegate registrations.",
     highlights: [
-      "Zero-transcription automated data pipeline direct from hardware analyzers to EHR",
-      "Deployed and supported across 3 live hospital production environments",
-      "Sub-second alert routing for critical panic-range blood specimen values",
-      "Role-based web access for pathology staff and on-duty clinicians",
+      "Conference Information Architecture: Clear navigation for call-for-papers, tracks, and keynote sessions",
+      "High-Traffic Reliability: Statically optimized page loads ensuring instant access for global researchers",
+      "Official IEEE Brand Standards: Strict adherence to IEEE design guidelines, clean typography, and accessibility",
+      "Interactive Multi-Track Schedule: Day-wise timeline view with track filtering and venue maps",
     ],
-    techStack: ["TypeScript", "Node.js", "React", "PostgreSQL", "HL7 / FHIR", "Docker"],
-    cloudinaryImage:
-      "https://res.cloudinary.com/dydvuhg9x/image/upload/v1724391200/portfolio/n6t-preview.webp",
-    screenType: "dashboard",
+    techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    image:
+      "https://res.cloudinary.com/dk6m1qejk/image/upload/v1758738244/Screenshot_2025-09-24_235334_pu3e11.png",
+    githubUrl: undefined,
+    liveUrl: undefined,
+    screenType: "web",
   },
   {
-    id: "warpllm",
-    title: "WarpLLM Gateway",
-    type: "High-Throughput Model Router",
-    category: "Developer Tools & APIs",
-    year: "2026",
-    tagline: "Lock-free weighted round-robin LLM gateway client and provider router",
+    id: "ipf-ngo",
+    title: "IPF",
+    type: "Non-Governmental Organization Platform",
+    category: "Web Applications",
+    year: "2025",
+    tagline: "Official web platform and community outreach portal for the IPF NGO",
     description:
-      "Production contribution to an open-source Rust-native LLM gateway: engineered OpenRouter integration across 5 model vendors with authentication and error attribution, and built a lock-free weighted round-robin load balancer shipped in release 0.5.0.",
+      "A responsive, mission-driven web platform developed for the IPF Non-Governmental Organization (NGO). Engineered to document humanitarian initiatives, community health programs, volunteer onboarding, and verified impact metrics.",
     highlights: [
-      "Lock-free weighted round-robin balancer eliminating mutex lock stalls",
-      "Comprehensive test suite covering auth, model-slug resolution, and error routing",
-      "High-throughput concurrent streaming request pipeline",
+      "Grassroots Impact Transparency: Detailed program reports, beneficiary counts, and field updates",
+      "Volunteer & Partner Onboarding: Streamlined forms for volunteer signups and community initiatives",
+      "Mobile-First Optimization: Fast load times on low-bandwidth mobile connections across rural regions",
+      "Media & Event Showcase: Photo and video galleries documenting active ground-level campaigns",
     ],
-    techStack: ["Rust", "Tokio", "OpenRouter", "Async FFI", "cargo-mutants"],
-    cloudinaryImage:
-      "https://res.cloudinary.com/dydvuhg9x/image/upload/v1724391200/portfolio/warpllm-preview.webp",
-    githubUrl: "https://github.com/rust-bitcoin/rust-bech32",
-    screenType: "desktop",
+    techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    image:
+      "https://res.cloudinary.com/dk6m1qejk/image/upload/v1758738205/Screenshot_2025-09-24_235258_hfzc5n.png",
+    githubUrl: undefined,
+    liveUrl: undefined,
+    screenType: "web",
+  },
+  {
+    id: "shantanu-panda",
+    title: "Personal Portfolio",
+    type: "Engineering Showcase Portfolio",
+    category: "Web Applications",
+    year: "2025",
+    tagline: "Personal portfolio for a mechanical engineer showcasing CAD, FEA, and robotics",
+    description:
+      "A technical portfolio custom-built for mechanical engineer Shantanu Panda. Showcases complex Finite Element Analysis (FEA) simulations, 3D CAD models, robotics hardware projects, academic publications, and fabrication experience.",
+    highlights: [
+      "Technical Project Walkthroughs: Interactive project breakdowns with CAD renders and FEA heatmaps",
+      "Fluid Spatial Aesthetics: Smooth Framer Motion transitions with high-contrast editorial hierarchy",
+      "Zero Layout Shift: Highly optimized media delivery with instant image preloading",
+      "Direct Inquiry Channels: One-click contact mechanisms for academic labs and engineering recruiters",
+    ],
+    techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    image:
+      "https://res.cloudinary.com/dk6m1qejk/image/upload/v1758738510/Screenshot_2025-09-24_235747_cvqvza.png",
+    liveUrl: "https://mechanical-portfolio-xi.vercel.app/",
+    githubUrl: undefined,
+    screenType: "web",
+  },
+  {
+    id: "hotel-himalayan",
+    title: "Hotel Himalayan",
+    type: "Hospitality & Retreat Showcase",
+    category: "Web Applications",
+    year: "2026",
+    tagline: "Scenic hilltop retreat and resort discovery platform in Pelling, West Sikkim",
+    description:
+      "A scenic hospitality and booking portal created for Hotel Himalayan in Pelling, West Sikkim. Features high-definition room showcases, panoramic mountain views, local sightseeing itineraries, and direct guest reservation inquiry flows.",
+    highlights: [
+      "Room Catalog & Amenities: Visual suites detailing room specifications, mountain views, and tariff rates",
+      "Direct Reservation Routing: Seamless inquiry system connecting prospective travelers directly with front desk",
+      "Curated Sikkim Travel Guides: Regional itineraries, monastery tours, and photography hotspots",
+      "Smooth Mobile Booking Experience: Fast, touch-friendly UI optimized for travelers on mobile devices",
+    ],
+    techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vercel"],
+    image:
+      "https://res.cloudinary.com/dk6m1qejk/image/upload/v1795292984/Screenshot_2026-11-22_015810_ee0hjs.png",
+    liveUrl: "https://hotel-himalayan.vercel.app/",
+    githubUrl: undefined,
+    screenType: "web",
   },
 ];
