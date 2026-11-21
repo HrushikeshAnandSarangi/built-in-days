@@ -21,6 +21,9 @@ export function Footer() {
             <a href="#services" className="hover:text-zinc-950 transition-colors">
               [ services ]
             </a>
+            <a href="#testimonials" className="hover:text-zinc-950 transition-colors">
+              [ testimonials ]
+            </a>
             <a href="#projects" className="hover:text-zinc-950 transition-colors">
               [ projects ]
             </a>
