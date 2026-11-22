@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { MapPin, Clock } from "lucide-react";
 
 interface VisitorAvatar {
@@ -8,15 +8,36 @@ interface VisitorAvatar {
   label: string;
   location: string;
   isCurrentUser?: boolean;
-  eyes: "dash" | "dot" | "happy" | "sleepy" | "wink";
-  mouth: "smile" | "flat" | "curve" | "open";
+  isBot?: boolean;
+  eyes?: "dash" | "dot" | "happy" | "sleepy" | "wink";
+  mouth?: "smile" | "flat" | "curve" | "open";
 }
 
 export function HeroStatusBar() {
-  const [visitorLocation, setVisitorLocation] = useState<string>("Detecting location...");
+  const [visitorLocation, setVisitorLocation] = useState<string>("India");
   const [timeString, setTimeString] = useState<string>("");
   const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
-  const [viewerCount, setViewerCount] = useState<number>(14);
+  const [viewerCount, setViewerCount] = useState<number>(2);
+  const [visitors, setVisitors] = useState<VisitorAvatar[]>([
+    {
+      id: "u-curr",
+      label: "Person",
+      location: "You're visiting from India",
+      isCurrentUser: true,
+      eyes: "dash",
+      mouth: "smile",
+    },
+    {
+      id: "bot-us",
+      label: "Crawler Bot",
+      location: "Visiting from United States",
+      isBot: true,
+      eyes: "dot",
+      mouth: "flat",
+    },
+  ]);
+
+  const clientIdRef = useRef<string>("");
 
   // Real-time IST clock update
   useEffect(() => {
@@ -40,13 +61,24 @@ export function HeroStatusBar() {
     return () => clearInterval(interval);
   }, []);
 
-  // Detect visitor geolocation with fast fallback
+  // Initialize client ID & presence heartbeat
   useEffect(() => {
+    let clientId = "";
+    if (typeof window !== "undefined") {
+      clientId = sessionStorage.getItem("agy_client_id") || "";
+      if (!clientId) {
+        clientId = "user_" + Math.random().toString(36).substring(2, 9);
+        sessionStorage.setItem("agy_client_id", clientId);
+      }
+      clientIdRef.current = clientId;
+    }
+
     let isMounted = true;
 
+    // Detect visitor geo-location
     fetch("https://ipapi.co/json/")
       .then((res) => {
-        if (!res.ok) throw new Error("Geo lookup error");
+        if (!res.ok) throw new Error("Geo lookup");
         return res.json();
       })
       .then((data) => {
@@ -56,124 +88,82 @@ export function HeroStatusBar() {
           const country = data.country_name || "India";
           const formatted = region ? `${region}, ${country}` : country;
           setVisitorLocation(formatted);
+          sendHeartbeat(clientIdRef.current, formatted);
         } else {
-          setVisitorLocation("India");
+          fallbackLocation();
         }
       })
       .catch(() => {
-        if (!isMounted) return;
-        try {
-          const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-          if (tz) {
-            const city = tz.split("/").pop()?.replace(/_/g, " ");
-            setVisitorLocation(city ? `${city}` : "India");
-          } else {
-            setVisitorLocation("India");
-          }
-        } catch {
-          setVisitorLocation("India");
-        }
+        if (isMounted) fallbackLocation();
       });
 
-    // Subtle natural viewer count oscillation (12 - 16)
-    const countInterval = setInterval(() => {
-      setViewerCount((prev) => {
-        const delta = Math.random() > 0.5 ? 1 : -1;
-        const next = prev + delta;
-        return Math.min(Math.max(next, 12), 17);
-      });
-    }, 22000);
+    function fallbackLocation() {
+      try {
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        const city = tz ? tz.split("/").pop()?.replace(/_/g, " ") : "India";
+        const loc = city || "India";
+        setVisitorLocation(loc);
+        sendHeartbeat(clientIdRef.current, loc);
+      } catch {
+        setVisitorLocation("India");
+        sendHeartbeat(clientIdRef.current, "India");
+      }
+    }
+
+    function sendHeartbeat(id: string, loc: string) {
+      if (!id) return;
+      fetch("/api/presence", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ clientId: id, location: loc }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (!isMounted) return;
+          if (data?.viewerCount) setViewerCount(data.viewerCount);
+          if (data?.visitors && Array.isArray(data.visitors)) {
+            setVisitors(data.visitors);
+          }
+        })
+        .catch(() => {});
+    }
+
+    // Ping presence every 6 seconds to maintain real-time status
+    const pingInterval = setInterval(() => {
+      sendHeartbeat(clientIdRef.current, visitorLocation);
+    }, 6000);
 
     return () => {
       isMounted = false;
-      clearInterval(countInterval);
+      clearInterval(pingInterval);
     };
-  }, []);
-
-  const avatars: VisitorAvatar[] = [
-    {
-      id: "u-current",
-      label: "Person",
-      location: `You're visiting from ${visitorLocation}`,
-      isCurrentUser: true,
-      eyes: "dash",
-      mouth: "smile",
-    },
-    {
-      id: "u-sf",
-      label: "Person",
-      location: "Visiting from San Francisco, US",
-      eyes: "dot",
-      mouth: "flat",
-    },
-    {
-      id: "u-blr",
-      label: "Person",
-      location: "Visiting from Bengaluru, India",
-      eyes: "happy",
-      mouth: "smile",
-    },
-    {
-      id: "u-lon",
-      label: "Person",
-      location: "Visiting from London, UK",
-      eyes: "sleepy",
-      mouth: "curve",
-    },
-    {
-      id: "u-sin",
-      label: "Person",
-      location: "Visiting from Singapore",
-      eyes: "wink",
-      mouth: "smile",
-    },
-    {
-      id: "u-ber",
-      label: "Person",
-      location: "Visiting from Berlin, Germany",
-      eyes: "dash",
-      mouth: "flat",
-    },
-    {
-      id: "u-nyc",
-      label: "Person",
-      location: "Visiting from New York, US",
-      eyes: "dot",
-      mouth: "smile",
-    },
-    {
-      id: "u-del",
-      label: "Person",
-      location: "Visiting from New Delhi, India",
-      eyes: "happy",
-      mouth: "curve",
-    },
-  ];
+  }, [visitorLocation]);
 
   return (
-    <div className="relative inline-flex flex-wrap items-center gap-x-4 sm:gap-x-6 gap-y-2 py-2 px-3 sm:px-4 rounded-full bg-zinc-50 border border-zinc-200/80 text-zinc-600 text-xs sm:text-[13px] font-sans mb-6 select-none shadow-xs">
+    /* Completely transparent and borderless: NO card background, NO glassmorphism */
+    <div className="relative inline-flex flex-wrap items-center justify-center lg:justify-start gap-x-4 sm:gap-x-5 gap-y-2 py-1 text-zinc-600 text-xs sm:text-[13px] font-sans select-none bg-transparent border-0 shadow-none">
       {/* 1. Location */}
       <div className="flex items-center gap-1.5 text-zinc-700">
         <MapPin className="w-3.5 h-3.5 text-zinc-500 shrink-0" />
-        <span className="font-medium">Rourkela, India</span>
+        <span className="font-medium text-zinc-900">Rourkela, India</span>
       </div>
 
-      <span className="text-zinc-300 hidden sm:inline">|</span>
+      <span className="text-zinc-300">|</span>
 
       {/* 2. Real-time Live Clock (IST) */}
       <div className="flex items-center gap-1.5 text-zinc-700">
         <Clock className="w-3.5 h-3.5 text-zinc-500 shrink-0" />
-        <span className="font-mono text-xs">{timeString || "5:30 AM IST"}</span>
+        <span className="font-mono text-xs text-zinc-800">{timeString || "5:30 AM IST"}</span>
       </div>
 
-      <span className="text-zinc-300 hidden sm:inline">|</span>
+      <span className="text-zinc-300">|</span>
 
       {/* 3. Real-time Viewers Count & Radio Waves */}
       <div className="flex items-center gap-2">
         <div className="flex items-center gap-1 text-zinc-700 font-medium">
-          {/* Stylized radio broadcast waves icon */}
+          {/* Radio signal waves icon */}
           <svg
-            className="w-4 h-4 text-zinc-600 shrink-0"
+            className="w-4 h-4 text-emerald-600 shrink-0"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -187,12 +177,12 @@ export function HeroStatusBar() {
             <path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5" />
             <path d="M19.1 4.9C23 8.8 23 15.2 19.1 19.1" />
           </svg>
-          <span className="font-mono text-xs text-zinc-800">{viewerCount}</span>
+          <span className="font-mono text-xs text-zinc-900 font-semibold">{viewerCount}</span>
         </div>
 
-        {/* 4. Avatars cluster with interactive tooltips */}
+        {/* 4. Functional Avatars Cluster with interactive tooltips */}
         <div className="relative flex items-center -space-x-1.5 pl-1">
-          {avatars.slice(0, 7).map((avatar, idx) => {
+          {visitors.map((avatar, idx) => {
             const isHovered = activeTooltip === avatar.id;
             return (
               <div
@@ -201,12 +191,16 @@ export function HeroStatusBar() {
                 onMouseEnter={() => setActiveTooltip(avatar.id)}
                 onMouseLeave={() => setActiveTooltip(null)}
                 onClick={() => setActiveTooltip(activeTooltip === avatar.id ? null : avatar.id)}
-                style={{ zIndex: isHovered ? 30 : 10 - idx }}
+                style={{ zIndex: isHovered ? 40 : 20 - idx }}
               >
-                {/* Hand-drawn minimalist face avatar SVG */}
+                {/* Minimalist face avatar */}
                 <div
                   className={`w-6 h-6 rounded-full bg-white border ${
-                    avatar.isCurrentUser ? "border-zinc-800 shadow-xs" : "border-zinc-300"
+                    avatar.isCurrentUser
+                      ? "border-zinc-900 shadow-xs"
+                      : avatar.isBot
+                      ? "border-emerald-500/80 bg-emerald-50/50"
+                      : "border-zinc-300"
                   } flex items-center justify-center transition-transform hover:scale-125 hover:shadow-md`}
                 >
                   <svg className="w-4 h-4 text-zinc-700" viewBox="0 0 24 24" fill="none">
@@ -235,20 +229,17 @@ export function HeroStatusBar() {
                         <path d="M14 10.5h3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                       </>
                     )}
-                    {avatar.eyes === "wink" && (
+                    {(!avatar.eyes || avatar.eyes === "wink") && (
                       <>
                         <circle cx="8" cy="10" r="1.2" fill="currentColor" />
                         <path d="M14 10.5h3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
                       </>
                     )}
 
-                    {/* Nose: tiny subtle stroke */}
+                    {/* Nose */}
                     <path d="M12 11.5v2" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
 
                     {/* Mouth */}
-                    {avatar.mouth === "smile" && (
-                      <path d="M9 16c1.5 1 4.5 1 6 0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                    )}
                     {avatar.mouth === "flat" && (
                       <path d="M10 16h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                     )}
@@ -258,15 +249,28 @@ export function HeroStatusBar() {
                     {avatar.mouth === "open" && (
                       <circle cx="12" cy="16" r="1.5" stroke="currentColor" strokeWidth="1.4" />
                     )}
+                    {(!avatar.mouth || avatar.mouth === "smile") && (
+                      <path d="M9 16c1.5 1 4.5 1 6 0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                    )}
                   </svg>
                 </div>
 
-                {/* Floating Tooltip matching user screenshot */}
+                {/* Floating Tooltip */}
                 {isHovered && (
                   <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max max-w-xs z-50 pointer-events-none animate-in fade-in zoom-in-95 duration-150">
                     <div className="bg-white px-3.5 py-2.5 rounded-xl border border-zinc-200 shadow-xl shadow-zinc-950/10 text-left">
-                      <div className="text-[11px] font-mono text-zinc-400 font-medium tracking-tight">
-                        {avatar.label}
+                      <div className="text-[11px] font-mono text-zinc-400 font-medium tracking-tight flex items-center gap-1.5">
+                        <span>{avatar.label}</span>
+                        {avatar.isBot && (
+                          <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-800 font-bold">
+                            BOT
+                          </span>
+                        )}
+                        {avatar.isCurrentUser && (
+                          <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-zinc-100 text-zinc-900 font-bold">
+                            YOU
+                          </span>
+                        )}
                       </div>
                       <div className="text-xs font-semibold text-zinc-950 tracking-tight mt-0.5 whitespace-nowrap">
                         {avatar.location}

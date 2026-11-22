@@ -1,7 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import { Check, ArrowUpRight, ChevronUp, ChevronDown, Zap, ShieldCheck, Terminal, Cpu, Database, Activity } from "lucide-react";
+import React, { useState, useRef, useEffect } from "react";
+import Image from "next/image";
+import { Check, ChevronUp, ChevronDown } from "lucide-react";
+import { useScroll, useMotionValueEvent, motion, AnimatePresence } from "framer-motion";
 
 interface ServiceItem {
   id: string;
@@ -14,10 +16,13 @@ interface ServiceItem {
   whatYouGet: { title: string; desc: string }[];
   ctaLabel: string;
   badge: string;
+  image: string;
+  imageCaption: string;
 }
 
 export function ServicesShowcase() {
   const [activeIndex, setActiveIndex] = useState<number>(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const services: ServiceItem[] = [
     {
@@ -49,6 +54,8 @@ export function ServicesShowcase() {
       ],
       ctaLabel: "Build app ↗",
       badge: "Fixed-scope & contract",
+      image: "https://res.cloudinary.com/dk6m1qejk/image/upload/v1795292984/Screenshot_2026-11-22_015810_ee0hjs.png",
+      imageCaption: "Restora POS & Web Platform — Live Production Deployment",
     },
     {
       id: "accelerate",
@@ -79,6 +86,8 @@ export function ServicesShowcase() {
       ],
       ctaLabel: "Accelerate app ↗",
       badge: "Latency & memory rescue",
+      image: "https://res.cloudinary.com/dk6m1qejk/image/upload/v1758738205/Screenshot_2025-09-24_235258_hfzc5n.png",
+      imageCaption: "Kernel Profiling & Flamegraph Trace — 99.2% Latency Reduction",
     },
     {
       id: "benchmark",
@@ -109,8 +118,26 @@ export function ServicesShowcase() {
       ],
       ctaLabel: "Benchmark app ↗",
       badge: "Diagnostic audit & report",
+      image: "https://res.cloudinary.com/dk6m1qejk/image/upload/v1795297734/Screenshot_2026-11-22_031732_vixvyi.png",
+      imageCaption: "Executive Diagnostic Benchmark Report & Concurrency Stress Profile",
     },
   ];
+
+  // Scroll tracking: Switch services as user scrolls
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    if (latest < 0.33) {
+      setActiveIndex(0);
+    } else if (latest < 0.66) {
+      setActiveIndex(1);
+    } else {
+      setActiveIndex(2);
+    }
+  });
 
   const currentService = services[activeIndex];
 
@@ -123,95 +150,113 @@ export function ServicesShowcase() {
     }
   };
 
+  const scrollToService = (idx: number) => {
+    if (containerRef.current && typeof window !== "undefined") {
+      const top = containerRef.current.offsetTop;
+      const totalH = containerRef.current.offsetHeight - window.innerHeight;
+      const targetY = top + totalH * (idx / (services.length - 1));
+      window.scrollTo({ top: targetY, behavior: "smooth" });
+    } else {
+      setActiveIndex(idx);
+    }
+  };
+
   const handlePrev = () => {
-    setActiveIndex((prev) => (prev > 0 ? prev - 1 : services.length - 1));
+    const nextIdx = activeIndex > 0 ? activeIndex - 1 : services.length - 1;
+    scrollToService(nextIdx);
   };
 
   const handleNext = () => {
-    setActiveIndex((prev) => (prev < services.length - 1 ? prev + 1 : 0));
+    const nextIdx = activeIndex < services.length - 1 ? activeIndex + 1 : 0;
+    scrollToService(nextIdx);
   };
 
   return (
-    <section id="services" className="relative py-24 sm:py-32 bg-white border-t border-zinc-200 scroll-mt-24">
+    /* Multi-screen height container enabling natural scroll-driven service switching */
+    <div
+      ref={containerRef}
+      id="services"
+      className="relative min-h-[260vh] bg-white border-t border-zinc-200"
+    >
       {/* Structural subtle grid */}
-      <div className="absolute inset-0 grid-pattern pointer-events-none opacity-25" />
+      <div className="absolute inset-0 grid-pattern pointer-events-none opacity-20" />
 
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header: Minimalist and clean */}
-        <div className="flex items-center justify-between pb-8 border-b border-zinc-200">
+      {/* Sticky viewport frame pinning the showcase while scrolling */}
+      <div className="sticky top-16 md:top-20 h-[calc(100vh-4rem)] md:h-[calc(100vh-5rem)] flex flex-col justify-center px-4 sm:px-6 lg:px-8 py-6 max-w-6xl mx-auto w-full">
+        {/* Section Header: Minimalist and clean (tabs removed as requested) */}
+        <div className="flex items-center justify-between pb-4 sm:pb-6 border-b border-zinc-200">
           <div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.04em] leading-[1.0] text-zinc-950">
               Services
             </h2>
           </div>
 
-          {/* Quick tab switcher for all screen sizes */}
-          <div className="flex items-center gap-1.5 p-1 rounded-xl bg-zinc-100 border border-zinc-200">
-            {services.map((item, idx) => (
-              <button
-                key={item.id}
-                onClick={() => setActiveIndex(idx)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all ${
-                  activeIndex === idx
-                    ? "bg-white text-zinc-950 shadow-xs border border-zinc-200"
-                    : "text-zinc-500 hover:text-zinc-900"
-                }`}
-              >
-                {item.num} {item.shortLabel}
-              </button>
-            ))}
+          {/* Minimal scroll step indicator */}
+          <div className="text-xs font-mono text-zinc-500 flex items-center gap-2">
+            <span>Scroll to explore</span>
+            <span className="font-bold text-zinc-950">
+              0{activeIndex + 1} / 0{services.length}
+            </span>
           </div>
         </div>
 
-        {/* Main Charles Honig Showcase Body: Left text & CTAs, Center rich visual examples, Right slider rail */}
-        <div className="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
-          {/* Left Column: Text, What You Get, CTAs (lg:col-span-5) */}
-          <div className="lg:col-span-5 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <span className="font-mono text-xs font-bold text-zinc-950 px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200">
-                  {currentService.num} · {currentService.shortLabel}
-                </span>
-                <span className="text-xs font-mono text-zinc-500">
-                  {currentService.category}
-                </span>
-              </div>
-
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-zinc-950 tracking-tight leading-tight">
-                {currentService.title}
-              </h3>
-
-              <p className="text-xs font-mono text-emerald-700 font-semibold mt-2 mb-4">
-                {currentService.tagline}
-              </p>
-
-              <p className="text-sm text-zinc-600 leading-relaxed mb-6">
-                {currentService.description}
-              </p>
-
-              {/* What You Get checklist */}
-              <div className="space-y-3 pt-5 border-t border-zinc-100">
-                <div className="text-[11px] font-mono uppercase tracking-wider text-zinc-700 font-semibold">
-                  What You Get
+        {/* Main 3-Column Showcase: Left Text, Center Real Images, Right Rail Slider */}
+        <div className="mt-6 sm:mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center flex-1 max-h-[720px]">
+          {/* Left Column: Text, Deliverables, CTAs (lg:col-span-5) */}
+          <div className="lg:col-span-5 flex flex-col justify-between h-full py-2">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentService.id}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -16 }}
+                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="font-mono text-xs font-bold text-zinc-950 px-3 py-0.5 rounded-full bg-zinc-100 border border-zinc-200">
+                    {currentService.num} · {currentService.shortLabel}
+                  </span>
+                  <span className="text-xs font-mono text-zinc-500">
+                    {currentService.category}
+                  </span>
                 </div>
-                <ul className="space-y-2.5 text-xs text-zinc-700">
-                  {currentService.whatYouGet.map((item, i) => (
-                    <li key={i} className="flex items-start gap-2.5">
-                      <div className="w-4 h-4 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0 mt-0.5">
-                        <Check className="w-2.5 h-2.5 text-emerald-700" />
-                      </div>
-                      <span className="leading-snug">
-                        <strong className="text-zinc-950 font-medium">{item.title}:</strong>{" "}
-                        <span className="text-zinc-600">{item.desc}</span>
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-zinc-950 tracking-tight leading-tight">
+                  {currentService.title}
+                </h3>
+
+                <p className="text-xs font-mono text-emerald-700 font-semibold mt-1.5 mb-3">
+                  {currentService.tagline}
+                </p>
+
+                <p className="text-xs sm:text-sm text-zinc-600 leading-relaxed mb-5 line-clamp-3 sm:line-clamp-none">
+                  {currentService.description}
+                </p>
+
+                {/* What You Get checklist */}
+                <div className="space-y-2.5 pt-4 border-t border-zinc-100">
+                  <div className="text-[11px] font-mono uppercase tracking-wider text-zinc-700 font-semibold">
+                    What You Get
+                  </div>
+                  <ul className="space-y-2 text-xs text-zinc-700">
+                    {currentService.whatYouGet.map((item, i) => (
+                      <li key={i} className="flex items-start gap-2.5">
+                        <div className="w-4 h-4 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0 mt-0.5">
+                          <Check className="w-2.5 h-2.5 text-emerald-700" />
+                        </div>
+                        <span className="leading-snug">
+                          <strong className="text-zinc-950 font-medium">{item.title}:</strong>{" "}
+                          <span className="text-zinc-600">{item.desc}</span>
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            </AnimatePresence>
 
             {/* CTAs and Scope footer */}
-            <div className="mt-8 pt-6 border-t border-zinc-200 flex flex-wrap items-center justify-between gap-4">
+            <div className="pt-4 border-t border-zinc-200 flex flex-wrap items-center justify-between gap-4 mt-auto">
               <span className="text-xs font-mono text-zinc-500">
                 {currentService.badge}
               </span>
@@ -227,213 +272,62 @@ export function ServicesShowcase() {
             </div>
           </div>
 
-          {/* Center Column: High-fidelity Visual Example Screens (lg:col-span-6) */}
-          <div className="lg:col-span-6 flex flex-col justify-center">
-            {/* Visual Example Card Frame */}
-            <div className="rounded-2xl border border-zinc-200 bg-zinc-900 text-zinc-100 p-5 sm:p-6 shadow-xl shadow-zinc-950/5 relative overflow-hidden min-h-[440px] flex flex-col justify-between">
-              {/* Subtle top window chrome */}
-              <div className="flex items-center justify-between pb-4 border-b border-zinc-800 text-xs font-mono text-zinc-400">
+          {/* Center Column: Real Production Images Frame (lg:col-span-6) */}
+          <div className="lg:col-span-6 flex flex-col justify-center h-full">
+            <div className="rounded-2xl border border-zinc-200 bg-zinc-950 overflow-hidden shadow-xl shadow-zinc-950/5 relative flex flex-col">
+              {/* Top window chrome */}
+              <div className="flex items-center justify-between px-4 py-2.5 bg-zinc-900 border-b border-zinc-800 text-xs font-mono text-zinc-400">
                 <div className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
                   <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
-                  <span className="text-zinc-400 ml-2 text-[11px]">
-                    {currentService.id === "build" && "restora-pos.app — Tauri Desktop"}
-                    {currentService.id === "accelerate" && "flamegraph-latency-profiler.trace"}
-                    {currentService.id === "benchmark" && "stress-diagnostic-report.v2"}
+                  <span className="text-zinc-300 ml-2 text-[11px] truncate max-w-[200px] sm:max-w-xs">
+                    {currentService.id === "build" && "restora-pos.app · Production Deployment"}
+                    {currentService.id === "accelerate" && "hotpath-profiling.trace · 18ms Latency"}
+                    {currentService.id === "benchmark" && "diagnostic-report.v2 · Concurrency Audit"}
                   </span>
                 </div>
-                <span className="text-[10px] uppercase tracking-wider text-emerald-400 font-bold px-2 py-0.5 rounded bg-emerald-950/80 border border-emerald-800/60">
-                  Live Production
+                <span className="text-[10px] uppercase tracking-wider text-emerald-400 font-bold px-2 py-0.5 rounded bg-emerald-950/80 border border-emerald-800/60 shrink-0">
+                  Real Screenshot
                 </span>
               </div>
 
-              {/* Dynamic Service Visual Demonstrations */}
-              <div className="py-4 flex-1 flex flex-col justify-center">
-                {/* 1. BUILD APPLICATION EXAMPLE: Multi-Window App & Dashboard */}
-                {activeIndex === 0 && (
-                  <div className="space-y-4">
-                    {/* Top KPI row */}
-                    <div className="grid grid-cols-3 gap-2.5">
-                      <div className="p-3 rounded-xl bg-zinc-800/80 border border-zinc-700/60">
-                        <div className="text-[10px] font-mono text-zinc-400 uppercase">Daily Orders</div>
-                        <div className="text-lg font-bold text-white mt-0.5">1,482</div>
-                        <div className="text-[10px] text-emerald-400 font-mono">+28% vs wk</div>
-                      </div>
-                      <div className="p-3 rounded-xl bg-zinc-800/80 border border-zinc-700/60">
-                        <div className="text-[10px] font-mono text-zinc-400 uppercase">Gross Volume</div>
-                        <div className="text-lg font-bold text-white mt-0.5">$38.4k</div>
-                        <div className="text-[10px] text-emerald-400 font-mono">100% synced</div>
-                      </div>
-                      <div className="p-3 rounded-xl bg-zinc-800/80 border border-zinc-700/60">
-                        <div className="text-[10px] font-mono text-zinc-400 uppercase">Client Binary</div>
-                        <div className="text-lg font-bold text-white mt-0.5">18.4 MB</div>
-                        <div className="text-[10px] text-zinc-400 font-mono">macOS/Win/Linux</div>
-                      </div>
-                    </div>
-
-                    {/* Live active queue preview */}
-                    <div className="rounded-xl bg-zinc-950/90 border border-zinc-800 p-3.5 space-y-2">
-                      <div className="flex items-center justify-between text-[11px] font-mono text-zinc-400 border-b border-zinc-800/80 pb-2">
-                        <span className="font-semibold text-zinc-200">Active POS Ticket Stream</span>
-                        <span className="text-emerald-400 flex items-center gap-1">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                          Zero-Latency WebSockets
-                        </span>
-                      </div>
-                      <div className="space-y-1.5 text-xs font-mono">
-                        <div className="flex items-center justify-between p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300">
-                          <div className="flex items-center gap-2">
-                            <span className="text-emerald-400 font-bold">#4092</span>
-                            <span>Table 12 · 4 items</span>
-                          </div>
-                          <span className="text-zinc-400">Printed 2s ago</span>
-                        </div>
-                        <div className="flex items-center justify-between p-2 rounded-lg bg-zinc-900/60 border border-zinc-800/60 text-zinc-400">
-                          <div className="flex items-center gap-2">
-                            <span className="text-emerald-400 font-bold">#4091</span>
-                            <span>Bar Counter · 2 cocktails</span>
-                          </div>
-                          <span className="text-zinc-500">Paid ($42.00)</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-between text-[11px] font-mono text-zinc-400 px-1">
-                      <span>Stack: Next.js 16 · Rust/Tauri · PostgreSQL</span>
-                      <span className="text-emerald-400">Ship Velocity: 4 days</span>
-                    </div>
-                  </div>
-                )}
-
-                {/* 2. ACCELERATE APPLICATION EXAMPLE: Latency & Flamegraph Speedup */}
-                {activeIndex === 1 && (
-                  <div className="space-y-4">
-                    {/* Before & After comparison card */}
-                    <div className="grid grid-cols-2 gap-3">
-                      <div className="p-3.5 rounded-xl bg-red-950/30 border border-red-900/40">
-                        <div className="text-[10px] font-mono uppercase text-red-400 font-bold">Before Optimization</div>
-                        <div className="text-2xl font-bold text-red-300 mt-1 font-mono">2,450 ms</div>
-                        <div className="text-[11px] text-zinc-400 mt-1">Stalled N+1 queries & memory leaks</div>
-                      </div>
-                      <div className="p-3.5 rounded-xl bg-emerald-950/40 border border-emerald-800/60">
-                        <div className="text-[10px] font-mono uppercase text-emerald-400 font-bold">After Latency Patch</div>
-                        <div className="text-2xl font-bold text-emerald-400 mt-1 font-mono">18 ms</div>
-                        <div className="text-[11px] text-emerald-300 font-semibold mt-1">99.2% Latency Reduction</div>
-                      </div>
-                    </div>
-
-                    {/* Flamegraph hotpath visual inspector */}
-                    <div className="rounded-xl bg-zinc-950/90 border border-zinc-800 p-3.5 space-y-2.5">
-                      <div className="flex items-center justify-between text-[11px] font-mono text-zinc-400 border-b border-zinc-800/80 pb-2">
-                        <span className="text-zinc-200 font-semibold flex items-center gap-1.5">
-                          <Activity className="w-3.5 h-3.5 text-emerald-400" />
-                          Kernel Flamegraph & Hotpath Trace
-                        </span>
-                        <span className="text-emerald-400 font-mono">Resolved</span>
-                      </div>
-
-                      {/* Visual flamegraph bars */}
-                      <div className="space-y-1.5 font-mono text-[10px]">
-                        <div>
-                          <div className="flex justify-between text-zinc-400 mb-1">
-                            <span>Blocking PostgreSQL Table Scan</span>
-                            <span className="text-red-400">1,820ms → 2.1ms (Indexed)</span>
-                          </div>
-                          <div className="h-2 rounded-full bg-zinc-800 overflow-hidden">
-                            <div className="h-full bg-emerald-500 rounded-full w-[4%]" />
-                          </div>
-                        </div>
-
-                        <div>
-                          <div className="flex justify-between text-zinc-400 mb-1">
-                            <span>Cascading React Re-renders</span>
-                            <span className="text-red-400">410ms → 0.8ms (Memoized)</span>
-                          </div>
-                          <div className="h-2 rounded-full bg-zinc-800 overflow-hidden">
-                            <div className="h-full bg-emerald-500 rounded-full w-[2%]" />
-                          </div>
-                        </div>
-
-                        <div>
-                          <div className="flex justify-between text-zinc-400 mb-1">
-                            <span>Docker Container Image Size</span>
-                            <span className="text-emerald-400 font-bold">2.19 GB → 814 kB (99.96% Squeeze)</span>
-                          </div>
-                          <div className="h-2 rounded-full bg-zinc-800 overflow-hidden">
-                            <div className="h-full bg-emerald-400 rounded-full w-[1%]" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-between text-[11px] font-mono text-zinc-400 px-1">
-                      <span>Zero-allocation buffers · Sub-ms queries</span>
-                      <span className="text-emerald-400">100% reproducible</span>
-                    </div>
-                  </div>
-                )}
-
-                {/* 3. BENCHMARK & AUDIT EXAMPLE: Comprehensive Load-Test Report */}
-                {activeIndex === 2 && (
-                  <div className="space-y-4">
-                    {/* Concurrency Percentile Metrics */}
-                    <div className="grid grid-cols-3 gap-2.5">
-                      <div className="p-3 rounded-xl bg-zinc-800/80 border border-zinc-700/60">
-                        <div className="text-[10px] font-mono text-zinc-400 uppercase">P50 Latency</div>
-                        <div className="text-lg font-bold text-emerald-400 mt-0.5 font-mono">2.4 ms</div>
-                        <div className="text-[10px] text-zinc-400 font-mono">Median turn</div>
-                      </div>
-                      <div className="p-3 rounded-xl bg-zinc-800/80 border border-zinc-700/60">
-                        <div className="text-[10px] font-mono text-zinc-400 uppercase">P95 Latency</div>
-                        <div className="text-lg font-bold text-white mt-0.5 font-mono">8.1 ms</div>
-                        <div className="text-[10px] text-zinc-400 font-mono">95th percentile</div>
-                      </div>
-                      <div className="p-3 rounded-xl bg-zinc-800/80 border border-zinc-700/60">
-                        <div className="text-[10px] font-mono text-zinc-400 uppercase">P99 Tail</div>
-                        <div className="text-lg font-bold text-white mt-0.5 font-mono">14.2 ms</div>
-                        <div className="text-[10px] text-emerald-400 font-mono">0 timeouts</div>
-                      </div>
-                    </div>
-
-                    {/* Bottleneck Isolation & Executive Summary */}
-                    <div className="rounded-xl bg-zinc-950/90 border border-zinc-800 p-3.5 space-y-2">
-                      <div className="flex items-center justify-between text-[11px] font-mono text-zinc-400 border-b border-zinc-800/80 pb-2">
-                        <span className="font-semibold text-zinc-200">Executive Technical Audit Summary</span>
-                        <span className="text-emerald-400 font-mono">10,000 req/sec stress</span>
-                      </div>
-
-                      <div className="space-y-1.5 text-xs font-mono">
-                        <div className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-between">
-                          <span className="text-zinc-300">Connection Pool Contention</span>
-                          <span className="text-emerald-400 font-bold">Diagnosed & Patched</span>
-                        </div>
-                        <div className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-between">
-                          <span className="text-zinc-300">Garbage Collector GC Pauses</span>
-                          <span className="text-emerald-400 font-bold">Mitigated</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-between text-[11px] font-mono text-zinc-400 px-1">
-                      <span className="text-zinc-300">Deliverable: 24-Page Technical Audit PDF</span>
-                      <span className="text-emerald-400">Executive Ready</span>
-                    </div>
-                  </div>
-                )}
+              {/* Real Project Image with smooth crossfade */}
+              <div className="relative aspect-[16/10] sm:aspect-[16/10] w-full bg-zinc-900 overflow-hidden">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentService.image}
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={currentService.image}
+                      alt={currentService.imageCaption}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 600px"
+                      className="object-cover object-top"
+                      priority
+                    />
+                  </motion.div>
+                </AnimatePresence>
               </div>
 
-              {/* Bottom status note */}
-              <div className="pt-3 border-t border-zinc-800/80 flex items-center justify-between text-[11px] font-mono text-zinc-400">
-                <span>Verified engineering outcomes</span>
-                <span className="text-zinc-500">Service {activeIndex + 1} of 3</span>
+              {/* Bottom image caption bar */}
+              <div className="px-4 py-2 bg-zinc-900/90 border-t border-zinc-800 text-[11px] font-mono text-zinc-400 flex items-center justify-between">
+                <span className="truncate">{currentService.imageCaption}</span>
+                <span className="text-emerald-400 font-semibold shrink-0 ml-2">
+                  0{activeIndex + 1}/03
+                </span>
               </div>
             </div>
           </div>
 
-          {/* Extreme Right Column: Charles Honig Vertical Pill Slider Rail (lg:col-span-1) */}
+          {/* Extreme Right Column: Vertical Rail Slider Indicator (lg:col-span-1) */}
           <div className="hidden lg:flex lg:col-span-1 flex-col items-center justify-center">
-            {/* Top Prev Arrow */}
+            {/* Prev Arrow */}
             <button
               onClick={handlePrev}
               title="Previous Service"
@@ -443,14 +337,14 @@ export function ServicesShowcase() {
               <ChevronUp className="w-4 h-4" />
             </button>
 
-            {/* Vertical Rail Indicator Matching User Screenshot */}
+            {/* Vertical Rail Indicator */}
             <div className="flex flex-col items-center gap-3 py-2">
               {services.map((item, idx) => {
                 const isActive = activeIndex === idx;
                 return (
                   <button
                     key={item.id}
-                    onClick={() => setActiveIndex(idx)}
+                    onClick={() => scrollToService(idx)}
                     title={`${item.num} · ${item.title}`}
                     className="group relative flex items-center justify-center p-1 focus:outline-hidden"
                     aria-label={`Go to service ${item.num}: ${item.title}`}
@@ -463,7 +357,7 @@ export function ServicesShowcase() {
                       <div className="w-2.5 h-2.5 rounded-full bg-zinc-300 group-hover:bg-zinc-500 transition-all duration-200" />
                     )}
 
-                    {/* Hover tooltip showing service label */}
+                    {/* Tooltip on hover */}
                     <span className="absolute right-full mr-3 px-2 py-1 rounded bg-zinc-900 text-white text-[10px] font-mono whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-md z-30">
                       {item.num} {item.shortLabel}
                     </span>
@@ -472,7 +366,7 @@ export function ServicesShowcase() {
               })}
             </div>
 
-            {/* Bottom Next Arrow */}
+            {/* Next Arrow */}
             <button
               onClick={handleNext}
               title="Next Service"
@@ -484,6 +378,6 @@ export function ServicesShowcase() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

@@ -30,7 +30,7 @@ export default function Home() {
         <ContactSection />
       </ScrollTransition>
 
-      {/* Minimalist Charles Honig Style Footer with My Story, Experience, Awards */}
+      {/* Charles Honig Skyline Bicycle Ride Game Footer */}
       <ScrollTransition>
         <Footer />
       </ScrollTransition>
