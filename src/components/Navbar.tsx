@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
+import { StatefulButton } from "./ui/stateful-button";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -58,14 +59,16 @@ export function Navbar() {
 
         {/* Action Area & Mobile Hamburger */}
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-          {/* Black CTA Button: Replaced with 'Get in touch', hidden on smaller screens */}
-          <a
-            href="#contact"
-            className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-zinc-950 hover:bg-zinc-800 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-sm text-xs sm:text-[13px] font-medium tracking-[-0.01em]"
-            style={{ color: "#ffffff", backgroundColor: "#09090b" }}
-          >
-            <span style={{ color: "#ffffff" }}>Get in touch ↗</span>
-          </a>
+          {/* Black CTA Button with Aceternity Stateful Button feedback */}
+          <div className="hidden md:inline-flex">
+            <StatefulButton
+              href="#contact"
+              successText="Opening..."
+              className="py-2 px-4 rounded-full text-xs font-medium"
+            >
+              Get in touch
+            </StatefulButton>
+          </div>
 
           {/* Hamburger Icon: Strictly for smaller screens only (md:hidden) */}
           <button

@@ -6,6 +6,7 @@ import { ProjectCard } from "./ProjectCard";
 import { GithubIcon } from "./icons";
 import { DiagnosticAuditAnimation } from "./SiteAnimations";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { LinkPreview } from "./ui/link-preview";
 
 export function ProjectsSection() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
@@ -31,15 +32,12 @@ export function ProjectsSection() {
             Projects
           </h2>
 
-          <a
-            href="https://github.com/hrushikeshsarangi7"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-zinc-300 text-zinc-900 text-xs sm:text-[13px] font-medium hover:border-zinc-950 transition-colors shrink-0 shadow-2xs"
-          >
-            <GithubIcon className="w-3.5 h-3.5" />
-            <span>github.com/hrushikeshsarangi7 ↗</span>
-          </a>
+          <LinkPreview url="https://github.com/hrushikeshsarangi7">
+            <span className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-zinc-300 text-zinc-900 text-xs sm:text-[13px] font-medium hover:border-zinc-950 transition-colors shrink-0 shadow-2xs cursor-pointer">
+              <GithubIcon className="w-3.5 h-3.5" />
+              <span>github.com/hrushikeshsarangi7 ↗</span>
+            </span>
+          </LinkPreview>
         </div>
 
         {/* Dynamic Category Filters in clean bracketed style */}
@@ -83,16 +81,15 @@ export function ProjectsSection() {
               </p>
             </div>
           </div>
-          <a
-            href="https://github.com/hrushikeshsarangi7"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-xs font-mono font-medium transition-colors shrink-0 shadow-sm"
-            style={{ color: "#ffffff", backgroundColor: "#09090b" }}
-          >
-            <GithubIcon className="w-3.5 h-3.5 text-zinc-300" />
-            <span style={{ color: "#ffffff" }}>View repositories ↗</span>
-          </a>
+          <LinkPreview url="https://github.com/hrushikeshsarangi7">
+            <span
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-xs font-mono font-medium transition-colors shrink-0 shadow-sm cursor-pointer"
+              style={{ color: "#ffffff", backgroundColor: "#09090b" }}
+            >
+              <GithubIcon className="w-3.5 h-3.5 text-zinc-300" />
+              <span style={{ color: "#ffffff" }}>View repositories ↗</span>
+            </span>
+          </LinkPreview>
         </div>
 
         {/* Projects Cards List (limited to top 3 by default) */}
