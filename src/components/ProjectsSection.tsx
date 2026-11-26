@@ -4,8 +4,7 @@ import React, { useState } from "react";
 import { projects } from "@/data/projects";
 import { ProjectCard } from "./ProjectCard";
 import { GithubIcon } from "./icons";
-import { DiagnosticAuditAnimation } from "./SiteAnimations";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, ShieldCheck } from "lucide-react";
 import { LinkPreview } from "./ui/link-preview";
 
 export function ProjectsSection() {
@@ -62,21 +61,38 @@ export function ProjectsSection() {
           </div>
         )}
 
-        {/* Verification banner with Diagnostic Audit Animation */}
-        <div className="my-6 rounded-3xl border border-[rgba(26,56,40,0.12)] bg-[#EBF0E8] p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
-          <div className="flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
-            <DiagnosticAuditAnimation className="w-44 h-32 shrink-0" />
+        {/* Empirical Verification Standard Banner - High-Craft Minimalist Editorial (Zero Cartoon Animations) */}
+        <div className="my-6 rounded-3xl border border-[rgba(26,56,40,0.12)] bg-[#EBF0E8] p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-sm">
+          <div className="space-y-1.5 max-w-xl">
+            <div className="text-xs font-mono text-[#183627] font-bold uppercase tracking-wider flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-[#183627]" />
+              <span>Empirical Verification Standard</span>
+            </div>
+            <div className="font-display text-lg sm:text-2xl font-bold text-[#152E20] tracking-tight">
+              Every Product Backed by Reproducible Benchmarks
+            </div>
+            <p className="text-xs sm:text-sm text-[#3A5646] leading-relaxed font-normal">
+              Codebases include automated CI workflows, deterministic test suites, flamegraph profiles, and
+              measurable latency guarantees.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-6 sm:gap-8 pt-2 md:pt-0 shrink-0 border-t md:border-t-0 md:border-l border-[rgba(26,56,40,0.12)] md:pl-8">
             <div>
-              <div className="text-xs font-mono text-[#183627] font-bold uppercase tracking-wider">
-                Empirical Verification Standard
+              <div className="font-display text-2xl sm:text-3xl font-bold text-[#152E20] tabular-nums">
+                16,265
               </div>
-              <div className="font-display text-lg sm:text-xl font-bold text-[#152E20] mt-1">
-                Every Product Backed by Reproducible Benchmarks
+              <div className="text-[11px] font-mono text-[#3A5646] uppercase tracking-wider mt-0.5">
+                Audit Traces
               </div>
-              <p className="text-xs sm:text-sm text-[#3A5646] mt-1 max-w-lg leading-relaxed font-normal">
-                Codebases include automated CI workflows, test suites, flamegraph profiles, and
-                measurable latency guarantees.
-              </p>
+            </div>
+            <div>
+              <div className="font-display text-2xl sm:text-3xl font-bold text-[#183627] tabular-nums">
+                100%
+              </div>
+              <div className="text-[11px] font-mono text-[#3A5646] uppercase tracking-wider mt-0.5">
+                CI Reproducible
+              </div>
             </div>
           </div>
         </div>
