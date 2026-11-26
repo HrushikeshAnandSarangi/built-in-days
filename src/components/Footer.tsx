@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { ArrowUp, Check, MessageSquare, Send } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./icons";
+import { CurlyUnderline, HandwrittenHook } from "./ui/curly-underline";
 
 /**
  * Forest Silhouette Cutout
@@ -54,7 +55,12 @@ export function Footer() {
           {/* Three-Column Editorial Grid matching reference layout */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 items-start">
             {/* COLUMN 1 (Left): Navigation Links + Social Circles */}
-            <div className="md:col-span-3 space-y-6 md:border-r md:border-white/15 md:pr-6">
+            <div className="md:col-span-3 space-y-5 md:border-r md:border-white/15 md:pr-6">
+              <div>
+                <HandwrittenHook color="text-[#D3E5DC]" rotate="-rotate-1" className="text-xl">
+                  explore
+                </HandwrittenHook>
+              </div>
               <nav className="flex flex-col space-y-2.5 font-sans text-[13px] sm:text-sm font-medium tracking-tight text-[#FAF8F2]/90">
                 <a href="#services" className="hover:text-white transition-colors">
                   Services
@@ -116,7 +122,13 @@ export function Footer() {
             </div>
 
             {/* COLUMN 2 (Center): Get Updates Form */}
-            <div className="md:col-span-6 space-y-4 text-center md:px-6 md:border-r md:border-white/15">
+            <div className="md:col-span-6 space-y-3.5 text-center md:px-6 md:border-r md:border-white/15">
+              <div className="flex justify-center">
+                <HandwrittenHook color="text-[#D98A29]" rotate="-rotate-1" className="text-2xl sm:text-3xl">
+                  Create from the heart.
+                </HandwrittenHook>
+              </div>
+
               <h3 className="font-serif font-bold text-2xl sm:text-3xl !text-[#FAF8F2] tracking-tight">
                 Get Updates
               </h3>
@@ -165,11 +177,17 @@ export function Footer() {
             {/* COLUMN 3 (Right): Send A Message CTA + Contact + Seal */}
             <div className="md:col-span-3 space-y-4 md:pl-6 text-left md:text-right">
               <div>
+                <HandwrittenHook color="text-[#D3E5DC]" rotate="-rotate-1" className="text-xl mb-1 block">
+                  get in touch
+                </HandwrittenHook>
                 <a
                   href="mailto:hrushikeshsarangi7@gmail.com"
                   className="inline-flex items-center gap-1.5 text-sm sm:text-base font-semibold text-[#FAF8F2] hover:text-[#D98A29] transition-colors"
                 >
-                  <span>Send Us A Message</span>
+                  <span className="relative inline-block">
+                    Send Us A Message
+                    <CurlyUnderline color="#D98A29" strokeWidth={2} className="-bottom-1" />
+                  </span>
                   <span>→</span>
                 </a>
               </div>

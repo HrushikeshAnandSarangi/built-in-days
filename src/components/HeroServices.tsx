@@ -5,6 +5,7 @@ import Image from "next/image";
 import { HeroStatusBar } from "./HeroStatusBar";
 import { ServicesShowcase } from "./ServicesShowcase";
 import { StatefulButton } from "./ui/stateful-button";
+import { CurlyUnderline, HandwrittenHook } from "./ui/curly-underline";
 
 export function HeroServices() {
   const handleOpenAuditModal = () => {
@@ -39,14 +40,32 @@ export function HeroServices() {
         </div>
 
         {/* Center / Upper: Two-Tone Display Headline (Matching BridgeAI "Bridge the gap between data and decisions") */}
-        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center mt-4 sm:mt-8">
+        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center mt-3 sm:mt-6">
+          {/* Top Handwritten Hook */}
+          <div className="mb-2.5 flex items-center justify-center gap-2">
+            <HandwrittenHook color="text-[#163826]" rotate="-rotate-2" className="text-xl sm:text-2xl">
+              high-craft engineering & speed
+            </HandwrittenHook>
+          </div>
+
           <h1 className="font-display font-medium text-4xl sm:text-6xl md:text-7xl lg:text-[4.75rem] tracking-[-0.035em] leading-[1.06] text-balance">
             <span className="block text-[#163826]">Bridge the gap between</span>
-            <span className="block text-[#5B8870]">software and speed</span>
+            <span className="block text-[#5B8870]">
+              software and{" "}
+              <span className="relative inline-block text-[#163826]">
+                speed
+                <CurlyUnderline color="#D98A29" strokeWidth={3} className="-bottom-1 sm:-bottom-2" />
+              </span>
+            </span>
           </h1>
 
           <p className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg text-[#2E4A3B] max-w-xl mx-auto text-center leading-relaxed font-sans text-pretty font-normal">
-            Turn complex engineering challenges into fast, resilient, production-grade applications shipped in days with verified benchmarks.
+            Turn complex engineering challenges into fast, resilient, production-grade applications{" "}
+            <span className="relative inline-block font-semibold text-[#163826]">
+              shipped in days
+              <CurlyUnderline color="#183627" strokeWidth={2} className="-bottom-0.5 sm:-bottom-1" />
+            </span>{" "}
+            with verified benchmarks.
           </p>
 
           {/* Centered Live Presence Telemetry Status Bar */}

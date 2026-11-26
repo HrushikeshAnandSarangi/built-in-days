@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { Download, Activity, Cpu, ShieldAlert, CheckCircle2 } from "lucide-react";
+import { CurlyUnderline, HandwrittenHook } from "./ui/curly-underline";
 
 export function CaseStudySection() {
   const [activeTab, setActiveTab] = useState<"off-cpu" | "cpu">("off-cpu");
@@ -20,8 +21,14 @@ export function CaseStudySection() {
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex items-center justify-between gap-6 pb-6 sm:pb-8 border-b border-[rgba(26,56,40,0.12)]">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-6 sm:pb-8 border-b border-[rgba(26,56,40,0.12)]">
           <div>
+            <div className="flex items-center gap-2 mb-1.5">
+              <HandwrittenHook className="text-xl sm:text-2xl text-[#183627] -rotate-1">
+                deep-dive systems audit
+              </HandwrittenHook>
+              <span className="w-8 h-[1px] bg-[#183627]/30" />
+            </div>
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.035em] leading-[1.0] text-[#152E20]">
               Case Study
             </h2>
@@ -68,7 +75,11 @@ export function CaseStudySection() {
               Eliminating Database Contention &amp; Uncovering Silent Proxy Failure Paths
             </h3>
             <p className="text-sm sm:text-base text-[#3A5646] leading-relaxed max-w-3xl font-normal">
-              An empirical performance, concurrency, and mutation testing audit across Tempest&apos;s core workspace subsystems (<code>tasks_store</code>, <code>hephaestus</code> proxy, <code>service_proxy</code>, <code>dbiso</code>, and <code>node_ingest</code>). By replacing serialized Mutex commits with a dedicated writer + reader pool and configuring WAL/NORMAL, we eliminated 1-second UI thread lockouts and delivered a measured <strong className="text-[#152E20] font-bold">141.5x throughput gain</strong>.
+              An empirical performance, concurrency, and mutation testing audit across Tempest&apos;s core workspace subsystems (<code>tasks_store</code>, <code>hephaestus</code> proxy, <code>service_proxy</code>, <code>dbiso</code>, and <code>node_ingest</code>). By replacing serialized Mutex commits with a dedicated writer + reader pool and configuring WAL/NORMAL, we eliminated 1-second UI thread lockouts and delivered a measured{" "}
+              <span className="relative inline-block font-bold text-[#152E20]">
+                141.5x throughput gain
+                <CurlyUnderline color="#D98A29" strokeWidth={2.5} className="-bottom-1" />
+              </span>.
             </p>
           </div>
 

@@ -2,6 +2,7 @@
 
 import React from "react";
 import { StickyScroll, StickyScrollItem } from "./ui/sticky-scroll-reveal";
+import { HandwrittenHook, CurlyUnderline } from "./ui/curly-underline";
 
 export function ServicesShowcase() {
   const handleOpenAudit = () => {
@@ -15,7 +16,15 @@ export function ServicesShowcase() {
       id: "build",
       num: "01",
       title: "Build Your Application",
-      headline: "Life is too short for slow, bloated software",
+      headline: (
+        <span>
+          Life is too short for slow,{" "}
+          <span className="relative inline-block text-[#183627]">
+            bloated software
+            <CurlyUnderline color="#D98A29" strokeWidth={3} className="-bottom-1 sm:-bottom-1.5" />
+          </span>
+        </span>
+      ),
       tagline: "Production-grade software shipped in days",
       badge: "Full-Stack Web & Cross-Platform Desktop",
       description:
@@ -61,7 +70,15 @@ export function ServicesShowcase() {
       id: "accelerate",
       num: "02",
       title: "Fix Your Application",
-      headline: "Bisect bottlenecks, eliminate leaks, slash latency",
+      headline: (
+        <span>
+          Bisect bottlenecks, eliminate leaks,{" "}
+          <span className="relative inline-block text-[#183627]">
+            slash latency
+            <CurlyUnderline color="#D98A29" strokeWidth={3} className="-bottom-1 sm:-bottom-1.5" />
+          </span>
+        </span>
+      ),
       tagline: "Performance Engineering & Speed Rescue",
       badge: "Performance Engineering & Speed Rescue",
       description:
@@ -102,7 +119,15 @@ export function ServicesShowcase() {
       id: "benchmark",
       num: "03",
       title: "Benchmark & Audit",
-      headline: "Subject critical paths to empirical kernel benchmarks",
+      headline: (
+        <span>
+          Subject critical paths to{" "}
+          <span className="relative inline-block text-[#183627]">
+            empirical benchmarks
+            <CurlyUnderline color="#D98A29" strokeWidth={3} className="-bottom-1 sm:-bottom-1.5" />
+          </span>
+        </span>
+      ),
       tagline: "Isolate bottlenecks & deliver comprehensive report",
       badge: "Deep Diagnostics & Concurrency Profiling",
       description:
@@ -160,15 +185,24 @@ export function ServicesShowcase() {
       <div className="absolute inset-0 grid-pattern pointer-events-none opacity-20" />
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
-        <div className="flex items-center justify-between pb-6 border-b border-[rgba(26,56,40,0.12)]">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-[rgba(26,56,40,0.12)]">
           <div>
+            <div className="flex items-center gap-2 mb-1.5">
+              <HandwrittenHook className="text-xl sm:text-2xl text-[#183627] -rotate-1">
+                what I build &amp; ship
+              </HandwrittenHook>
+              <span className="w-8 h-[1px] bg-[#183627]/30" />
+            </div>
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.035em] leading-[1.0] text-[#152E20]">
               Services
             </h2>
           </div>
           <div className="text-xs font-mono text-[#183627] font-semibold flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[#D98A29] animate-pulse" />
-            <span>High-Velocity Engineering Sprints</span>
+            <span className="relative inline-block">
+              High-Velocity Engineering Sprints
+              <CurlyUnderline color="#D98A29" strokeWidth={2} className="-bottom-1" />
+            </span>
           </div>
         </div>
       </div>

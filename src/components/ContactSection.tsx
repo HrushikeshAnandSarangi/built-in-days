@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { Check, Copy } from "lucide-react";
+import { CurlyUnderline } from "./ui/curly-underline";
 
 export function ContactSection() {
   const directEmail = "hrushikeshsarangi7@gmail.com";
@@ -28,7 +29,12 @@ export function ContactSection() {
                 <span className="w-6 h-[1px] bg-[#183627]/40" />
               </div>
               <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-[#152E20] tracking-[-0.035em] leading-[1.12] max-w-xl text-balance">
-                Have a project in mind or want to make systems faster?
+                Have a project in mind or want to make{" "}
+                <span className="relative inline-block text-[#152E20]">
+                  systems faster
+                  <CurlyUnderline color="#D98A29" strokeWidth={3} className="-bottom-1 sm:-bottom-1.5" />
+                </span>
+                ?
               </h2>
             </div>
 

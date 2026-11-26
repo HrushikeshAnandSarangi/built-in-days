@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Quote } from "lucide-react";
+import { HandwrittenHook, CurlyUnderline } from "./ui/curly-underline";
 
 interface Testimonial {
   id: string;
@@ -62,10 +63,18 @@ export function TestimonialsSection() {
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex items-center justify-between gap-6 pb-6 sm:pb-8 border-b border-[rgba(26,56,40,0.12)]">
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.035em] leading-[1.0] text-[#152E20]">
-            Testimonials
-          </h2>
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-6 sm:pb-8 border-b border-[rgba(26,56,40,0.12)]">
+          <div>
+            <div className="flex items-center gap-2 mb-1.5">
+              <HandwrittenHook className="text-xl sm:text-2xl text-[#183627] -rotate-1">
+                trusted by founders &amp; teams
+              </HandwrittenHook>
+              <span className="w-8 h-[1px] bg-[#183627]/30" />
+            </div>
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.035em] leading-[1.0] text-[#152E20]">
+              Testimonials
+            </h2>
+          </div>
 
           <a
             href="#contact"

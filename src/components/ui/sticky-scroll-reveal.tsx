@@ -8,7 +8,7 @@ import { Download, ExternalLink, ArrowRight, CheckCircle2 } from "lucide-react";
 export interface StickyScrollItem {
   id: string;
   num: string;
-  headline?: string;
+  headline?: string | React.ReactNode;
   title: string;
   tagline: string;
   description: string;
