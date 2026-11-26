@@ -329,22 +329,22 @@ export function DiagnosticAuditAnimation({ className = "w-40 h-28" }: { classNam
           height="75"
           rx="8"
           fill="#ffffff"
-          stroke="#09090b"
+          stroke="#0F1F38"
           strokeWidth="3"
         />
         {/* Header line on board */}
-        <line x1="85" y1="32" x2="170" y2="32" stroke="#e4e4e7" strokeWidth="2" />
+        <line x1="85" y1="32" x2="170" y2="32" stroke="#D5DCE6" strokeWidth="2" />
 
         {/* Animated Bar Chart on Board */}
         <g id="bars">
-          <rect x="90" y="60" width="10" height="25" fill="#18181b" rx="2" />
-          <rect x="108" y="50" width="10" height="35" fill="#71717a" rx="2" />
+          <rect x="90" y="60" width="10" height="25" fill="#0F1F38" rx="2" />
+          <rect x="108" y="50" width="10" height="35" fill="#52647C" rx="2" />
           <motion.rect
             x="126"
             y="38"
             width="10"
             height="47"
-            fill="#10b981"
+            fill="#E08E0B"
             rx="2"
             animate={{ height: [47, 51, 47], y: [38, 34, 38] }}
             transition={{ duration: 1.8, repeat: Infinity }}
@@ -353,21 +353,21 @@ export function DiagnosticAuditAnimation({ className = "w-40 h-28" }: { classNam
 
         {/* Circular Telemetry Pie on Board */}
         <g transform="translate(155, 60)">
-          <circle cx="0" cy="0" r="12" fill="#ecfdf5" stroke="#09090b" strokeWidth="2" />
-          <path d="M0,0 L0,-12 A12,12 0 0,1 12,0 Z" fill="#059669" />
+          <circle cx="0" cy="0" r="12" fill="#F4F6F9" stroke="#0F1F38" strokeWidth="2" />
+          <path d="M0,0 L0,-12 A12,12 0 0,1 12,0 Z" fill="#1D56B3" />
         </g>
 
         {/* Presenter / Engineer Figure on Left */}
         <g id="engineer-presenter">
           {/* Body & Arm pointing wand at board */}
-          <path d="M40,115 L45,75" stroke="#09090b" strokeWidth="12" strokeLinecap="round" fill="none" />
-          <circle cx="48" cy="55" r="10" fill="#ffffff" stroke="#09090b" strokeWidth="3" />
-          <path d="M42,50 C44,43 54,43 57,50 Z" fill="#09090b" />
+          <path d="M40,115 L45,75" stroke="#0F1F38" strokeWidth="12" strokeLinecap="round" fill="none" />
+          <circle cx="48" cy="55" r="10" fill="#ffffff" stroke="#0F1F38" strokeWidth="3" />
+          <path d="M42,50 C44,43 54,43 57,50 Z" fill="#0F1F38" />
 
           {/* Pointing Arm with Indicator Wand */}
           <motion.path
             d="M48,78 L78,65 L115,50"
-            stroke="#09090b"
+            stroke="#0F1F38"
             strokeWidth="3.5"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -375,7 +375,7 @@ export function DiagnosticAuditAnimation({ className = "w-40 h-28" }: { classNam
             animate={{ y: [0, -3, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
           />
-          <circle cx="115" cy="50" r="2.5" fill="#10b981" />
+          <circle cx="115" cy="50" r="2.5" fill="#E08E0B" />
         </g>
       </motion.svg>
     </div>

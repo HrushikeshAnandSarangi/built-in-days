@@ -27,34 +27,34 @@ export function Navbar() {
         {/* Brand (Left) */}
         <a
           href="#"
-          className="text-zinc-950 font-bold tracking-tight text-sm sm:text-base hover:text-emerald-700 transition-colors flex items-center gap-1.5 shrink-0"
+          className="text-[#0F1F38] font-display font-bold tracking-tight text-sm sm:text-base hover:text-[#1D56B3] transition-colors flex items-center gap-1.5 shrink-0"
         >
-          <span className="font-bold text-zinc-950 tracking-[-0.03em]">Hrushikesh</span>
+          <span className="font-display font-bold text-[#0F1F38] tracking-[-0.03em]">Hrushikesh</span>
         </a>
 
         {/* Desktop Nav Links (Services, Testimonials, Case Study, Projects) */}
-        <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-[12px] font-sans font-semibold uppercase tracking-[0.04em] text-zinc-600">
+        <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-[12px] font-sans font-semibold uppercase tracking-[0.04em] text-[#52647C]">
           <a
             href="#services"
-            className="hover:text-zinc-950 hover:underline underline-offset-4 decoration-zinc-300 transition-colors py-1"
+            className="hover:text-[#0F1F38] hover:underline underline-offset-4 decoration-[#1D56B3]/40 transition-colors py-1"
           >
             Services
           </a>
           <a
             href="#testimonials"
-            className="hover:text-zinc-950 hover:underline underline-offset-4 decoration-zinc-300 transition-colors py-1"
+            className="hover:text-[#0F1F38] hover:underline underline-offset-4 decoration-[#1D56B3]/40 transition-colors py-1"
           >
             Testimonials
           </a>
           <a
             href="#case-study"
-            className="hover:text-zinc-950 hover:underline underline-offset-4 decoration-zinc-300 transition-colors py-1"
+            className="hover:text-[#0F1F38] hover:underline underline-offset-4 decoration-[#1D56B3]/40 transition-colors py-1"
           >
             Case Study
           </a>
           <a
             href="#projects"
-            className="hover:text-zinc-950 hover:underline underline-offset-4 decoration-zinc-300 transition-colors py-1"
+            className="hover:text-[#0F1F38] hover:underline underline-offset-4 decoration-[#1D56B3]/40 transition-colors py-1"
           >
             Projects
           </a>
@@ -62,12 +62,13 @@ export function Navbar() {
 
         {/* Action Area & Mobile Hamburger */}
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-          {/* Black CTA Button with Aceternity Stateful Button feedback */}
+          {/* Signal Ochre CTA Button with Stateful feedback */}
           <div className="hidden md:inline-flex">
             <StatefulButton
               href="#contact"
+              variant="ochre"
               successText="Opening..."
-              className="py-2 px-4 rounded-full text-xs font-medium"
+              className="py-2 px-4 text-xs font-semibold"
             >
               Get in touch
             </StatefulButton>
@@ -77,13 +78,13 @@ export function Navbar() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-1.5 rounded-full text-zinc-800 hover:text-zinc-950 md:hidden flex items-center justify-center border border-zinc-200 bg-white/90 shadow-2xs"
+            className="p-1.5 rounded-full text-[#0F1F38] hover:text-[#1D56B3] md:hidden flex items-center justify-center border border-[#D5DCE6] bg-white shadow-2xs"
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? (
-              <X className="w-4 h-4 text-zinc-900" />
+              <X className="w-4 h-4 text-[#0F1F38]" />
             ) : (
-              <Menu className="w-4 h-4 text-zinc-900" />
+              <Menu className="w-4 h-4 text-[#0F1F38]" />
             )}
           </button>
         </div>
@@ -91,51 +92,50 @@ export function Navbar() {
 
       {/* Mobile Menu Dropdown (Visible only on smaller screens when toggled) */}
       {mobileMenuOpen && (
-        <div className="pointer-events-auto absolute top-16 left-4 right-4 glass-dropdown rounded-2xl p-5 shadow-2xl md:hidden flex flex-col gap-3 animate-in fade-in slide-in-from-top-2 duration-200">
-          <nav className="flex flex-col gap-2 text-sm font-medium text-zinc-800 font-mono">
+        <div className="pointer-events-auto absolute top-16 left-4 right-4 bg-white/95 backdrop-blur-xl border border-[#D5DCE6] rounded-2xl p-5 shadow-2xl md:hidden flex flex-col gap-3 animate-in fade-in slide-in-from-top-2 duration-200">
+          <nav className="flex flex-col gap-2 text-sm font-medium text-[#0F1F38] font-mono">
             <a
               href="#services"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2.5 rounded-xl hover:bg-black/[0.04] flex items-center justify-between text-zinc-900"
+              className="px-3 py-2.5 rounded-xl hover:bg-[#F4F6F9] flex items-center justify-between text-[#0F1F38]"
             >
               <span>01 · Services</span>
-              <ArrowUpRight className="w-4 h-4 text-zinc-400" />
+              <ArrowUpRight className="w-4 h-4 text-[#52647C]" />
             </a>
             <a
               href="#testimonials"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2.5 rounded-xl hover:bg-black/[0.04] flex items-center justify-between text-zinc-900"
+              className="px-3 py-2.5 rounded-xl hover:bg-[#F4F6F9] flex items-center justify-between text-[#0F1F38]"
             >
               <span>02 · Testimonials</span>
-              <ArrowUpRight className="w-4 h-4 text-zinc-400" />
+              <ArrowUpRight className="w-4 h-4 text-[#52647C]" />
             </a>
             <a
               href="#case-study"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2.5 rounded-xl hover:bg-black/[0.04] flex items-center justify-between text-zinc-900"
+              className="px-3 py-2.5 rounded-xl hover:bg-[#F4F6F9] flex items-center justify-between text-[#0F1F38]"
             >
               <span>03 · Case Study</span>
-              <ArrowUpRight className="w-4 h-4 text-zinc-400" />
+              <ArrowUpRight className="w-4 h-4 text-[#52647C]" />
             </a>
             <a
               href="#projects"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2.5 rounded-xl hover:bg-black/[0.04] flex items-center justify-between text-zinc-900"
+              className="px-3 py-2.5 rounded-xl hover:bg-[#F4F6F9] flex items-center justify-between text-[#0F1F38]"
             >
               <span>04 · Projects</span>
-              <ArrowUpRight className="w-4 h-4 text-zinc-400" />
+              <ArrowUpRight className="w-4 h-4 text-[#52647C]" />
             </a>
 
-            {/* In smaller screens, black CTA button is inside the hamburger dropdown */}
-            <div className="pt-2 mt-1 border-t border-zinc-200/80">
+            {/* In smaller screens, Signal Ochre CTA button inside the hamburger dropdown */}
+            <div className="pt-2 mt-1 border-t border-[#D5DCE6]">
               <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full inline-flex items-center justify-between px-4 py-3 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-medium text-xs sm:text-[13px] transition-colors shadow-sm"
-                style={{ color: "#ffffff", backgroundColor: "#09090b" }}
+                className="w-full inline-flex items-center justify-between px-4 py-3 rounded-xl bg-[#E08E0B] hover:bg-[#CF8106] text-[#0F1F38] font-bold text-xs sm:text-[13px] transition-colors shadow-sm"
               >
-                <span style={{ color: "#ffffff" }}>Get in touch ↗</span>
-                <ArrowUpRight className="w-4 h-4 text-zinc-300" />
+                <span>Get in touch ↗</span>
+                <ArrowUpRight className="w-4 h-4 text-[#0F1F38]" />
               </a>
             </div>
           </nav>

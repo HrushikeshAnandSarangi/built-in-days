@@ -51,30 +51,30 @@ export function TempestAuditModal({ isOpen: controlledIsOpen, onClose: controlle
         onClick={(e) => e.stopPropagation()}
       >
         {/* Sticky Header */}
-        <div className="sticky top-0 z-20 flex items-center justify-between px-6 py-4 bg-white/95 backdrop-blur-md border-b border-zinc-200">
+        <div className="sticky top-0 z-20 flex items-center justify-between px-6 py-4 bg-white/95 backdrop-blur-md border-b border-[#D5DCE6]">
           <div className="flex items-center gap-3">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#E08E0B] animate-pulse" />
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-[11px] font-mono uppercase tracking-wider font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                <span className="text-[11px] font-mono uppercase tracking-wider font-bold text-[#1D56B3] bg-[#1D56B3]/10 px-2 py-0.5 rounded border border-[#1D56B3]/30">
                   Verified Audit Case Study
                 </span>
-                <span className="text-xs font-mono text-zinc-500 hidden sm:inline">
+                <span className="text-xs font-mono text-[#52647C] hidden sm:inline">
                   Commit 0b57702
                 </span>
               </div>
-              <h2 className="text-base sm:text-lg font-bold text-zinc-950 tracking-tight mt-0.5">
-                Tempest Performance & Concurrency Audit
+              <h2 className="font-display text-base sm:text-lg font-bold text-[#0F1F38] tracking-tight mt-0.5">
+                Tempest Performance &amp; Concurrency Audit
               </h2>
             </div>
           </div>
 
           <div className="flex items-center gap-2 sm:gap-3">
-            {/* Direct Download Button */}
+            {/* Direct Download Button in Signal Ochre */}
             <a
               href="/audit/tempest-performance-audit.docx"
               download="tempest-performance-audit.docx"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-mono font-medium transition-all shadow-sm active:scale-95"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#E08E0B] hover:bg-[#CF8106] text-[#0F1F38] text-xs font-mono font-bold transition-all shadow-sm active:scale-95 border border-[#C47905]"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Download (.docx)</span>
@@ -83,7 +83,7 @@ export function TempestAuditModal({ isOpen: controlledIsOpen, onClose: controlle
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="p-1.5 rounded-xl text-zinc-400 hover:text-zinc-950 hover:bg-zinc-100 transition-colors"
+              className="p-1.5 rounded-xl text-[#52647C] hover:text-[#0F1F38] hover:bg-[#F4F6F9] transition-colors"
               aria-label="Close modal"
             >
               <X className="w-5 h-5" />
@@ -92,37 +92,37 @@ export function TempestAuditModal({ isOpen: controlledIsOpen, onClose: controlle
         </div>
 
         {/* Scrollable Content Body */}
-        <div className="overflow-y-auto px-6 sm:px-8 py-6 space-y-10 text-xs sm:text-sm leading-relaxed text-zinc-700 font-sans">
+        <div className="overflow-y-auto px-6 sm:px-8 py-6 space-y-10 text-xs sm:text-sm leading-relaxed text-[#52647C] font-sans">
           {/* Executive Overview Banner */}
-          <div className="rounded-2xl border border-zinc-200 bg-zinc-50/70 p-5 sm:p-6 space-y-3">
+          <div className="rounded-2xl border border-[#D5DCE6] bg-[#F4F6F9] p-5 sm:p-6 space-y-3">
             <div className="flex items-center justify-between flex-wrap gap-2">
-              <span className="text-xs font-mono font-bold text-zinc-950 uppercase tracking-wider">
-                Production Readiness Review & Technical Risk Assessment
+              <span className="text-xs font-mono font-bold text-[#0F1F38] uppercase tracking-wider">
+                Production Readiness Review &amp; Technical Risk Assessment
               </span>
-              <span className="text-xs font-mono text-zinc-500">
+              <span className="text-xs font-mono text-[#52647C]">
                 Client: Tempest Core Systems
               </span>
             </div>
-            <p className="text-zinc-800 text-sm leading-relaxed">
+            <p className="text-[#0F1F38] text-sm leading-relaxed">
               <strong>Executive Summary:</strong> We executed an empirical performance, concurrency,
               and mutation audit of Tempest across its core workspace subsystems:{" "}
-              <code className="text-xs font-mono bg-zinc-200/80 px-1.5 py-0.5 rounded text-zinc-900">
+              <code className="text-xs font-mono bg-white px-1.5 py-0.5 rounded text-[#0F1F38] border border-[#D5DCE6]">
                 tasks_store
               </code>{" "}
               (SQLite persistence),{" "}
-              <code className="text-xs font-mono bg-zinc-200/80 px-1.5 py-0.5 rounded text-zinc-900">
+              <code className="text-xs font-mono bg-white px-1.5 py-0.5 rounded text-[#0F1F38] border border-[#D5DCE6]">
                 hephaestus
               </code>{" "}
               (network isolation proxy),{" "}
-              <code className="text-xs font-mono bg-zinc-200/80 px-1.5 py-0.5 rounded text-zinc-900">
+              <code className="text-xs font-mono bg-white px-1.5 py-0.5 rounded text-[#0F1F38] border border-[#D5DCE6]">
                 service_proxy
               </code>{" "}
               (internal routing),{" "}
-              <code className="text-xs font-mono bg-zinc-200/80 px-1.5 py-0.5 rounded text-zinc-900">
+              <code className="text-xs font-mono bg-white px-1.5 py-0.5 rounded text-[#0F1F38] border border-[#D5DCE6]">
                 dbiso
               </code>{" "}
               (ephemeral database management), and{" "}
-              <code className="text-xs font-mono bg-zinc-200/80 px-1.5 py-0.5 rounded text-zinc-900">
+              <code className="text-xs font-mono bg-white px-1.5 py-0.5 rounded text-[#0F1F38] border border-[#D5DCE6]">
                 node_ingest
               </code>{" "}
               (document IPC processing). While memory residency is stable (9.0 MB RSS) with zero heap
@@ -130,26 +130,26 @@ export function TempestAuditModal({ isOpen: controlledIsOpen, onClose: controlle
               database commits and untested error-recovery paths in the proxy hot path.
             </p>
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 border-t border-zinc-200 text-xs font-mono">
-              <div className="p-2.5 rounded-xl bg-white border border-zinc-200">
-                <div className="text-zinc-500 text-[11px]">Measured Speedup</div>
-                <div className="text-base font-bold text-emerald-600 mt-0.5">141.5x</div>
-                <div className="text-[10px] text-zinc-400">782ms → 9.6ms P99</div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 border-t border-[#D5DCE6] text-xs font-mono">
+              <div className="p-2.5 rounded-xl bg-white border border-[#D5DCE6]">
+                <div className="text-[#52647C] text-[11px]">Measured Speedup</div>
+                <div className="text-base font-bold text-[#E08E0B] mt-0.5">141.5x</div>
+                <div className="text-[10px] text-[#52647C]">782ms → 9.6ms P99</div>
               </div>
-              <div className="p-2.5 rounded-xl bg-white border border-zinc-200">
-                <div className="text-zinc-500 text-[11px]">Peak Heap Overhead</div>
-                <div className="text-base font-bold text-zinc-950 mt-0.5">&lt; 391 KB</div>
-                <div className="text-[10px] text-emerald-600">0 heap leaks (DHAT)</div>
+              <div className="p-2.5 rounded-xl bg-white border border-[#D5DCE6]">
+                <div className="text-[#52647C] text-[11px]">Peak Heap Overhead</div>
+                <div className="text-base font-bold text-[#0F1F38] mt-0.5">&lt; 391 KB</div>
+                <div className="text-[10px] text-[#1D56B3]">0 heap leaks (DHAT)</div>
               </div>
-              <div className="p-2.5 rounded-xl bg-white border border-zinc-200">
-                <div className="text-zinc-500 text-[11px]">Soak Test RSS</div>
-                <div className="text-base font-bold text-zinc-950 mt-0.5">9.0 MB Flat</div>
-                <div className="text-[10px] text-zinc-400">1.6M ops / 300s</div>
+              <div className="p-2.5 rounded-xl bg-white border border-[#D5DCE6]">
+                <div className="text-[#52647C] text-[11px]">Soak Test RSS</div>
+                <div className="text-base font-bold text-[#0F1F38] mt-0.5">9.0 MB Flat</div>
+                <div className="text-[10px] text-[#52647C]">1.6M ops / 300s</div>
               </div>
-              <div className="p-2.5 rounded-xl bg-white border border-zinc-200">
-                <div className="text-zinc-500 text-[11px]">Scheduler Traces</div>
-                <div className="text-base font-bold text-zinc-950 mt-0.5">16,265</div>
-                <div className="text-[10px] text-zinc-400">Linux perf events</div>
+              <div className="p-2.5 rounded-xl bg-white border border-[#D5DCE6]">
+                <div className="text-[#52647C] text-[11px]">Scheduler Traces</div>
+                <div className="text-base font-bold text-[#0F1F38] mt-0.5">16,265</div>
+                <div className="text-[10px] text-[#52647C]">Linux perf events</div>
               </div>
             </div>
           </div>
@@ -654,9 +654,9 @@ export function TempestAuditModal({ isOpen: controlledIsOpen, onClose: controlle
         </div>
 
         {/* Sticky Footer Bar with Download & Contact Buttons */}
-        <div className="sticky bottom-0 z-20 flex items-center justify-between px-6 py-4 bg-zinc-50 border-t border-zinc-200">
-          <div className="flex items-center gap-2 text-xs font-mono text-zinc-500">
-            <FileText className="w-4 h-4 text-emerald-600" />
+        <div className="sticky bottom-0 z-20 flex items-center justify-between px-6 py-4 bg-[#F4F6F9] border-t border-[#D5DCE6]">
+          <div className="flex items-center gap-2 text-xs font-mono text-[#52647C]">
+            <FileText className="w-4 h-4 text-[#1D56B3]" />
             <span>Complete technical deliverable: 805 KB (.docx)</span>
           </div>
 
@@ -664,7 +664,7 @@ export function TempestAuditModal({ isOpen: controlledIsOpen, onClose: controlle
             <a
               href="/audit/tempest-performance-audit.docx"
               download="tempest-performance-audit.docx"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-mono text-xs font-semibold transition-all shadow-sm active:scale-95"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#E08E0B] hover:bg-[#CF8106] text-[#0F1F38] font-mono text-xs font-bold transition-all shadow-sm active:scale-95 border border-[#C47905]"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Download Audit Document (.docx)</span>
@@ -673,7 +673,7 @@ export function TempestAuditModal({ isOpen: controlledIsOpen, onClose: controlle
             <a
               href="#contact"
               onClick={onClose}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-mono text-xs font-medium transition-all"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-[#0F1F38] hover:bg-[#1A3154] text-white font-mono text-xs font-semibold transition-all"
             >
               <span>Book an Audit ↗</span>
             </a>

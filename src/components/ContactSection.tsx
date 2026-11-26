@@ -17,21 +17,28 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 sm:py-32 bg-white border-t border-zinc-200 scroll-mt-16">
+    <section id="contact" className="py-20 sm:py-28 bg-[#F4F6F9] border-t border-[#D5DCE6] scroll-mt-16">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-12 lg:gap-16">
           {/* Left Column: Editorial Headline, Large Email, and Social Links */}
           <div className="flex-1 space-y-8">
-            {/* Elegant Serif Headline */}
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-zinc-950 tracking-[-0.03em] leading-[1.12] max-w-xl text-balance">
-              Have a project in mind or just want to say hi?
-            </h2>
+            <div>
+              <div className="flex items-center gap-2 mb-2">
+                <span className="font-handwriting text-xl sm:text-2xl text-[#1D56B3] -rotate-1 select-none">
+                  let&apos;s talk
+                </span>
+                <span className="w-6 h-[1px] bg-[#1D56B3]/40" />
+              </div>
+              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-[#0F1F38] tracking-[-0.035em] leading-[1.12] max-w-xl text-balance">
+                Have a project in mind or want to make systems faster?
+              </h2>
+            </div>
 
             {/* Prominent Direct Email with quick-copy option */}
             <div className="flex items-center gap-3">
               <a
                 href={`mailto:${directEmail}`}
-                className="text-2xl sm:text-3xl md:text-4xl font-serif text-zinc-950 hover:text-emerald-700 transition-colors tracking-[-0.025em] underline-offset-8 hover:underline"
+                className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-[#0F1F38] hover:text-[#1D56B3] transition-colors tracking-[-0.025em] underline decoration-[#E08E0B] decoration-2 underline-offset-8"
               >
                 {directEmail}
               </a>
@@ -39,13 +46,13 @@ export function ContactSection() {
               <button
                 type="button"
                 onClick={handleCopyEmail}
-                className="p-2 rounded-lg text-zinc-400 hover:text-zinc-950 hover:bg-zinc-100 transition-all shrink-0"
+                className="p-2 rounded-lg text-[#52647C] hover:text-[#0F1F38] hover:bg-white transition-all shrink-0"
                 title="Copy email to clipboard"
                 aria-label="Copy email to clipboard"
               >
                 {copied ? (
-                  <span className="inline-flex items-center gap-1 text-[11px] font-mono text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                    <Check className="w-3 h-3" />
+                  <span className="inline-flex items-center gap-1 text-[11px] font-mono text-[#1D56B3] bg-[#1D56B3]/10 px-2.5 py-0.5 rounded-full border border-[#1D56B3]/30 font-bold">
+                    <Check className="w-3 h-3 text-[#1D56B3]" />
                     copied!
                   </span>
                 ) : (
@@ -60,7 +67,7 @@ export function ContactSection() {
                 href="https://www.linkedin.com/in/hrushikesh-sarangi/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-zinc-700 hover:text-zinc-950 underline underline-offset-4 transition-colors"
+                className="text-[#52647C] hover:text-[#0F1F38] underline underline-offset-4 decoration-[#D5DCE6] hover:decoration-[#1D56B3] transition-colors font-semibold"
               >
                 LINKEDIN
               </a>
@@ -69,7 +76,7 @@ export function ContactSection() {
                 href="https://github.com/hrushikeshsarangi7"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-zinc-700 hover:text-zinc-950 underline underline-offset-4 transition-colors"
+                className="text-[#52647C] hover:text-[#0F1F38] underline underline-offset-4 decoration-[#D5DCE6] hover:decoration-[#1D56B3] transition-colors font-semibold"
               >
                 GITHUB
               </a>
@@ -78,7 +85,7 @@ export function ContactSection() {
                 href="https://hrushi.is-a.dev"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-zinc-700 hover:text-zinc-950 underline underline-offset-4 transition-colors"
+                className="text-[#52647C] hover:text-[#0F1F38] underline underline-offset-4 decoration-[#D5DCE6] hover:decoration-[#1D56B3] transition-colors font-semibold"
               >
                 DEV PORTFOLIO
               </a>
@@ -87,7 +94,7 @@ export function ContactSection() {
                 href="https://wa.me/918260343186?text=Hi%20Hrushikesh,%20I%20would%20like%20to%20discuss%20a%20project."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-zinc-700 hover:text-zinc-950 underline underline-offset-4 transition-colors"
+                className="text-[#52647C] hover:text-[#0F1F38] underline underline-offset-4 decoration-[#D5DCE6] hover:decoration-[#1D56B3] transition-colors font-semibold"
               >
                 WHATSAPP
               </a>

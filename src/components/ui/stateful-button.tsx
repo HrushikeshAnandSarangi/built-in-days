@@ -14,6 +14,7 @@ export interface StatefulButtonProps
   successText?: string;
   icon?: React.ReactNode;
   showIcon?: boolean;
+  variant?: "ochre" | "navy" | "outline";
 }
 
 export function StatefulButton({
@@ -24,6 +25,7 @@ export function StatefulButton({
   successText,
   icon,
   showIcon = true,
+  variant = "ochre",
   ...props
 }: StatefulButtonProps) {
   const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
@@ -69,7 +71,17 @@ export function StatefulButton({
     }
   };
 
-  const defaultIcon = icon || <ArrowUpRight className="w-4 h-4 text-zinc-300 group-hover:text-white transition-colors" />;
+  const isOchre = variant === "ochre";
+  const textColor = isOchre ? "#0F1F38" : "#FFFFFF";
+
+  const defaultIcon = icon || (
+    <ArrowUpRight
+      className={cn(
+        "w-4 h-4 transition-colors",
+        isOchre ? "text-[#0F1F38]/80 group-hover:text-[#0F1F38]" : "text-white/80 group-hover:text-white"
+      )}
+    />
+  );
 
   const buttonContent = (
     <motion.div
@@ -86,7 +98,7 @@ export function StatefulButton({
             transition={{ duration: 0.18 }}
             className="inline-flex items-center gap-2"
           >
-            <span style={{ color: "#ffffff", fontWeight: 500 }}>{children}</span>
+            <span style={{ color: textColor, fontWeight: 600 }}>{children}</span>
             {showIcon && defaultIcon}
           </motion.span>
         )}
@@ -100,8 +112,8 @@ export function StatefulButton({
             transition={{ duration: 0.15 }}
             className="inline-flex items-center gap-2"
           >
-            <Loader2 className="w-4 h-4 text-emerald-400 animate-spin" />
-            <span className="text-zinc-300 text-xs font-mono">Routing...</span>
+            <Loader2 className={cn("w-4 h-4 animate-spin", isOchre ? "text-[#0F1F38]" : "text-[#E08E0B]")} />
+            <span style={{ color: textColor }} className="text-xs font-mono font-medium">Opening...</span>
           </motion.span>
         )}
 
@@ -112,10 +124,10 @@ export function StatefulButton({
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.15 }}
-            className="inline-flex items-center gap-1.5 text-emerald-400"
+            className="inline-flex items-center gap-1.5"
           >
-            <Check className="w-4 h-4 text-emerald-400" />
-            <span className="text-xs font-mono font-medium text-emerald-400">
+            <Check className={cn("w-4 h-4", isOchre ? "text-[#0F1F38]" : "text-[#E08E0B]")} />
+            <span style={{ color: textColor }} className="text-xs font-mono font-bold">
               {successText || "Connected"}
             </span>
           </motion.span>
@@ -125,9 +137,11 @@ export function StatefulButton({
   );
 
   const baseClasses = cn(
-    "group relative inline-flex items-center justify-center px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white transition-all shadow-sm active:scale-[0.98] cursor-pointer text-xs sm:text-sm font-medium border border-zinc-800/80 hover:border-zinc-700 select-none",
+    "group relative inline-flex items-center justify-center px-5 sm:px-6 py-2.5 sm:py-3 rounded-full transition-all shadow-sm active:scale-[0.98] cursor-pointer text-xs sm:text-sm font-semibold select-none",
+    isOchre && "bg-[#E08E0B] hover:bg-[#CF8106] text-[#0F1F38] border border-[#C47905] shadow-sm shadow-[#E08E0B]/20",
+    variant === "navy" && "bg-[#0F1F38] hover:bg-[#1A3154] text-white border border-[#0F1F38]",
+    variant === "outline" && "bg-white hover:bg-[#F4F6F9] text-[#0F1F38] border border-[#D5DCE6]",
     status === "loading" && "cursor-wait opacity-90",
-    status === "success" && "border-emerald-600/50 bg-zinc-900",
     className
   );
 

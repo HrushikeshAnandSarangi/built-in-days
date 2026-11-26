@@ -152,25 +152,25 @@ export function ServicesShowcase() {
   ];
 
   return (
-    <section id="services" className="relative py-16 sm:py-24 bg-white border-t border-zinc-200 scroll-mt-20">
-      {/* Structural subtle grid */}
-      <div className="absolute inset-0 grid-pattern pointer-events-none opacity-20" />
+    <section id="services" className="relative py-16 sm:py-24 bg-[#F4F6F9] border-t border-[#D5DCE6] scroll-mt-20">
+      {/* Structural subtle blueprint grid */}
+      <div className="absolute inset-0 grid-pattern pointer-events-none opacity-25" />
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
-        <div className="flex items-center justify-between pb-6 border-b border-zinc-200">
+        <div className="flex items-center justify-between pb-6 border-b border-[#D5DCE6]">
           <div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.04em] leading-[1.0] text-zinc-950">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.035em] leading-[1.0] text-[#0F1F38]">
               Services
             </h2>
           </div>
-          <div className="text-xs font-mono text-emerald-700 font-semibold flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <div className="text-xs font-mono text-[#1D56B3] font-semibold flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-[#E08E0B] animate-pulse" />
             <span>High-Velocity Engineering Sprints</span>
           </div>
         </div>
       </div>
 
-      {/* Aceternity Sticky Scroll Reveal with Multiple Real Images (No terminal chrome) */}
+      {/* Aceternity Sticky Scroll Reveal with Multiple Real Images */}
       <StickyScroll content={servicesContent} />
     </section>
   );

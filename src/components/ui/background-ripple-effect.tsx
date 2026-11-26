@@ -76,7 +76,7 @@ export function BackgroundRippleEffect({
     >
       {/* Background SVG grid of ripple dots */}
       <svg
-        className="w-full h-full opacity-35"
+        className="w-full h-full opacity-40"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
@@ -86,11 +86,11 @@ export function BackgroundRippleEffect({
             height="40"
             patternUnits="userSpaceOnUse"
           >
-            <circle cx="20" cy="20" r="1.5" className="fill-emerald-600/30" />
+            <circle cx="20" cy="20" r="1.5" fill="rgba(29, 86, 179, 0.25)" />
             <path
               d="M 40 0 L 0 0 0 40"
               fill="none"
-              stroke="rgba(16, 185, 129, 0.08)"
+              stroke="rgba(29, 86, 179, 0.10)"
               strokeWidth="0.8"
             />
           </pattern>
@@ -110,8 +110,8 @@ export function BackgroundRippleEffect({
             height: "140px",
             transform: "translate(-50%, -50%)",
             background:
-              "radial-gradient(circle, rgba(16, 185, 129, 0.28) 0%, rgba(5, 150, 105, 0.12) 40%, transparent 70%)",
-            border: "1px solid rgba(16, 185, 129, 0.35)",
+              "radial-gradient(circle, rgba(29, 86, 179, 0.22) 0%, rgba(224, 142, 11, 0.12) 40%, transparent 70%)",
+            border: "1px solid rgba(29, 86, 179, 0.28)",
             animationDuration: "2.4s",
             animationTimingFunction: "cubic-bezier(0, 0.2, 0.8, 1)",
           }}
@@ -119,7 +119,7 @@ export function BackgroundRippleEffect({
       ))}
 
       {/* Ambient gradient glow in the center */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-radial from-emerald-500/10 via-emerald-500/5 to-transparent blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-radial from-[#1D56B3]/8 via-[#E08E0B]/4 to-transparent blur-3xl pointer-events-none" />
     </div>
   );
 }

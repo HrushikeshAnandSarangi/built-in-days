@@ -15,7 +15,7 @@ export function SketchedScenery({ className = "w-full h-36 sm:h-44" }: { classNa
         <defs>
           {/* Subtle hatch pattern */}
           <pattern id="sketchHatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
-            <line x1="0" y1="0" x2="0" y2="8" stroke="#71717a" strokeWidth="0.8" opacity="0.4" />
+            <line x1="0" y1="0" x2="0" y2="8" stroke="#52647C" strokeWidth="0.8" opacity="0.3" />
           </pattern>
         </defs>
 
@@ -23,19 +23,20 @@ export function SketchedScenery({ className = "w-full h-36 sm:h-44" }: { classNa
         <path
           d="M0 160 Q 150 90, 320 135 T 640 100 T 960 140 T 1200 110 L 1200 200 L 0 200 Z"
           fill="none"
-          stroke="#a1a1aa"
+          stroke="#52647C"
           strokeWidth="1.2"
           strokeDasharray="4 2"
+          opacity="0.6"
         />
         <path
           d="M40 140 Q 180 80, 360 120 T 720 90 T 1080 130 L 1200 120"
           fill="none"
-          stroke="#d4d4d8"
+          stroke="#D5DCE6"
           strokeWidth="1"
         />
 
         {/* 2. Midground Sketched Architectural Skyline & Pines */}
-        <g stroke="#3f3f46" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+        <g stroke="#0F1F38" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
           {/* Distant building silhouettes and roofs */}
           <path d="M120 180 L 120 130 L 145 130 L 145 180" />
           <path d="M145 145 L 175 145 L 175 180" />
@@ -74,7 +75,7 @@ export function SketchedScenery({ className = "w-full h-36 sm:h-44" }: { classNa
           <path d="M960 180 L 968 105 L 982 105 L 990 180" />
           <path d="M964 105 L 986 105 L 986 92 L 964 92 Z" />
           <line x1="975" y1="92" x2="975" y2="78" strokeWidth="1.8" /> {/* antenna */}
-          <circle cx="975" cy="76" r="2.5" fill="#10b981" stroke="#047857" />
+          <circle cx="975" cy="76" r="2.5" fill="#E08E0B" stroke="#C47905" />
 
           {/* Shoreline trees */}
           <path d="M1030 180 L 1030 140" />
@@ -83,16 +84,16 @@ export function SketchedScenery({ className = "w-full h-36 sm:h-44" }: { classNa
         </g>
 
         {/* 3. Foreground Riverbank & Hand-sketched Baseline */}
-        <g stroke="#18181b" strokeWidth="1.6" strokeLinecap="round">
+        <g stroke="#0F1F38" strokeWidth="1.6" strokeLinecap="round">
           {/* Main terrain baseline with pen hatching */}
           <path d="M0 182 Q 300 178, 600 182 T 1200 180" />
-          <path d="M0 186 Q 400 184, 800 186 T 1200 184" strokeWidth="1" strokeDasharray="8 4" />
+          <path d="M0 186 Q 400 184, 800 186 T 1200 184" strokeWidth="1" strokeDasharray="8 4" opacity="0.6" />
 
           {/* Delicate water ripple reflections */}
-          <line x1="80" y1="192" x2="160" y2="192" stroke="#71717a" strokeWidth="1" />
-          <line x1="280" y1="194" x2="420" y2="194" stroke="#71717a" strokeWidth="1" />
-          <line x1="650" y1="193" x2="780" y2="193" stroke="#71717a" strokeWidth="1" />
-          <line x1="920" y1="192" x2="1040" y2="192" stroke="#71717a" strokeWidth="1" />
+          <line x1="80" y1="192" x2="160" y2="192" stroke="#52647C" strokeWidth="1" opacity="0.6" />
+          <line x1="280" y1="194" x2="420" y2="194" stroke="#52647C" strokeWidth="1" opacity="0.6" />
+          <line x1="650" y1="193" x2="780" y2="193" stroke="#52647C" strokeWidth="1" opacity="0.6" />
+          <line x1="920" y1="192" x2="1040" y2="192" stroke="#52647C" strokeWidth="1" opacity="0.6" />
         </g>
       </svg>
     </div>

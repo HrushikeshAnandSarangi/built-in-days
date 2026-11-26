@@ -1,20 +1,29 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #09090b;
+  --background: #F4F6F9;
+  --foreground: #0F1F38;
+  --surface: #FFFFFF;
+  --border: #D5DCE6;
+  --text-primary: #0F1F38;
+  --text-muted: #52647C;
+  --accent-primary: #E08E0B;
+  --accent-secondary: #1D56B3;
+
+  --font-display: var(--font-space-grotesk), sans-serif;
+  --font-handwriting: var(--font-caveat), cursive;
 }
 
 html {
-  background-color: #ffffff;
-  color: #09090b;
+  background-color: #F4F6F9;
+  color: #0F1F38;
   scroll-behavior: smooth;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01", "tnum";
 }
 
 body {
-  background-color: #ffffff;
-  color: #09090b;
+  background-color: #F4F6F9;
+  color: #0F1F38;
   font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
@@ -24,17 +33,27 @@ body {
 }
 
 /* ========================================================================== */
-/* Swiss Neo-Grotesque Typographic Hierarchy (Jai Tekchandani / Diatype system)*/
+/* Blueprint & Ochre Typography Hierarchy (Space Grotesk + Caveat + Geist)    */
 /* ========================================================================== */
+.font-display {
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+.font-handwriting {
+  font-family: var(--font-caveat), cursive;
+}
+
 h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.035em;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum";
+  color: #0F1F38;
 }
 
 p {
   text-wrap: pretty;
   letter-spacing: -0.015em;
+  color: #52647C;
 }
 
 /* Precision micro-labels & technical metadata */
@@ -44,23 +63,27 @@ p {
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #71717a;
+  color: #52647C;
 }
 
 /* Display hero typography with signature tight leading */
 .type-display {
+  font-family: var(--font-space-grotesk), sans-serif;
   font-weight: 700;
-  letter-spacing: -0.045em;
-  line-height: 0.95;
+  letter-spacing: -0.04em;
+  line-height: 0.98;
   text-wrap: balance;
+  color: #0F1F38;
 }
 
 /* Section titles */
 .type-headline {
+  font-family: var(--font-space-grotesk), sans-serif;
   font-weight: 700;
   letter-spacing: -0.035em;
   line-height: 1.05;
   text-wrap: balance;
+  color: #0F1F38;
 }
 
 @layer base {
@@ -73,34 +96,13 @@ p {
   }
 }
 
-/* Enforce crisp contrast on dark CTA buttons and badges */
-.text-white {
-  color: #ffffff !important;
-}
-
-/* Ensure dark elements and buttons always render white text */
-.bg-zinc-950,
-.bg-zinc-900,
-.bg-zinc-800 {
-  color: #ffffff !important;
-}
-
-.bg-zinc-950 a,
-.bg-zinc-950 span:not([class*="text-emerald"]):not([class*="text-zinc"]),
-.bg-zinc-900 a,
-.bg-zinc-900 span:not([class*="text-emerald"]):not([class*="text-zinc"]),
-.bg-zinc-800 a,
-.bg-zinc-800 span:not([class*="text-emerald"]):not([class*="text-zinc"]) {
-  color: #ffffff;
-}
-
 /* Tabular figures for numbers and technical data */
 .tabular-nums {
   font-variant-numeric: tabular-nums;
 }
 
 /* ========================================================================== */
-/* Roman Radchenko Frosted Glassmorphism Optics                               */
+/* Frosted Glassmorphism Optics tuned for Blueprint & Ochre (#F4F6F9)         */
 /* ========================================================================== */
 .glass-pill {
   display: inline-flex;
@@ -109,9 +111,9 @@ p {
   height: 44px;
   padding: 0 18px;
   border-radius: 9999px !important;
-  background: rgba(255, 255, 255, 0.82);
-  border: 1px solid rgba(228, 228, 231, 0.85);
-  color: #09090b;
+  background: rgba(255, 255, 255, 0.90);
+  border: 1px solid #D5DCE6;
+  color: #0F1F38;
   font-family: inherit;
   text-decoration: none;
   white-space: nowrap;
@@ -119,97 +121,77 @@ p {
   -webkit-backdrop-filter: blur(14px) saturate(180%);
   backdrop-filter: blur(14px) saturate(180%);
   box-shadow: 
-    0 4px 16px -2px rgba(0, 0, 0, 0.08),
-    0 1px 3px rgba(0, 0, 0, 0.04),
-    inset 1px 1px 0 rgba(255, 255, 255, 1), 
-    inset -1px -1px 0 rgba(255, 255, 255, 0.5);
+    0 4px 16px -2px rgba(15, 31, 56, 0.06),
+    0 1px 3px rgba(15, 31, 56, 0.04),
+    inset 1px 1px 0 rgba(255, 255, 255, 1);
   transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-pill:hover {
-  background: rgba(255, 255, 255, 0.96);
-  border-color: rgba(212, 212, 216, 0.95);
+  background: #FFFFFF;
+  border-color: #1D56B3;
   box-shadow: 
-    0 6px 22px -2px rgba(0, 0, 0, 0.12),
-    0 2px 6px rgba(0, 0, 0, 0.06),
-    inset 1px 1px 0 #ffffff, 
-    inset -1px -1px 0 rgba(255, 255, 255, 0.7);
+    0 6px 20px -2px rgba(29, 86, 179, 0.12),
+    0 2px 6px rgba(15, 31, 56, 0.06);
   transform: translateY(-1px);
 }
 
-.glass-pill:active {
-  background: rgba(240, 240, 242, 0.9);
-  box-shadow: 
-    0 1px 3px rgba(0, 0, 0, 0.08),
-    inset 1px 1px 0 rgba(255, 255, 255, 0.8);
-  transform: translateY(0);
-}
-
-.glass-pill--round {
-  width: 44px !important;
-  height: 44px !important;
-  padding: 0 !important;
-  border-radius: 9999px !important;
-}
-
 .glass-dropdown {
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid rgba(228, 228, 231, 0.9);
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid #D5DCE6;
   -webkit-backdrop-filter: blur(24px) saturate(190%);
   backdrop-filter: blur(24px) saturate(190%);
   box-shadow: 
-    0 8px 32px -4px rgba(0, 0, 0, 0.14),
-    inset 1px 1px 0 rgba(255, 255, 255, 1), 
-    inset -1px -1px 0 rgba(255, 255, 255, 0.4);
+    0 12px 36px -4px rgba(15, 31, 56, 0.12),
+    inset 1px 1px 0 rgba(255, 255, 255, 1);
 }
 
 /* Unified Frosted Glass Navbar Capsule */
 .glass-nav {
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(14px) saturate(180%);
-  -webkit-backdrop-filter: blur(14px) saturate(180%);
-  border: 1px solid rgba(228, 228, 231, 0.85);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid #D5DCE6;
   box-shadow: 
-    0 4px 20px -2px rgba(0, 0, 0, 0.08),
-    0 1px 3px rgba(0, 0, 0, 0.04),
-    inset 1px 1px 0 rgba(255, 255, 255, 1), 
-    inset -1px -1px 0 rgba(255, 255, 255, 0.5);
+    0 4px 20px -2px rgba(15, 31, 56, 0.06),
+    0 1px 3px rgba(15, 31, 56, 0.03),
+    inset 1px 1px 0 rgba(255, 255, 255, 1);
   border-radius: 9999px;
   transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.96);
-  border: 1px solid #e4e4e7;
+  background: #FFFFFF;
+  border: 1px solid #D5DCE6;
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
 }
 
 .glass-card:hover {
   transform: translateY(-2px);
-  border-color: #18181b;
-  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.08);
+  border-color: #1D56B3;
+  box-shadow: 0 12px 30px -10px rgba(15, 31, 56, 0.08);
 }
 
-/* Custom crisp technical scrollbar */
+/* Custom crisp architectural scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #ffffff;
+  background: #F4F6F9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #d4d4d8;
+  background: #D5DCE6;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #71717a;
+  background: #52647C;
 }
 
-/* Engineering grid background pattern */
+/* Architectural blueprint grid background pattern */
 .grid-pattern {
   background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
+    linear-gradient(to right, rgba(15, 31, 56, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 31, 56, 0.04) 1px, transparent 1px);
 }
