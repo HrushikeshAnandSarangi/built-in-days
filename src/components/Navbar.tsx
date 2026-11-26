@@ -35,8 +35,8 @@ export function Navbar() {
           </span>
         </a>
 
-        {/* Desktop Nav Links (Services, Testimonials, Projects) */}
-        <nav className="hidden md:flex items-center gap-7 lg:gap-8 text-[12px] font-sans font-semibold uppercase tracking-[0.04em] text-zinc-600">
+        {/* Desktop Nav Links (Services, Testimonials, Case Study, Projects) */}
+        <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-[12px] font-sans font-semibold uppercase tracking-[0.04em] text-zinc-600">
           <a
             href="#services"
             className="hover:text-zinc-950 hover:underline underline-offset-4 decoration-zinc-300 transition-colors py-1"
@@ -48,6 +48,12 @@ export function Navbar() {
             className="hover:text-zinc-950 hover:underline underline-offset-4 decoration-zinc-300 transition-colors py-1"
           >
             Testimonials
+          </a>
+          <a
+            href="#case-study"
+            className="hover:text-zinc-950 hover:underline underline-offset-4 decoration-zinc-300 transition-colors py-1"
+          >
+            Case Study
           </a>
           <a
             href="#projects"
@@ -107,11 +113,19 @@ export function Navbar() {
               <ArrowUpRight className="w-4 h-4 text-zinc-400" />
             </a>
             <a
+              href="#case-study"
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-3 py-2.5 rounded-xl hover:bg-black/[0.04] flex items-center justify-between text-zinc-900"
+            >
+              <span>03 · Case Study</span>
+              <ArrowUpRight className="w-4 h-4 text-zinc-400" />
+            </a>
+            <a
               href="#projects"
               onClick={() => setMobileMenuOpen(false)}
               className="px-3 py-2.5 rounded-xl hover:bg-black/[0.04] flex items-center justify-between text-zinc-900"
             >
-              <span>03 · Projects</span>
+              <span>04 · Projects</span>
               <ArrowUpRight className="w-4 h-4 text-zinc-400" />
             </a>
 

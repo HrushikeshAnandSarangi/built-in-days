@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { HeroServices } from "@/components/HeroServices";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
+import { CaseStudySection } from "@/components/CaseStudySection";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
@@ -13,25 +14,30 @@ export default function Home() {
       {/* Joined Frosted Glass Floating Navbar */}
       <Navbar />
 
-      {/* Section 1: Hero (100vh with Background Ripple Effect) & Services (Sticky Scroll with Multiple Real Images & Tempest Audit) */}
+      {/* Section 1: Hero (100vh with Background Ripple Effect) & Services (Sticky Scroll with Multiple Real Images) */}
       <HeroServices />
 
-      {/* Section 2: Client Testimonials & Verified Outcomes (with Tempest Audit Case Study trigger) */}
+      {/* Section 2: Client Testimonials & Verified Outcomes */}
       <ScrollTransition>
         <TestimonialsSection />
       </ScrollTransition>
 
-      {/* Section 3: Selected Projects Showcase (Top 3 with expand accordion & Aceternity Link Preview) */}
+      {/* Section 3: Dedicated Case Study (Tempest Performance & Concurrency Audit with Flamegraphs & Docx Download) */}
+      <ScrollTransition>
+        <CaseStudySection />
+      </ScrollTransition>
+
+      {/* Section 4: Selected Projects Showcase (Top 3 with expand accordion & Aceternity Link Preview) */}
       <ScrollTransition>
         <ProjectsSection />
       </ScrollTransition>
 
-      {/* Section 4: Direct Intake & Contact (Mailbox Illustration) */}
+      {/* Section 5: Direct Intake & Contact (Mailbox Illustration) */}
       <ScrollTransition>
         <ContactSection />
       </ScrollTransition>
 
-      {/* Section 5: Sketched Scenery Footer & Navigation (Anti-Slop Taste Skill) */}
+      {/* Section 6: Sketched Scenery Footer & Navigation (Anti-Slop Taste Skill) */}
       <ScrollTransition>
         <Footer />
       </ScrollTransition>
