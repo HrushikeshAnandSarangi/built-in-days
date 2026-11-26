@@ -15,6 +15,7 @@ export function ServicesShowcase() {
       id: "build",
       num: "01",
       title: "Build Your Application",
+      headline: "Life is too short for slow, bloated software",
       tagline: "Production-grade software shipped in days",
       badge: "Full-Stack Web & Cross-Platform Desktop",
       description:
@@ -60,7 +61,8 @@ export function ServicesShowcase() {
       id: "accelerate",
       num: "02",
       title: "Fix Your Application",
-      tagline: "Bisect bottlenecks, eliminate leaks, slash latency",
+      headline: "Bisect bottlenecks, eliminate leaks, slash latency",
+      tagline: "Performance Engineering & Speed Rescue",
       badge: "Performance Engineering & Speed Rescue",
       description:
         "When your app feels sluggish, database queries stall, or server bills spike, I profile hotpaths with flamegraphs and code-level inspection. I patch the code, eliminate memory leaks, and prove the speedup with hard numbers.",
@@ -100,6 +102,7 @@ export function ServicesShowcase() {
       id: "benchmark",
       num: "03",
       title: "Benchmark & Audit",
+      headline: "Subject critical paths to empirical kernel benchmarks",
       tagline: "Isolate bottlenecks & deliver comprehensive report",
       badge: "Deep Diagnostics & Concurrency Profiling",
       description:
