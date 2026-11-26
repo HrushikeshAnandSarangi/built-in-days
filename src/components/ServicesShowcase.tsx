@@ -4,6 +4,12 @@ import React from "react";
 import { StickyScroll, StickyScrollItem } from "./ui/sticky-scroll-reveal";
 
 export function ServicesShowcase() {
+  const handleOpenAudit = () => {
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("open-tempest-audit"));
+    }
+  };
+
   const servicesContent: StickyScrollItem[] = [
     {
       id: "build",
@@ -95,38 +101,51 @@ export function ServicesShowcase() {
       num: "03",
       title: "Benchmark & Audit",
       tagline: "Isolate bottlenecks & deliver comprehensive report",
-      badge: "Deep Diagnostics & Stress Profiling",
+      badge: "Deep Diagnostics & Concurrency Profiling",
       description:
-        "Before committing to expensive rewrites, I subject your application to rigorous load-testing and kernel/runtime profiling. I trace where latency is lost and provide an actionable, executive-ready technical report.",
+        "Before committing to expensive rewrites, I subject your application to rigorous load-testing and kernel/runtime profiling. Example: in our Tempest audit, we diagnosed SQLite lock contention and untested error paths, delivering an empirical 141.5x throughput gain.",
       whatYouGet: [
         {
-          title: "Comprehensive Audit Report",
-          desc: "Executive summary, root-cause diagnostics, and flamegraph captures with remediation steps.",
+          title: "Subsystem Deep-Dive",
+          desc: "Empirical audit across persistence (tasks_store), network proxy (hephaestus), and IPC layers.",
         },
         {
-          title: "Load & Concurrency Curves",
-          desc: "P50, P95, and P99 latency percentiles measured under sustained stress traffic.",
+          title: "Off-CPU & CPU Flamegraphs",
+          desc: "Kernel scheduler event tracing (16,265 samples) to expose threads blocked asleep on disk flushes.",
         },
         {
-          title: "Bottleneck Isolation",
-          desc: "Identification of I/O stalls, slow queries, locking issues, and GC pauses.",
+          title: "Mutation Testing & Soak Testing",
+          desc: "Uncover untested error-recovery paths with cargo-mutants and verify flat RSS memory soak.",
         },
         {
-          title: "Actionable Roadmap",
-          desc: "Step-by-step remediation plan with engineering effort and ROI projections.",
+          title: "Proven Architectural Fixes",
+          desc: "Dedicated writer pool + WAL/NORMAL eliminating 1s+ stalls with a measured 141.5x speedup.",
         },
       ],
       ctaLabel: "Benchmark app ↗",
-      images: [
+      actions: [
         {
-          src: "https://res.cloudinary.com/dk6m1qejk/image/upload/v1795297734/Screenshot_2026-11-22_031732_vixvyi.png",
-          caption: "Executive Diagnostic Audit Report",
-          tag: "STRESS AUDIT",
+          label: "View Tempest Audit Case Study ↗",
+          onClick: handleOpenAudit,
+          variant: "secondary",
         },
         {
-          src: "https://res.cloudinary.com/dk6m1qejk/image/upload/v1758738510/Screenshot_2025-09-24_235747_cvqvza.png",
-          caption: "Concurrency Testing Matrix",
-          tag: "10k REQ/S",
+          label: "Download Audit (.docx)",
+          href: "/audit/tempest-performance-audit.docx",
+          isDownload: true,
+          variant: "download",
+        },
+      ],
+      images: [
+        {
+          src: "/audit/off-cpu-flamegraph.png",
+          caption: "Tempest Off-CPU Flamegraph (16,265 events)",
+          tag: "141.5x GAIN",
+        },
+        {
+          src: "/audit/hephaestus-cpu-flamegraph.png",
+          caption: "Hephaestus 83% CPU Profiling",
+          tag: "MUTATION AUDIT",
         },
       ],
     },

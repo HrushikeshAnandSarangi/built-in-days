@@ -3,6 +3,7 @@
 import React, { useRef, useState } from "react";
 import { useMotionValueEvent, useScroll, motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { Download, ExternalLink } from "lucide-react";
 
 export interface StickyScrollItem {
   id: string;
@@ -17,6 +18,13 @@ export interface StickyScrollItem {
     src: string;
     caption: string;
     tag?: string;
+  }[];
+  actions?: {
+    label: string;
+    href?: string;
+    onClick?: () => void;
+    isDownload?: boolean;
+    variant?: "primary" | "secondary" | "download";
   }[];
 }
 
@@ -115,14 +123,54 @@ export const StickyScroll = ({
                   </ul>
                 </div>
 
-                {/* CTA */}
-                <div>
+                {/* Action Buttons */}
+                <div className="flex flex-wrap items-center gap-2.5">
                   <a
                     href="#contact"
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-zinc-950 hover:bg-emerald-700 text-white transition-all text-xs sm:text-sm font-medium shadow-sm hover:scale-[1.01] active:scale-[0.99] border border-zinc-900"
                   >
                     <span>{item.ctaLabel}</span>
                   </a>
+
+                  {item.actions && item.actions.map((act, actIdx) => {
+                    if (act.isDownload) {
+                      return (
+                        <a
+                          key={actIdx}
+                          href={act.href}
+                          download
+                          className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white transition-all text-xs sm:text-sm font-medium shadow-sm hover:scale-[1.01] active:scale-[0.99]"
+                        >
+                          <Download className="w-3.5 h-3.5" />
+                          <span>{act.label}</span>
+                        </a>
+                      );
+                    }
+
+                    if (act.onClick) {
+                      return (
+                        <button
+                          key={actIdx}
+                          type="button"
+                          onClick={act.onClick}
+                          className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-zinc-100 hover:bg-zinc-200 text-zinc-900 transition-all text-xs sm:text-sm font-medium border border-zinc-200 hover:border-zinc-300 active:scale-[0.99] cursor-pointer"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5 text-zinc-500" />
+                          <span>{act.label}</span>
+                        </button>
+                      );
+                    }
+
+                    return (
+                      <a
+                        key={actIdx}
+                        href={act.href}
+                        className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-zinc-100 hover:bg-zinc-200 text-zinc-900 transition-all text-xs sm:text-sm font-medium border border-zinc-200 hover:border-zinc-300 active:scale-[0.99]"
+                      >
+                        <span>{act.label}</span>
+                      </a>
+                    );
+                  })}
                 </div>
               </div>
             );
@@ -152,7 +200,7 @@ export const StickyScroll = ({
                 <div
                   key={imgIdx}
                   className={cn(
-                    "relative rounded-2xl overflow-hidden border border-zinc-200/80 shadow-md group transition-all duration-300 hover:border-emerald-500/60 hover:shadow-emerald-500/10",
+                    "relative rounded-2xl overflow-hidden border border-zinc-200/80 shadow-md group transition-all duration-300 hover:border-emerald-500/60 hover:shadow-emerald-500/10 bg-white",
                     imgIdx === 0 && content[activeCard].images.length === 3 ? "col-span-2 h-[220px]" : "h-full"
                   )}
                 >
