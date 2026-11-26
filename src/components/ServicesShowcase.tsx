@@ -152,18 +152,18 @@ export function ServicesShowcase() {
   ];
 
   return (
-    <section id="services" className="relative py-16 sm:py-24 bg-[#F5F3EC] border-t border-[rgba(28,40,34,0.16)] scroll-mt-20">
+    <section id="services" className="relative py-16 sm:py-24 bg-[#F7F5EE] border-t border-[rgba(26,56,40,0.12)] scroll-mt-20">
       {/* Structural subtle blueprint grid */}
-      <div className="absolute inset-0 grid-pattern pointer-events-none opacity-25" />
+      <div className="absolute inset-0 grid-pattern pointer-events-none opacity-20" />
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
-        <div className="flex items-center justify-between pb-6 border-b border-[rgba(28,40,34,0.16)]">
+        <div className="flex items-center justify-between pb-6 border-b border-[rgba(26,56,40,0.12)]">
           <div>
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.035em] leading-[1.0] text-[#1C2822]">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.035em] leading-[1.0] text-[#152E20]">
               Services
             </h2>
           </div>
-          <div className="text-xs font-mono text-[#1B533E] font-semibold flex items-center gap-2">
+          <div className="text-xs font-mono text-[#183627] font-semibold flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[#D98A29] animate-pulse" />
             <span>High-Velocity Engineering Sprints</span>
           </div>

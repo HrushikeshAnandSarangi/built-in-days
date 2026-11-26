@@ -59,11 +59,11 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} ${caveat.variable} h-full antialiased`}
-      style={{ backgroundColor: "#F5F3EC", color: "#1C2822" }}
+      style={{ backgroundColor: "#F7F5EE", color: "#152E20" }}
     >
       <body
         className="min-h-full flex flex-col font-sans"
-        style={{ backgroundColor: "#F5F3EC", color: "#1C2822" }}
+        style={{ backgroundColor: "#F7F5EE", color: "#152E20" }}
       >
         {children}
       </body>

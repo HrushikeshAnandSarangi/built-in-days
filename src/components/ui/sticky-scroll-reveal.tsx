@@ -46,7 +46,7 @@ export const StickyScroll = ({
   const cardLength = content.length;
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    // Highly responsive: 1 natural scroll moves to the next card
+    // 1 natural scroll moves to next card
     const cardsBreakpoints = content.map((_, index) => index / (cardLength - 0.2));
     const closestBreakpointIndex = cardsBreakpoints.reduce(
       (acc, breakpoint, index) => {
@@ -79,7 +79,7 @@ export const StickyScroll = ({
                   isActive ? "opacity-100" : "opacity-35 hover:opacity-70"
                 )}
               >
-                <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1C2822] tracking-[-0.035em] leading-tight">
+                <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-[#152E20] tracking-[-0.035em] leading-tight">
                   {item.title}
                 </h3>
 
@@ -87,22 +87,22 @@ export const StickyScroll = ({
                   {item.tagline}
                 </p>
 
-                <p className="text-sm text-[#32443A] leading-relaxed mb-6">
+                <p className="text-sm text-[#3A5646] leading-relaxed mb-6 font-normal">
                   {item.description}
                 </p>
 
                 {/* What You Get checklist */}
-                <div className="space-y-2.5 pt-4 border-t border-[rgba(28,40,34,0.16)] mb-6">
-                  <div className="text-[11px] font-mono uppercase tracking-wider text-[#1C2822] font-bold">
+                <div className="space-y-2.5 pt-4 border-t border-[rgba(26,56,40,0.12)] mb-6">
+                  <div className="text-[11px] font-mono uppercase tracking-wider text-[#152E20] font-bold">
                     What You Get
                   </div>
-                  <ul className="space-y-2 text-xs text-[#1C2822]">
+                  <ul className="space-y-2 text-xs text-[#152E20]">
                     {item.whatYouGet.map((point, i) => (
                       <li key={i} className="flex items-start gap-2.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#1B533E] mt-1.5 shrink-0" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#183627] mt-1.5 shrink-0" />
                         <span className="leading-snug">
-                          <strong className="text-[#1C2822] font-semibold">{point.title}:</strong>{" "}
-                          <span className="text-[#32443A]">{point.desc}</span>
+                          <strong className="text-[#152E20] font-semibold">{point.title}:</strong>{" "}
+                          <span className="text-[#3A5646]">{point.desc}</span>
                         </span>
                       </li>
                     ))}
@@ -113,7 +113,7 @@ export const StickyScroll = ({
                 <div className="flex flex-wrap items-center gap-2.5">
                   <a
                     href="#contact"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1B533E] hover:bg-[#143F2F] text-[#F5F3EC] transition-all text-xs sm:text-sm font-bold shadow-sm hover:scale-[1.01] active:scale-[0.99] border border-[#143F2F]"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#183627] hover:bg-[#11261B] text-[#FAF8F2] transition-all text-xs sm:text-sm font-semibold shadow-sm hover:scale-[1.01] active:scale-[0.99] border border-[#11261B]"
                   >
                     <span>{item.ctaLabel}</span>
                   </a>
@@ -125,7 +125,7 @@ export const StickyScroll = ({
                           key={actIdx}
                           href={act.href}
                           download
-                          className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-[#D98A29] hover:bg-[#C2781E] text-[#1C2822] transition-all text-xs sm:text-sm font-bold shadow-sm hover:scale-[1.01] active:scale-[0.99] border border-[#B36F1B]"
+                          className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-[#D98A29] hover:bg-[#C2781E] text-[#152E20] transition-all text-xs sm:text-sm font-bold shadow-sm hover:scale-[1.01] active:scale-[0.99] border border-[#B36F1B]"
                         >
                           <Download className="w-3.5 h-3.5" />
                           <span>{act.label}</span>
@@ -139,9 +139,9 @@ export const StickyScroll = ({
                           key={actIdx}
                           type="button"
                           onClick={act.onClick}
-                          className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-[#D0D9CD] hover:bg-[#E3E8E1] text-[#1C2822] transition-all text-xs sm:text-sm font-semibold border border-[rgba(28,40,34,0.16)] hover:border-[#1B533E] active:scale-[0.99] cursor-pointer"
+                          className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-white/80 hover:bg-white text-[#152E20] transition-all text-xs sm:text-sm font-semibold border border-[rgba(26,56,40,0.12)] hover:border-[#183627] active:scale-[0.99] cursor-pointer shadow-xs"
                         >
-                          <ExternalLink className="w-3.5 h-3.5 text-[#32443A]" />
+                          <ExternalLink className="w-3.5 h-3.5 text-[#3A5646]" />
                           <span>{act.label}</span>
                         </button>
                       );
@@ -151,7 +151,7 @@ export const StickyScroll = ({
                       <a
                         key={actIdx}
                         href={act.href}
-                        className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-[#D0D9CD] hover:bg-[#E3E8E1] text-[#1C2822] transition-all text-xs sm:text-sm font-semibold border border-[rgba(28,40,34,0.16)] hover:border-[#1B533E] active:scale-[0.99]"
+                        className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-white/80 hover:bg-white text-[#152E20] transition-all text-xs sm:text-sm font-semibold border border-[rgba(26,56,40,0.12)] hover:border-[#183627] active:scale-[0.99] shadow-xs"
                       >
                         <span>{act.label}</span>
                       </a>
@@ -167,7 +167,7 @@ export const StickyScroll = ({
       {/* Right Column: Sticky Multiple Real Images Showcase */}
       <div
         className={cn(
-          "hidden lg:block sticky top-24 h-[520px] w-1/2 rounded-3xl overflow-hidden p-6 self-start bg-[#D0D9CD] border border-[rgba(28,40,34,0.16)] shadow-lg shadow-[#1C2822]/5",
+          "hidden lg:block sticky top-24 h-[520px] w-1/2 rounded-3xl overflow-hidden p-6 self-start bg-[#EBF0E8] border border-[rgba(26,56,40,0.12)] shadow-lg shadow-[#152E20]/5",
           contentClassName
         )}
       >
@@ -186,7 +186,7 @@ export const StickyScroll = ({
                 <div
                   key={imgIdx}
                   className={cn(
-                    "relative rounded-2xl overflow-hidden border border-[rgba(28,40,34,0.16)] shadow-md group transition-all duration-300 hover:border-[#1B533E] hover:shadow-[#1B533E]/10 bg-[#D0D9CD]",
+                    "relative rounded-2xl overflow-hidden border border-[rgba(26,56,40,0.12)] shadow-md group transition-all duration-300 hover:border-[#183627] hover:shadow-[#183627]/10 bg-[#EBF0E8]",
                     imgIdx === 0 && content[activeCard].images.length === 3 ? "col-span-2 h-[220px]" : "h-full"
                   )}
                 >
@@ -197,7 +197,7 @@ export const StickyScroll = ({
                   />
                   {/* Subtle caption */}
                   <div className="absolute bottom-2 left-2 pointer-events-none">
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#1C2822]/80 text-[#F5F3EC] backdrop-blur-xs truncate max-w-[200px]">
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#152E20]/80 text-[#FAF8F2] backdrop-blur-xs truncate max-w-[200px]">
                       {img.caption}
                     </span>
                   </div>
@@ -206,8 +206,8 @@ export const StickyScroll = ({
             </div>
 
             {/* Bottom active service indicator */}
-            <div className="pt-3 border-t border-[rgba(28,40,34,0.16)] flex items-center justify-between text-xs font-mono text-[#32443A]">
-              <span className="text-[#1B533E] font-semibold flex items-center gap-1.5">
+            <div className="pt-3 border-t border-[rgba(26,56,40,0.12)] flex items-center justify-between text-xs font-mono text-[#3A5646]">
+              <span className="text-[#183627] font-semibold flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-[#D98A29] animate-pulse" />
                 {content[activeCard].title}
               </span>

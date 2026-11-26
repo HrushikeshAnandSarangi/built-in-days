@@ -20,39 +20,39 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   const projectNumber = String(index + 1).padStart(2, "0");
 
   return (
-    <div className="rounded-3xl border border-[rgba(28,40,34,0.16)] bg-[#D0D9CD] overflow-hidden shadow-sm hover:border-[#1B533E] transition-all duration-300">
+    <div className="rounded-3xl border border-[rgba(26,56,40,0.12)] bg-[#EBF0E8] overflow-hidden shadow-sm hover:border-[#183627] transition-all duration-300">
       {/* Window Mockup Chrome Header */}
-      <div className="px-5 py-3.5 bg-[#F5F3EC] border-b border-[rgba(28,40,34,0.16)] flex items-center justify-between">
+      <div className="px-5 py-3.5 bg-[#F7F5EE] border-b border-[rgba(26,56,40,0.12)] flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-[rgba(28,40,34,0.2)]" />
-          <span className="w-2.5 h-2.5 rounded-full bg-[rgba(28,40,34,0.2)]" />
-          <span className="w-2.5 h-2.5 rounded-full bg-[rgba(28,40,34,0.2)]" />
-          <span className="text-xs font-mono font-bold text-[#1C2822] ml-2 tabular-nums">
+          <span className="w-2.5 h-2.5 rounded-full bg-[rgba(26,56,40,0.2)]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[rgba(26,56,40,0.2)]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[rgba(26,56,40,0.2)]" />
+          <span className="text-xs font-mono font-bold text-[#152E20] ml-2 tabular-nums">
             {projectNumber}
           </span>
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="text-xs font-mono text-[#32443A]">
+          <span className="text-xs font-mono text-[#3A5646]">
             {project.category}
           </span>
-          <span className="text-xs font-mono text-[rgba(28,40,34,0.3)]">·</span>
-          <span className="text-xs font-mono text-[#32443A] tabular-nums">{project.year}</span>
+          <span className="text-xs font-mono text-[rgba(26,56,40,0.25)]">·</span>
+          <span className="text-xs font-mono text-[#3A5646] tabular-nums">{project.year}</span>
         </div>
       </div>
 
       <div className="p-6 sm:p-10">
         {/* Title & Tagline & Conditional Action Links */}
-        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-6 border-b border-[rgba(28,40,34,0.16)]">
+        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-6 border-b border-[rgba(26,56,40,0.12)]">
           <div>
             {primaryUrl ? (
               <LinkPreview url={primaryUrl} imageSrc={project.image}>
-                <h3 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#1C2822] hover:text-[#1B533E] transition-colors">
+                <h3 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#152E20] hover:text-[#183627] transition-colors">
                   {project.title}
                 </h3>
               </LinkPreview>
             ) : (
-              <h3 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#1C2822]">
+              <h3 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#152E20]">
                 {project.title}
               </h3>
             )}
@@ -70,7 +70,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                   imageSrc={project.image}
                   className="cursor-pointer"
                 >
-                  <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-[rgba(28,40,34,0.16)] bg-[#F5F3EC] hover:bg-[#E3E8E1] text-[#1C2822] text-xs font-mono font-medium transition-colors hover:border-[#1B533E]">
+                  <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-[rgba(26,56,40,0.12)] bg-white/80 hover:bg-white text-[#152E20] text-xs font-mono font-medium transition-colors hover:border-[#183627]">
                     <GithubIcon className="w-3.5 h-3.5" />
                     <span>GitHub ↗</span>
                   </span>
@@ -83,7 +83,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                   className="cursor-pointer"
                 >
                   <span
-                    className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#1B533E] hover:bg-[#143F2F] text-[#F5F3EC] text-xs font-mono font-bold transition-colors shadow-sm"
+                    className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#183627] hover:bg-[#11261B] text-[#FAF8F2] text-xs font-mono font-semibold transition-colors shadow-sm"
                   >
                     <span>Live app ↗</span>
                     <ArrowUpRight className="w-3.5 h-3.5 text-[#D98A29]" />
@@ -95,10 +95,10 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         </div>
 
         {/* Dedicated Application UI Screenshot Frame */}
-        <div className="my-6 rounded-2xl border border-[rgba(28,40,34,0.16)] bg-[#1C2822] overflow-hidden relative shadow-md">
+        <div className="my-6 rounded-2xl border border-[rgba(26,56,40,0.12)] bg-[#12241A] overflow-hidden relative shadow-md">
           {primaryUrl ? (
             <LinkPreview url={primaryUrl} imageSrc={project.image} className="w-full block">
-              <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] md:max-h-[580px] overflow-hidden bg-[#15211B] cursor-pointer">
+              <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] md:max-h-[580px] overflow-hidden bg-[#0D1C13] cursor-pointer">
                 <Image
                   src={project.image}
                   alt={project.title}
@@ -111,7 +111,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               </div>
             </LinkPreview>
           ) : (
-            <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] md:max-h-[580px] overflow-hidden bg-[#15211B]">
+            <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] md:max-h-[580px] overflow-hidden bg-[#0D1C13]">
               <Image
                 src={project.image}
                 alt={project.title}
@@ -127,14 +127,14 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
         {/* Narrative Description & Highlights */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-2">
-          <div className="lg:col-span-6 text-xs sm:text-[13.5px] text-[#32443A] leading-[1.6] tracking-[-0.015em] text-pretty">
+          <div className="lg:col-span-6 text-xs sm:text-[13.5px] text-[#3A5646] leading-[1.6] tracking-[-0.015em] text-pretty font-normal">
             {project.description}
           </div>
 
           <div className="lg:col-span-6 space-y-2.5">
             {project.highlights.map((h, i) => (
-              <div key={i} className="flex items-start gap-2 text-xs text-[#1C2822]">
-                <Check className="w-3.5 h-3.5 text-[#1B533E] shrink-0 mt-0.5" />
+              <div key={i} className="flex items-start gap-2 text-xs text-[#152E20]">
+                <Check className="w-3.5 h-3.5 text-[#183627] shrink-0 mt-0.5" />
                 <span className="leading-snug">{h}</span>
               </div>
             ))}

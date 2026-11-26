@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import { StatefulButton } from "./ui/stateful-button";
+import { LinkPreview } from "./ui/link-preview";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -10,131 +11,159 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 25);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <header className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
-      {/* Unified Frosted Glass Navbar Capsule */}
-      <div
-        className={`pointer-events-auto w-full max-w-4xl rounded-full glass-nav px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between transition-all duration-300 ${
-          scrolled ? "shadow-lg border-[rgba(28,40,34,0.22)]" : "shadow-md"
-        }`}
-      >
-        {/* Brand (Left) */}
-        <a
-          href="#"
-          className="text-[#1C2822] font-display font-bold tracking-tight text-sm sm:text-base hover:text-[#1B533E] transition-colors flex items-center gap-1.5 shrink-0"
-        >
-          <span className="font-display font-bold text-[#1C2822] tracking-[-0.03em]">Hrushikesh</span>
-        </a>
+    <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none transition-all duration-300">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-4 sm:pt-6 flex items-center justify-between">
+        {/* Brand (Left) - Styled like BridgeAI™ */}
+        <div className="pointer-events-auto shrink-0">
+          <a
+            href="#"
+            className="group flex items-center text-[#14291E] transition-opacity hover:opacity-85"
+          >
+            <span className="font-display font-bold text-xl sm:text-2xl text-[#14291E] tracking-tight">
+              Hrushikesh
+            </span>
+            <span className="text-[11px] font-mono font-bold text-[#426653] ml-0.5 -mt-2">
+              ™
+            </span>
+          </a>
+        </div>
 
-        {/* Desktop Nav Links (Services, Testimonials, Case Study, Projects) */}
-        <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-[12px] font-sans font-semibold uppercase tracking-[0.04em] text-[#32443A]">
-          <a
-            href="#services"
-            className="hover:text-[#1C2822] hover:underline underline-offset-4 decoration-[#D98A29]/60 transition-colors py-1"
+        {/* Floating Capsule (Center) - Matches reference pill with embedded CTA */}
+        <div className="pointer-events-auto hidden md:flex items-center">
+          <div
+            className={`glass-nav-capsule pl-6 pr-1.5 py-1.5 flex items-center gap-7 transition-all duration-300 ${
+              scrolled ? "shadow-md bg-white/90" : "bg-white/80"
+            }`}
           >
-            Services
-          </a>
-          <a
-            href="#testimonials"
-            className="hover:text-[#1C2822] hover:underline underline-offset-4 decoration-[#D98A29]/60 transition-colors py-1"
-          >
-            Testimonials
-          </a>
-          <a
-            href="#case-study"
-            className="hover:text-[#1C2822] hover:underline underline-offset-4 decoration-[#D98A29]/60 transition-colors py-1"
-          >
-            Case Study
-          </a>
-          <a
-            href="#projects"
-            className="hover:text-[#1C2822] hover:underline underline-offset-4 decoration-[#D98A29]/60 transition-colors py-1"
-          >
-            Projects
-          </a>
-        </nav>
+            <nav className="flex items-center gap-6 text-[13px] font-sans font-medium text-[#2E4A3B]">
+              <a
+                href="#services"
+                className="hover:text-[#14291E] transition-colors py-1"
+              >
+                Services
+              </a>
+              <a
+                href="#case-study"
+                className="hover:text-[#14291E] transition-colors py-1"
+              >
+                Case Study
+              </a>
+              <a
+                href="#projects"
+                className="hover:text-[#14291E] transition-colors py-1"
+              >
+                Projects
+              </a>
+              <a
+                href="#testimonials"
+                className="hover:text-[#14291E] transition-colors py-1"
+              >
+                Testimonials
+              </a>
+            </nav>
 
-        {/* Action Area & Mobile Hamburger */}
-        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-          {/* Juniper Green CTA Button with Stateful feedback */}
-          <div className="hidden md:inline-flex">
+            {/* Dark Forest Capsule CTA inside pill */}
             <StatefulButton
               href="#contact"
-              variant="juniper"
+              variant="forest"
               successText="Opening..."
-              className="py-2 px-4 text-xs font-semibold"
+              className="py-2 px-5 text-xs font-semibold tracking-wide"
             >
-              Get in touch
+              Work Together
             </StatefulButton>
           </div>
+        </div>
 
-          {/* Hamburger Icon: Strictly for smaller screens only (md:hidden) */}
+        {/* Secondary Links (Right) - Matches New Account / Login placement */}
+        <div className="pointer-events-auto hidden lg:flex items-center gap-6 text-xs font-medium text-[#2E4A3B]">
+          <LinkPreview url="https://github.com/hrushikeshsarangi7">
+            <span className="hover:text-[#14291E] transition-colors flex items-center gap-1 cursor-pointer">
+              <span>GitHub</span>
+              <ArrowUpRight className="w-3 h-3 text-[#5C8970]" />
+            </span>
+          </LinkPreview>
+
+          <a
+            href="https://hrushi.is-a.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[#14291E] transition-colors flex items-center gap-1"
+          >
+            <span>Resume</span>
+            <ArrowUpRight className="w-3 h-3 text-[#5C8970]" />
+          </a>
+        </div>
+
+        {/* Mobile Hamburger (Right on small screens) */}
+        <div className="pointer-events-auto md:hidden flex items-center">
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-1.5 rounded-full text-[#1C2822] hover:text-[#1B533E] md:hidden flex items-center justify-center border border-[rgba(28,40,34,0.16)] bg-[#D0D9CD] shadow-2xs"
+            className="p-2 rounded-full text-[#14291E] bg-white/85 backdrop-blur-md border border-white/80 shadow-sm"
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? (
-              <X className="w-4 h-4 text-[#1C2822]" />
+              <X className="w-5 h-5 text-[#14291E]" />
             ) : (
-              <Menu className="w-4 h-4 text-[#1C2822]" />
+              <Menu className="w-5 h-5 text-[#14291E]" />
             )}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown (Visible only on smaller screens when toggled) */}
+      {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="pointer-events-auto absolute top-16 left-4 right-4 bg-[#D0D9CD]/95 backdrop-blur-xl border border-[rgba(28,40,34,0.16)] rounded-2xl p-5 shadow-2xl md:hidden flex flex-col gap-3 animate-in fade-in slide-in-from-top-2 duration-200">
-          <nav className="flex flex-col gap-2 text-sm font-medium text-[#1C2822] font-mono">
+        <div className="pointer-events-auto mx-4 mt-3 bg-white/95 backdrop-blur-xl border border-white/80 rounded-3xl p-6 shadow-2xl md:hidden flex flex-col gap-4 animate-in fade-in slide-in-from-top-2 duration-200">
+          <nav className="flex flex-col gap-2.5 text-sm font-medium text-[#14291E]">
             <a
               href="#services"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2.5 rounded-xl hover:bg-[#F5F3EC] flex items-center justify-between text-[#1C2822]"
+              className="px-4 py-2.5 rounded-2xl hover:bg-[#F7F5EE] flex items-center justify-between"
             >
               <span>Services</span>
-              <span className="text-xs text-[#32443A]">01</span>
-            </a>
-            <a
-              href="#testimonials"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2.5 rounded-xl hover:bg-[#F5F3EC] flex items-center justify-between text-[#1C2822]"
-            >
-              <span>Testimonials</span>
-              <span className="text-xs text-[#32443A]">02</span>
+              <span className="text-xs text-[#5C8970]">01</span>
             </a>
             <a
               href="#case-study"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2.5 rounded-xl hover:bg-[#F5F3EC] flex items-center justify-between text-[#1C2822]"
+              className="px-4 py-2.5 rounded-2xl hover:bg-[#F7F5EE] flex items-center justify-between"
             >
               <span>Case Study</span>
-              <span className="text-xs text-[#32443A]">03</span>
+              <span className="text-xs text-[#5C8970]">02</span>
             </a>
             <a
               href="#projects"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2.5 rounded-xl hover:bg-[#F5F3EC] flex items-center justify-between text-[#1C2822]"
+              className="px-4 py-2.5 rounded-2xl hover:bg-[#F7F5EE] flex items-center justify-between"
             >
               <span>Projects</span>
-              <span className="text-xs text-[#32443A]">04</span>
+              <span className="text-xs text-[#5C8970]">03</span>
+            </a>
+            <a
+              href="#testimonials"
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-4 py-2.5 rounded-2xl hover:bg-[#F7F5EE] flex items-center justify-between"
+            >
+              <span>Testimonials</span>
+              <span className="text-xs text-[#5C8970]">04</span>
             </a>
           </nav>
-          <div className="pt-2 border-t border-[rgba(28,40,34,0.16)] flex justify-center">
+
+          <div className="pt-3 border-t border-[rgba(26,56,40,0.12)] flex flex-col gap-3">
             <StatefulButton
               href="#contact"
-              variant="juniper"
+              variant="forest"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full justify-center"
+              className="w-full justify-center py-3"
             >
-              Get in touch
+              Work Together
             </StatefulButton>
           </div>
         </div>
