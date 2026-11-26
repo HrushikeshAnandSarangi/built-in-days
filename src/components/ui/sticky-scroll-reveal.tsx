@@ -145,8 +145,9 @@ export const StickyScroll = ({
                   </span>
                 </div>
 
-                <div className="text-[11px] font-mono text-[#D98A29] font-bold uppercase tracking-wider hidden sm:block ml-4 text-right truncate">
-                  {currentItem.tagline}
+                <div className="text-[11px] font-mono text-[#183627] font-bold uppercase tracking-wider hidden sm:flex items-center gap-1.5 ml-4 text-right truncate">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#D98A29] shrink-0" />
+                  <span className="truncate">{currentItem.tagline}</span>
                 </div>
               </div>
 

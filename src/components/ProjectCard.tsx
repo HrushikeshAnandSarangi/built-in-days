@@ -56,7 +56,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 {project.title}
               </h3>
             )}
-            <p className="text-xs sm:text-[13px] font-mono font-semibold text-[#D98A29] tracking-[-0.01em] mt-1">
+            <p className="text-xs sm:text-[13px] font-mono font-semibold text-[#8C4F00] tracking-[-0.01em] mt-1">
               {project.tagline}
             </p>
           </div>

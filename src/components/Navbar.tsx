@@ -20,16 +20,16 @@ export function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none transition-all duration-300">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-4 sm:pt-6 flex items-center justify-between">
-        {/* Brand (Left) - Styled like BridgeAI™ */}
+        {/* Brand (Left) - Protected by frosted pill for 100% contrast on scroll */}
         <div className="pointer-events-auto shrink-0">
           <a
             href="#"
-            className="group flex items-center text-[#14291E] transition-opacity hover:opacity-85"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/90 backdrop-blur-md border border-white/80 shadow-xs text-[#14291E] transition-all hover:bg-white hover:shadow-sm"
           >
-            <span className="font-display font-bold text-xl sm:text-2xl text-[#14291E] tracking-tight">
+            <span className="font-display font-bold text-base sm:text-lg text-[#14291E] tracking-tight">
               Hrushikesh
             </span>
-            <span className="text-[11px] font-mono font-bold text-[#426653] ml-0.5 -mt-2">
+            <span className="text-[10px] font-mono font-bold text-[#1B533E] -mt-1.5">
               ™
             </span>
           </a>
@@ -81,24 +81,28 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* Secondary Links (Right) - Matches New Account / Login placement */}
-        <div className="pointer-events-auto hidden lg:flex items-center gap-6 text-xs font-medium text-[#2E4A3B]">
-          <LinkPreview url="https://github.com/hrushikeshsarangi7">
-            <span className="hover:text-[#14291E] transition-colors flex items-center gap-1 cursor-pointer">
-              <span>GitHub</span>
-              <ArrowUpRight className="w-3 h-3 text-[#5C8970]" />
-            </span>
-          </LinkPreview>
+        {/* Secondary Links (Right) - Protected by frosted pill for 100% contrast on scroll */}
+        <div className="pointer-events-auto hidden lg:flex items-center">
+          <div className="inline-flex items-center gap-4 px-4 py-2 rounded-full bg-white/90 backdrop-blur-md border border-white/80 shadow-xs text-xs font-medium text-[#2E4A3B]">
+            <LinkPreview url="https://github.com/hrushikeshsarangi7">
+              <span className="hover:text-[#14291E] transition-colors flex items-center gap-1 cursor-pointer">
+                <span>GitHub</span>
+                <ArrowUpRight className="w-3 h-3 text-[#1B533E]" />
+              </span>
+            </LinkPreview>
 
-          <a
-            href="https://hrushi.is-a.dev"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-[#14291E] transition-colors flex items-center gap-1"
-          >
-            <span>Resume</span>
-            <ArrowUpRight className="w-3 h-3 text-[#5C8970]" />
-          </a>
+            <span className="text-[rgba(26,56,40,0.2)]">|</span>
+
+            <a
+              href="https://hrushi.is-a.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#14291E] transition-colors flex items-center gap-1"
+            >
+              <span>Resume</span>
+              <ArrowUpRight className="w-3 h-3 text-[#1B533E]" />
+            </a>
+          </div>
         </div>
 
         {/* Mobile Hamburger (Right on small screens) */}

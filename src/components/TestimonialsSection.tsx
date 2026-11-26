@@ -119,7 +119,7 @@ export function TestimonialsSection() {
                 </div>
 
                 {/* Empirical metric */}
-                <div className="text-[11px] font-mono text-[#D98A29] font-semibold flex items-center gap-1.5">
+                <div className="text-[11px] font-mono text-[#8C4F00] font-semibold flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#D98A29]" />
                   <span>{t.metric}</span>
                 </div>

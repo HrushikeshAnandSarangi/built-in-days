@@ -2,7 +2,6 @@
 
 import React from "react";
 import Image from "next/image";
-import { HeroStatusBar } from "./HeroStatusBar";
 import { ServicesShowcase } from "./ServicesShowcase";
 import { StatefulButton } from "./ui/stateful-button";
 import { CurlyUnderline, HandwrittenHook } from "./ui/curly-underline";
@@ -16,7 +15,7 @@ export function HeroServices() {
 
   return (
     <>
-      {/* SECTION 1: HERO (BridgeAI-inspired cinematic mountain bridge landscape) */}
+      {/* SECTION 1: HERO (BridgeAI-inspired cinematic mountain bridge landscape with pristine contrast) */}
       <section className="relative min-h-screen lg:h-[100dvh] bg-[#F7F5EE] flex flex-col justify-between pt-24 sm:pt-28 pb-8 sm:pb-10 overflow-hidden border-b border-[rgba(26,56,40,0.12)]">
         {/* Cinematic Photoreal Landscape Background Image */}
         <div className="absolute inset-0 z-0">
@@ -35,11 +34,14 @@ export function HeroServices() {
           {/* Bottom ground mist blend overlay smoothly transitioning into the next section */}
           <div className="absolute inset-x-0 bottom-0 h-48 sm:h-60 bg-gradient-to-t from-[#F7F5EE] via-[#F7F5EE]/80 to-transparent pointer-events-none" />
 
+          {/* Central radial soft mist wash to guarantee effortless typographic legibility */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_35%,rgba(247,245,238,0.92)_0%,rgba(247,245,238,0.6)_45%,transparent_75%)] pointer-events-none" />
+
           {/* Subtle atmospheric tint */}
           <div className="absolute inset-0 bg-[#F7F5EE]/10 pointer-events-none" />
         </div>
 
-        {/* Center / Upper: Two-Tone Display Headline (Matching BridgeAI "Bridge the gap between data and decisions") */}
+        {/* Center / Upper: Two-Tone Display Headline (High Contrast Deep Forest Ink) */}
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center mt-3 sm:mt-6">
           {/* Top Handwritten Hook */}
           <div className="mb-2.5 flex items-center justify-center gap-2">
@@ -50,7 +52,7 @@ export function HeroServices() {
 
           <h1 className="font-display font-medium text-4xl sm:text-6xl md:text-7xl lg:text-[4.75rem] tracking-[-0.035em] leading-[1.06] text-balance">
             <span className="block text-[#163826]">Bridge the gap between</span>
-            <span className="block text-[#5B8870]">
+            <span className="block text-[#244B36]">
               software and{" "}
               <span className="relative inline-block text-[#163826]">
                 speed
@@ -59,36 +61,39 @@ export function HeroServices() {
             </span>
           </h1>
 
-          <p className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg text-[#2E4A3B] max-w-xl mx-auto text-center leading-relaxed font-sans text-pretty font-normal">
+          <p className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg text-[#183627] max-w-xl mx-auto text-center leading-relaxed font-sans text-pretty font-medium">
             Turn complex engineering challenges into fast, resilient, production-grade applications{" "}
-            <span className="relative inline-block font-semibold text-[#163826]">
+            <span className="relative inline-block font-bold text-[#163826]">
               shipped in days
-              <CurlyUnderline color="#183627" strokeWidth={2} className="-bottom-0.5 sm:-bottom-1" />
+              <CurlyUnderline color="#183627" strokeWidth={2.5} className="-bottom-0.5 sm:-bottom-1" />
             </span>{" "}
             with verified benchmarks.
           </p>
 
-          {/* Centered Live Presence Telemetry Status Bar */}
+          {/* Professional Availability Capsule (Replacing cluttered status bar & cartoon avatars) */}
           <div className="mt-4 sm:mt-5 flex justify-center">
-            <HeroStatusBar />
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-[rgba(26,56,40,0.14)] shadow-xs text-xs font-sans text-[#163826]">
+              <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
+              <span className="font-semibold">Available for Q1–Q2 Engineering Sprints</span>
+              <span className="text-[#163826]/30">·</span>
+              <span className="text-[#2E4A3B] font-medium">Systems · Web · Desktop</span>
+            </div>
           </div>
         </div>
 
-        {/* Bottom Horizon: Left Feature Callout & Right Interactive Video/Audit Widget */}
+        {/* Bottom Horizon: Left Feature Callout & Right Interactive Audit Widget */}
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 w-full mt-auto pt-8 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-          {/* Left Callout - Styled like BridgeCore™ in the reference */}
-          <div className="max-w-md space-y-2.5">
+          {/* Left Callout: Protected by matching Frosted Glass Card for 100% Contrast */}
+          <div className="rounded-2xl bg-white/85 backdrop-blur-md border border-white/80 p-4 sm:p-5 shadow-lg shadow-black/5 max-w-md space-y-2.5">
             <div className="flex items-center gap-2">
-              <svg className="w-4 h-4 text-[#163826]" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z" />
-              </svg>
+              <span className="w-2 h-2 rounded-full bg-[#1B533E]" />
               <span className="font-display font-bold text-sm sm:text-base text-[#163826] tracking-tight">
-                BuiltInDays™
+                Systems &amp; Web Engineering
               </span>
             </div>
 
-            <p className="text-xs sm:text-[13px] text-[#2E4A3B] leading-relaxed max-w-sm">
-              Seamlessly engineered full-stack web applications, Tauri cross-platform desktop software, and high-velocity systems without bloat.
+            <p className="text-xs sm:text-[13px] text-[#2E4A3B] leading-relaxed max-w-sm font-sans font-normal">
+              Polished full-stack web applications, ultra-lean Tauri cross-platform desktop software, and sub-millisecond database backends shipped in days.
             </p>
 
             <div className="flex items-center gap-3 pt-1">
@@ -96,25 +101,25 @@ export function HeroServices() {
                 href="#contact"
                 variant="forest"
                 successText="Opening intake..."
-                className="py-2 px-5 text-xs font-semibold shadow-md"
+                className="py-2 px-5 text-xs font-semibold shadow-xs"
               >
                 Work Together
               </StatefulButton>
 
               <a
                 href="#projects"
-                className="text-xs font-semibold text-[#163826] hover:text-[#5B8870] transition-colors py-2 px-3 underline underline-offset-4 decoration-[rgba(26,56,40,0.3)] hover:decoration-[#163826]"
+                className="text-xs font-semibold text-[#163826] hover:text-[#1B533E] transition-colors py-2 px-3 underline underline-offset-4 decoration-[rgba(26,56,40,0.3)] hover:decoration-[#163826]"
               >
                 View Projects ↗
               </a>
             </div>
           </div>
 
-          {/* Right Callout - Video Preview Card Widget matching ▶ How it works? 1:35 */}
+          {/* Right Callout - Video Preview / Audit Card Widget */}
           <div className="shrink-0">
             <div
               onClick={handleOpenAuditModal}
-              className="group relative cursor-pointer rounded-2xl bg-white/75 hover:bg-white/95 backdrop-blur-md border border-white/80 p-3 sm:p-3.5 shadow-lg shadow-black/5 transition-all duration-300 hover:scale-[1.02] flex items-center gap-3.5 max-w-xs"
+              className="group relative cursor-pointer rounded-2xl bg-white/85 hover:bg-white/95 backdrop-blur-md border border-white/80 p-3 sm:p-3.5 shadow-lg shadow-black/5 transition-all duration-300 hover:scale-[1.02] flex items-center gap-3.5 max-w-xs"
               role="button"
               tabIndex={0}
               aria-label="View Tempest Audit Deep-Dive"
@@ -124,7 +129,7 @@ export function HeroServices() {
                 <img
                   src="/audit/off-cpu-flamegraph.png"
                   alt="Tempest Audit Preview"
-                  className="w-full h-full object-cover opacity-65 group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-cover opacity-75 group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-7 h-7 rounded-full bg-white/90 text-[#163826] flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
@@ -135,17 +140,17 @@ export function HeroServices() {
                 </div>
               </div>
 
-              {/* Label & Indicator matching reference */}
+              {/* Label & Indicator */}
               <div className="text-left">
-                <div className="flex items-center gap-1.5 text-[11px] font-mono text-[#5B8870] font-medium">
+                <div className="flex items-center gap-1.5 text-[11px] font-mono text-[#1B533E] font-semibold">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#D98A29] animate-pulse" />
-                  <span>Interactive Audit</span>
+                  <span>Technical Case Study</span>
                 </div>
                 <div className="font-display font-bold text-xs sm:text-[13px] text-[#163826] mt-0.5">
                   Tempest · 141.5x Speedup
                 </div>
-                <div className="text-[10px] font-mono text-[#3A5646] mt-0.5">
-                  ▶ How it works · 16,265 traces
+                <div className="text-[10px] font-mono text-[#32443A] mt-0.5">
+                  ▶ Interactive Deep-Dive · 16,265 traces
                 </div>
               </div>
             </div>

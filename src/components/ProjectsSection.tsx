@@ -4,9 +4,9 @@ import React, { useState } from "react";
 import { projects } from "@/data/projects";
 import { ProjectCard } from "./ProjectCard";
 import { GithubIcon } from "./icons";
-import { ChevronDown, ChevronUp, ShieldCheck } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { LinkPreview } from "./ui/link-preview";
-import { HandwrittenHook, CurlyUnderline } from "./ui/curly-underline";
+import { HandwrittenHook } from "./ui/curly-underline";
 
 export function ProjectsSection() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
@@ -70,48 +70,8 @@ export function ProjectsSection() {
           </div>
         )}
 
-        {/* Empirical Verification Standard Banner - High-Craft Minimalist Editorial (Zero Cartoon Animations) */}
-        <div className="my-6 rounded-3xl border border-[rgba(26,56,40,0.12)] bg-[#EBF0E8] p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-sm">
-          <div className="space-y-1.5 max-w-xl">
-            <div className="text-xs font-mono text-[#183627] font-bold uppercase tracking-wider flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-[#183627]" />
-              <span>Empirical Verification Standard</span>
-            </div>
-            <div className="font-display text-lg sm:text-2xl font-bold text-[#152E20] tracking-tight">
-              Every Product Backed by{" "}
-              <span className="relative inline-block text-[#152E20]">
-                Reproducible Benchmarks
-                <CurlyUnderline color="#D98A29" strokeWidth={2.5} className="-bottom-1" />
-              </span>
-            </div>
-            <p className="text-xs sm:text-sm text-[#3A5646] leading-relaxed font-normal">
-              Codebases include automated CI workflows, deterministic test suites, flamegraph profiles, and
-              measurable latency guarantees.
-            </p>
-          </div>
-
-          <div className="flex items-center gap-6 sm:gap-8 pt-2 md:pt-0 shrink-0 border-t md:border-t-0 md:border-l border-[rgba(26,56,40,0.12)] md:pl-8">
-            <div>
-              <div className="font-display text-2xl sm:text-3xl font-bold text-[#152E20] tabular-nums">
-                16,265
-              </div>
-              <div className="text-[11px] font-mono text-[#3A5646] uppercase tracking-wider mt-0.5">
-                Audit Traces
-              </div>
-            </div>
-            <div>
-              <div className="font-display text-2xl sm:text-3xl font-bold text-[#183627] tabular-nums">
-                100%
-              </div>
-              <div className="text-[11px] font-mono text-[#3A5646] uppercase tracking-wider mt-0.5">
-                CI Reproducible
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* Vertical Stack of Projects */}
-        <div className="space-y-8 mt-8">
+        <div className="space-y-8 mt-4">
           {displayedProjects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
