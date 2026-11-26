@@ -83,15 +83,10 @@ export function TestimonialsSection() {
               className="rounded-3xl border border-[rgba(28,40,34,0.16)] bg-[#D0D9CD] p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 shadow-sm hover:shadow-md hover:border-[#1B533E] group"
             >
               <div>
-                {/* Header row with index tag and verified badge */}
-                <div className="flex items-center justify-between gap-2 mb-5">
-                  <span className="font-mono text-xs font-semibold text-[#1C2822] px-3 py-1 rounded-full bg-[#F5F3EC] border border-[rgba(28,40,34,0.16)] shadow-2xs">
-                    {t.index} · {t.projectTag}
-                  </span>
-                  <span className="inline-flex items-center gap-1 text-[11px] font-mono text-[#1B533E] bg-[#1B533E]/10 px-2 py-0.5 rounded-full border border-[#1B533E]/30 shrink-0 font-bold">
-                    <Check className="w-3 h-3 text-[#1B533E]" />
-                    <span>verified</span>
-                  </span>
+                {/* Header row with project name and year */}
+                <div className="flex items-center justify-between text-xs font-mono text-[#32443A] mb-4">
+                  <span className="font-semibold text-[#1C2822]">{t.projectTag}</span>
+                  <span>{t.year}</span>
                 </div>
 
                 {/* Quote Text */}
@@ -103,7 +98,7 @@ export function TestimonialsSection() {
                 </div>
               </div>
 
-              {/* Author Info & Metric Verification Badge */}
+              {/* Author Info & Metric Verification */}
               <div className="mt-6 pt-5 border-t border-[rgba(28,40,34,0.16)] flex flex-col gap-2.5">
                 <div>
                   <div className="font-display font-bold text-sm sm:text-base text-[#1C2822] tracking-tight">
@@ -114,8 +109,8 @@ export function TestimonialsSection() {
                   </div>
                 </div>
 
-                {/* Empirical metric tag */}
-                <div className="inline-flex items-center gap-1.5 text-[11px] font-mono text-[#D98A29] border border-[#D98A29]/30 bg-[#D98A29]/10 px-2.5 py-1 rounded-lg w-fit">
+                {/* Empirical metric */}
+                <div className="text-[11px] font-mono text-[#D98A29] font-semibold flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#D98A29]" />
                   <span>{t.metric}</span>
                 </div>

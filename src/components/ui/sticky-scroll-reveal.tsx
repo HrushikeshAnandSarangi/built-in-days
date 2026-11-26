@@ -79,20 +79,6 @@ export const StickyScroll = ({
                   isActive ? "opacity-100" : "opacity-35 hover:opacity-70"
                 )}
               >
-                {/* Number Badge & Category */}
-                <div className="flex items-center gap-2 mb-3">
-                  <span
-                    className={cn(
-                      "font-mono text-xs font-bold px-3 py-1 rounded-full border transition-colors",
-                      isActive
-                        ? "bg-[#1B533E]/10 text-[#1B533E] border-[#1B533E]/30"
-                        : "bg-[#D0D9CD] text-[#32443A] border-[rgba(28,40,34,0.16)]"
-                    )}
-                  >
-                    {item.num} · {item.badge}
-                  </span>
-                </div>
-
                 <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1C2822] tracking-[-0.035em] leading-tight">
                   {item.title}
                 </h3>
@@ -209,16 +195,11 @@ export const StickyScroll = ({
                     alt={img.caption}
                     className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   />
-                  {/* Subtle Juniper / Mustard caption tag */}
-                  <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between pointer-events-none">
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-[#1C2822]/90 text-[#F5F3EC] backdrop-blur-xs border border-white/10 truncate max-w-[200px]">
+                  {/* Subtle caption */}
+                  <div className="absolute bottom-2 left-2 pointer-events-none">
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#1C2822]/80 text-[#F5F3EC] backdrop-blur-xs truncate max-w-[200px]">
                       {img.caption}
                     </span>
-                    {img.tag && (
-                      <span className="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-[#D98A29] text-[#1C2822]">
-                        {img.tag}
-                      </span>
-                    )}
                   </div>
                 </div>
               ))}

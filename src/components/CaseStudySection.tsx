@@ -45,21 +45,19 @@ export function CaseStudySection() {
         {/* Featured Case Study Card */}
         <div className="mt-10 rounded-3xl border border-[rgba(28,40,34,0.16)] bg-[#D0D9CD] p-6 sm:p-8 lg:p-10 shadow-sm">
           {/* Card Top Meta Bar */}
-          <div className="flex flex-wrap items-center justify-between gap-3 pb-6 border-b border-[rgba(28,40,34,0.16)]">
-            <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-              <span className="font-mono text-xs font-semibold text-[#1C2822] px-3 py-1 rounded-full bg-[#F5F3EC] border border-[rgba(28,40,34,0.16)] shadow-2xs">
-                Systems Engineering
-              </span>
-              <span className="text-xs font-mono text-[#32443A]">
-                Commit <code className="text-[#1C2822] bg-[#F5F3EC] px-1.5 py-0.5 rounded font-mono border border-[rgba(28,40,34,0.16)]">0b57702</code>
-              </span>
-              <span className="inline-flex items-center gap-1.5 text-xs font-mono text-[#1B533E] bg-[#1B533E]/10 px-2.5 py-0.5 rounded-full border border-[#1B533E]/30 font-bold">
+          <div className="flex flex-wrap items-center justify-between gap-3 pb-5 border-b border-[rgba(28,40,34,0.16)] text-xs font-mono text-[#32443A]">
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="font-semibold text-[#1C2822]">Systems Engineering</span>
+              <span className="text-[rgba(28,40,34,0.3)]">·</span>
+              <span>Commit <code className="text-[#1C2822] font-mono">0b57702</code></span>
+              <span className="text-[rgba(28,40,34,0.3)]">·</span>
+              <span className="text-[#1B533E] font-medium flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#D98A29] animate-pulse" />
-                <span>Verified by Prharsha G, Core Maintainer</span>
+                Verified by Prharsha G, Core Maintainer
               </span>
             </div>
 
-            <div className="text-xs font-mono text-[#32443A]">
+            <div>
               Deliverable: 805 KB (.docx)
             </div>
           </div>

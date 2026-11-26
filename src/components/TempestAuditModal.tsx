@@ -56,7 +56,7 @@ export function TempestAuditModal({ isOpen: controlledIsOpen, onClose: controlle
             <span className="w-2.5 h-2.5 rounded-full bg-[#D98A29] animate-pulse" />
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-[11px] font-mono uppercase tracking-wider font-bold text-[#1B533E] bg-[#1B533E]/10 px-2 py-0.5 rounded border border-[#1B533E]/30">
+                <span className="text-[11px] font-mono uppercase tracking-wider font-bold text-[#1B533E]">
                   Verified Audit Case Study
                 </span>
                 <span className="text-xs font-mono text-[#32443A] hidden sm:inline">
