@@ -85,38 +85,38 @@ export const StickyScroll = ({
                     className={cn(
                       "font-mono text-xs font-bold px-3 py-1 rounded-full border transition-colors",
                       isActive
-                        ? "bg-[#1D56B3]/10 text-[#1D56B3] border-[#1D56B3]/30"
-                        : "bg-[#F4F6F9] text-[#52647C] border-[#D5DCE6]"
+                        ? "bg-[#1B533E]/10 text-[#1B533E] border-[#1B533E]/30"
+                        : "bg-[#D0D9CD] text-[#32443A] border-[rgba(28,40,34,0.16)]"
                     )}
                   >
                     {item.num} · {item.badge}
                   </span>
                 </div>
 
-                <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0F1F38] tracking-[-0.035em] leading-tight">
+                <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1C2822] tracking-[-0.035em] leading-tight">
                   {item.title}
                 </h3>
 
-                <p className="text-xs font-mono text-[#E08E0B] font-bold mt-1.5 mb-3">
+                <p className="text-xs font-mono text-[#D98A29] font-bold mt-1.5 mb-3">
                   {item.tagline}
                 </p>
 
-                <p className="text-sm text-[#52647C] leading-relaxed mb-6">
+                <p className="text-sm text-[#32443A] leading-relaxed mb-6">
                   {item.description}
                 </p>
 
                 {/* What You Get checklist */}
-                <div className="space-y-2.5 pt-4 border-t border-[#D5DCE6]/60 mb-6">
-                  <div className="text-[11px] font-mono uppercase tracking-wider text-[#0F1F38] font-bold">
+                <div className="space-y-2.5 pt-4 border-t border-[rgba(28,40,34,0.16)] mb-6">
+                  <div className="text-[11px] font-mono uppercase tracking-wider text-[#1C2822] font-bold">
                     What You Get
                   </div>
-                  <ul className="space-y-2 text-xs text-[#0F1F38]">
+                  <ul className="space-y-2 text-xs text-[#1C2822]">
                     {item.whatYouGet.map((point, i) => (
                       <li key={i} className="flex items-start gap-2.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#1D56B3] mt-1.5 shrink-0" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#1B533E] mt-1.5 shrink-0" />
                         <span className="leading-snug">
-                          <strong className="text-[#0F1F38] font-semibold">{point.title}:</strong>{" "}
-                          <span className="text-[#52647C]">{point.desc}</span>
+                          <strong className="text-[#1C2822] font-semibold">{point.title}:</strong>{" "}
+                          <span className="text-[#32443A]">{point.desc}</span>
                         </span>
                       </li>
                     ))}
@@ -127,7 +127,7 @@ export const StickyScroll = ({
                 <div className="flex flex-wrap items-center gap-2.5">
                   <a
                     href="#contact"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#E08E0B] hover:bg-[#CF8106] text-[#0F1F38] transition-all text-xs sm:text-sm font-bold shadow-sm hover:scale-[1.01] active:scale-[0.99] border border-[#C47905]"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1B533E] hover:bg-[#143F2F] text-[#F5F3EC] transition-all text-xs sm:text-sm font-bold shadow-sm hover:scale-[1.01] active:scale-[0.99] border border-[#143F2F]"
                   >
                     <span>{item.ctaLabel}</span>
                   </a>
@@ -139,7 +139,7 @@ export const StickyScroll = ({
                           key={actIdx}
                           href={act.href}
                           download
-                          className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-[#1D56B3] hover:bg-[#15428D] text-white transition-all text-xs sm:text-sm font-semibold shadow-sm hover:scale-[1.01] active:scale-[0.99]"
+                          className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-[#D98A29] hover:bg-[#C2781E] text-[#1C2822] transition-all text-xs sm:text-sm font-bold shadow-sm hover:scale-[1.01] active:scale-[0.99] border border-[#B36F1B]"
                         >
                           <Download className="w-3.5 h-3.5" />
                           <span>{act.label}</span>
@@ -153,9 +153,9 @@ export const StickyScroll = ({
                           key={actIdx}
                           type="button"
                           onClick={act.onClick}
-                          className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-white hover:bg-[#F4F6F9] text-[#0F1F38] transition-all text-xs sm:text-sm font-semibold border border-[#D5DCE6] hover:border-[#1D56B3] active:scale-[0.99] cursor-pointer"
+                          className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-[#D0D9CD] hover:bg-[#E3E8E1] text-[#1C2822] transition-all text-xs sm:text-sm font-semibold border border-[rgba(28,40,34,0.16)] hover:border-[#1B533E] active:scale-[0.99] cursor-pointer"
                         >
-                          <ExternalLink className="w-3.5 h-3.5 text-[#52647C]" />
+                          <ExternalLink className="w-3.5 h-3.5 text-[#32443A]" />
                           <span>{act.label}</span>
                         </button>
                       );
@@ -165,7 +165,7 @@ export const StickyScroll = ({
                       <a
                         key={actIdx}
                         href={act.href}
-                        className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-white hover:bg-[#F4F6F9] text-[#0F1F38] transition-all text-xs sm:text-sm font-semibold border border-[#D5DCE6] hover:border-[#1D56B3] active:scale-[0.99]"
+                        className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-[#D0D9CD] hover:bg-[#E3E8E1] text-[#1C2822] transition-all text-xs sm:text-sm font-semibold border border-[rgba(28,40,34,0.16)] hover:border-[#1B533E] active:scale-[0.99]"
                       >
                         <span>{act.label}</span>
                       </a>
@@ -181,7 +181,7 @@ export const StickyScroll = ({
       {/* Right Column: Sticky Multiple Real Images Showcase */}
       <div
         className={cn(
-          "hidden lg:block sticky top-24 h-[520px] w-1/2 rounded-3xl overflow-hidden p-6 self-start bg-white border border-[#D5DCE6] shadow-lg shadow-[#0F1F38]/5",
+          "hidden lg:block sticky top-24 h-[520px] w-1/2 rounded-3xl overflow-hidden p-6 self-start bg-[#D0D9CD] border border-[rgba(28,40,34,0.16)] shadow-lg shadow-[#1C2822]/5",
           contentClassName
         )}
       >
@@ -200,7 +200,7 @@ export const StickyScroll = ({
                 <div
                   key={imgIdx}
                   className={cn(
-                    "relative rounded-2xl overflow-hidden border border-[#D5DCE6] shadow-md group transition-all duration-300 hover:border-[#1D56B3] hover:shadow-[#1D56B3]/10 bg-white",
+                    "relative rounded-2xl overflow-hidden border border-[rgba(28,40,34,0.16)] shadow-md group transition-all duration-300 hover:border-[#1B533E] hover:shadow-[#1B533E]/10 bg-[#D0D9CD]",
                     imgIdx === 0 && content[activeCard].images.length === 3 ? "col-span-2 h-[220px]" : "h-full"
                   )}
                 >
@@ -209,13 +209,13 @@ export const StickyScroll = ({
                     alt={img.caption}
                     className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   />
-                  {/* Subtle cobalt / ochre pill caption tag */}
+                  {/* Subtle Juniper / Mustard caption tag */}
                   <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between pointer-events-none">
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-[#0F1F38]/90 text-white backdrop-blur-xs border border-white/10 truncate max-w-[200px]">
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-[#1C2822]/90 text-[#F5F3EC] backdrop-blur-xs border border-white/10 truncate max-w-[200px]">
                       {img.caption}
                     </span>
                     {img.tag && (
-                      <span className="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-[#E08E0B] text-[#0F1F38]">
+                      <span className="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-[#D98A29] text-[#1C2822]">
                         {img.tag}
                       </span>
                     )}
@@ -225,9 +225,9 @@ export const StickyScroll = ({
             </div>
 
             {/* Bottom active service indicator */}
-            <div className="pt-3 border-t border-[#D5DCE6] flex items-center justify-between text-xs font-mono text-[#52647C]">
-              <span className="text-[#1D56B3] font-semibold flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-[#E08E0B] animate-pulse" />
+            <div className="pt-3 border-t border-[rgba(28,40,34,0.16)] flex items-center justify-between text-xs font-mono text-[#32443A]">
+              <span className="text-[#1B533E] font-semibold flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-[#D98A29] animate-pulse" />
                 {content[activeCard].title}
               </span>
               <span>

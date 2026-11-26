@@ -143,27 +143,27 @@ export function HeroStatusBar() {
     /* Completely transparent and borderless: NO card background, NO glassmorphism */
     <div className="relative inline-flex flex-wrap items-center justify-center lg:justify-start gap-x-4 sm:gap-x-5 gap-y-2 py-1 text-zinc-600 text-xs sm:text-[13px] font-sans select-none bg-transparent border-0 shadow-none">
       {/* 1. Location */}
-      <div className="flex items-center gap-1.5 text-[#52647C]">
-        <MapPin className="w-3.5 h-3.5 text-[#52647C] shrink-0" />
-        <span className="font-medium text-[#0F1F38]">Rourkela, India</span>
+      <div className="flex items-center gap-1.5 text-[#32443A]">
+        <MapPin className="w-3.5 h-3.5 text-[#32443A] shrink-0" />
+        <span className="font-medium text-[#1C2822]">Rourkela, India</span>
       </div>
 
-      <span className="text-[#D5DCE6]">|</span>
+      <span className="text-[rgba(28,40,34,0.2)]">|</span>
 
       {/* 2. Real-time Live Clock (IST) */}
-      <div className="flex items-center gap-1.5 text-[#52647C]">
-        <Clock className="w-3.5 h-3.5 text-[#52647C] shrink-0" />
-        <span className="font-mono tabular-nums text-xs text-[#0F1F38] font-medium">{timeString || "5:30 AM IST"}</span>
+      <div className="flex items-center gap-1.5 text-[#32443A]">
+        <Clock className="w-3.5 h-3.5 text-[#32443A] shrink-0" />
+        <span className="font-mono tabular-nums text-xs text-[#1C2822] font-medium">{timeString || "5:30 AM IST"}</span>
       </div>
 
-      <span className="text-[#D5DCE6]">|</span>
+      <span className="text-[rgba(28,40,34,0.2)]">|</span>
 
       {/* 3. Real-time Viewers Count & Radio Waves */}
       <div className="flex items-center gap-2">
-        <div className="flex items-center gap-1 text-[#52647C] font-medium">
-          {/* Radio signal waves icon in Cobalt Ink */}
+        <div className="flex items-center gap-1 text-[#32443A] font-medium">
+          {/* Radio signal waves icon in Juniper Green */}
           <svg
-            className="w-4 h-4 text-[#1D56B3] shrink-0"
+            className="w-4 h-4 text-[#1B533E] shrink-0"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -177,7 +177,7 @@ export function HeroStatusBar() {
             <path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5" />
             <path d="M19.1 4.9C23 8.8 23 15.2 19.1 19.1" />
           </svg>
-          <span className="font-mono tabular-nums text-xs text-[#0F1F38] font-bold">{viewerCount}</span>
+          <span className="font-mono tabular-nums text-xs text-[#1C2822] font-bold">{viewerCount}</span>
         </div>
 
         {/* 4. Functional Avatars Cluster with interactive tooltips */}
@@ -195,15 +195,15 @@ export function HeroStatusBar() {
               >
                 {/* Minimalist face avatar */}
                 <div
-                  className={`w-6 h-6 rounded-full bg-white border ${
+                  className={`w-6 h-6 rounded-full bg-[#D0D9CD] border ${
                     avatar.isCurrentUser
-                      ? "border-[#0F1F38] shadow-xs"
+                      ? "border-[#1C2822] shadow-xs"
                       : avatar.isBot
-                      ? "border-[#E08E0B] bg-[#E08E0B]/10"
-                      : "border-[#D5DCE6]"
+                      ? "border-[#D98A29] bg-[#D98A29]/20"
+                      : "border-[rgba(28,40,34,0.2)]"
                   } flex items-center justify-center transition-transform hover:scale-125 hover:shadow-md`}
                 >
-                  <svg className="w-4 h-4 text-[#0F1F38]" viewBox="0 0 24 24" fill="none">
+                  <svg className="w-4 h-4 text-[#1C2822]" viewBox="0 0 24 24" fill="none">
                     {/* Eyes */}
                     {avatar.eyes === "dash" && (
                       <>
@@ -258,26 +258,26 @@ export function HeroStatusBar() {
                 {/* Floating Tooltip */}
                 {isHovered && (
                   <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max max-w-xs z-50 pointer-events-none animate-in fade-in zoom-in-95 duration-150">
-                    <div className="bg-white px-3.5 py-2.5 rounded-xl border border-[#D5DCE6] shadow-xl shadow-[#0F1F38]/10 text-left">
-                      <div className="text-[11px] font-mono text-[#52647C] font-medium tracking-tight flex items-center gap-1.5">
+                    <div className="bg-[#D0D9CD] px-3.5 py-2.5 rounded-xl border border-[rgba(28,40,34,0.16)] shadow-xl shadow-[#1C2822]/10 text-left">
+                      <div className="text-[11px] font-mono text-[#32443A] font-medium tracking-tight flex items-center gap-1.5">
                         <span>{avatar.label}</span>
                         {avatar.isBot && (
-                          <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-[#E08E0B]/15 text-[#E08E0B] font-bold">
+                          <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-[#D98A29]/20 text-[#1C2822] font-bold">
                             BOT
                           </span>
                         )}
                         {avatar.isCurrentUser && (
-                          <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-[#1D56B3]/10 text-[#1D56B3] font-bold">
+                          <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-[#1B533E]/15 text-[#1B533E] font-bold">
                             YOU
                           </span>
                         )}
                       </div>
-                      <div className="text-xs font-semibold text-[#0F1F38] tracking-tight mt-0.5 whitespace-nowrap">
+                      <div className="text-xs font-semibold text-[#1C2822] tracking-tight mt-0.5 whitespace-nowrap">
                         {avatar.location}
                       </div>
                     </div>
                     {/* Tooltip caret */}
-                    <div className="w-2 h-2 bg-white border-r border-b border-[#D5DCE6] rotate-45 mx-auto -mt-1" />
+                    <div className="w-2 h-2 bg-[#D0D9CD] border-r border-b border-[rgba(28,40,34,0.16)] rotate-45 mx-auto -mt-1" />
                   </div>
                 )}
               </div>

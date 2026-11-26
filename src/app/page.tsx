@@ -10,7 +10,7 @@ import { TempestAuditModal } from "@/components/TempestAuditModal";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#F4F6F9] text-[#0F1F38] flex flex-col selection:bg-[#E08E0B]/25 selection:text-[#0F1F38]">
+    <main className="min-h-screen bg-[#F5F3EC] text-[#1C2822] flex flex-col selection:bg-[#D98A29]/25 selection:text-[#1C2822]">
       {/* Joined Frosted Glass Floating Navbar */}
       <Navbar />
 

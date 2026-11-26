@@ -1,29 +1,37 @@
 @import "tailwindcss";
 
 :root {
-  --background: #F4F6F9;
-  --foreground: #0F1F38;
-  --surface: #FFFFFF;
-  --border: #D5DCE6;
-  --text-primary: #0F1F38;
-  --text-muted: #52647C;
-  --accent-primary: #E08E0B;
-  --accent-secondary: #1D56B3;
+  --bg-primary: #F5F3EC;
+  --bg-surface: #D0D9CD;
+  --text-primary: #1C2822;
+  --text-muted: #32443A;
+  --accent-primary: #1B533E;
+  --accent-secondary: #D98A29;
+  --border-subtle: rgba(28, 40, 34, 0.16);
+
+  --background: #F5F3EC;
+  --foreground: #1C2822;
+  --surface: #D0D9CD;
+  --border: rgba(28, 40, 34, 0.16);
+  --text-primary: #1C2822;
+  --text-muted: #32443A;
+  --accent-primary: #1B533E;
+  --accent-secondary: #D98A29;
 
   --font-display: var(--font-space-grotesk), sans-serif;
   --font-handwriting: var(--font-caveat), cursive;
 }
 
 html {
-  background-color: #F4F6F9;
-  color: #0F1F38;
+  background-color: #F5F3EC;
+  color: #1C2822;
   scroll-behavior: smooth;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01", "tnum";
 }
 
 body {
-  background-color: #F4F6F9;
-  color: #0F1F38;
+  background-color: #F5F3EC;
+  color: #1C2822;
   font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
@@ -33,7 +41,7 @@ body {
 }
 
 /* ========================================================================== */
-/* Blueprint & Ochre Typography Hierarchy (Space Grotesk + Caveat + Geist)    */
+/* Organic Editorial Typography (Space Grotesk + Caveat + Geist)              */
 /* ========================================================================== */
 .font-display {
   font-family: var(--font-space-grotesk), sans-serif;
@@ -47,13 +55,13 @@ h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
   letter-spacing: -0.035em;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum";
-  color: #0F1F38;
+  color: #1C2822;
 }
 
 p {
   text-wrap: pretty;
   letter-spacing: -0.015em;
-  color: #52647C;
+  color: #32443A;
 }
 
 /* Precision micro-labels & technical metadata */
@@ -63,7 +71,7 @@ p {
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #52647C;
+  color: #32443A;
 }
 
 /* Display hero typography with signature tight leading */
@@ -73,7 +81,7 @@ p {
   letter-spacing: -0.04em;
   line-height: 0.98;
   text-wrap: balance;
-  color: #0F1F38;
+  color: #1C2822;
 }
 
 /* Section titles */
@@ -83,7 +91,7 @@ p {
   letter-spacing: -0.035em;
   line-height: 1.05;
   text-wrap: balance;
-  color: #0F1F38;
+  color: #1C2822;
 }
 
 @layer base {
@@ -102,7 +110,7 @@ p {
 }
 
 /* ========================================================================== */
-/* Frosted Glassmorphism Optics tuned for Blueprint & Ochre (#F4F6F9)         */
+/* Frosted Glassmorphism Optics tuned for Warm Oatmeal (#F5F3EC) & Sage       */
 /* ========================================================================== */
 .glass-pill {
   display: inline-flex;
@@ -111,87 +119,87 @@ p {
   height: 44px;
   padding: 0 18px;
   border-radius: 9999px !important;
-  background: rgba(255, 255, 255, 0.90);
-  border: 1px solid #D5DCE6;
-  color: #0F1F38;
+  background: rgba(208, 217, 205, 0.85);
+  border: 1px solid rgba(28, 40, 34, 0.16);
+  color: #1C2822;
   font-family: inherit;
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
-  -webkit-backdrop-filter: blur(14px) saturate(180%);
-  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  backdrop-filter: blur(14px) saturate(160%);
   box-shadow: 
-    0 4px 16px -2px rgba(15, 31, 56, 0.06),
-    0 1px 3px rgba(15, 31, 56, 0.04),
-    inset 1px 1px 0 rgba(255, 255, 255, 1);
+    0 4px 16px -2px rgba(28, 40, 34, 0.06),
+    0 1px 3px rgba(28, 40, 34, 0.04),
+    inset 1px 1px 0 rgba(245, 243, 236, 0.8);
   transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-pill:hover {
-  background: #FFFFFF;
-  border-color: #1D56B3;
+  background: #D0D9CD;
+  border-color: #1B533E;
   box-shadow: 
-    0 6px 20px -2px rgba(29, 86, 179, 0.12),
-    0 2px 6px rgba(15, 31, 56, 0.06);
+    0 6px 20px -2px rgba(27, 83, 62, 0.15),
+    0 2px 6px rgba(28, 40, 34, 0.06);
   transform: translateY(-1px);
 }
 
 .glass-dropdown {
-  background: rgba(255, 255, 255, 0.96);
-  border: 1px solid #D5DCE6;
-  -webkit-backdrop-filter: blur(24px) saturate(190%);
-  backdrop-filter: blur(24px) saturate(190%);
+  background: rgba(208, 217, 205, 0.95);
+  border: 1px solid rgba(28, 40, 34, 0.16);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(180%);
   box-shadow: 
-    0 12px 36px -4px rgba(15, 31, 56, 0.12),
-    inset 1px 1px 0 rgba(255, 255, 255, 1);
+    0 12px 36px -4px rgba(28, 40, 34, 0.14),
+    inset 1px 1px 0 rgba(245, 243, 236, 0.8);
 }
 
 /* Unified Frosted Glass Navbar Capsule */
 .glass-nav {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(245, 243, 236, 0.90);
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid #D5DCE6;
+  border: 1px solid rgba(28, 40, 34, 0.16);
   box-shadow: 
-    0 4px 20px -2px rgba(15, 31, 56, 0.06),
-    0 1px 3px rgba(15, 31, 56, 0.03),
-    inset 1px 1px 0 rgba(255, 255, 255, 1);
+    0 4px 20px -2px rgba(28, 40, 34, 0.06),
+    0 1px 3px rgba(28, 40, 34, 0.03),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.6);
   border-radius: 9999px;
   transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card {
-  background: #FFFFFF;
-  border: 1px solid #D5DCE6;
+  background: #D0D9CD;
+  border: 1px solid rgba(28, 40, 34, 0.16);
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
 }
 
 .glass-card:hover {
   transform: translateY(-2px);
-  border-color: #1D56B3;
-  box-shadow: 0 12px 30px -10px rgba(15, 31, 56, 0.08);
+  border-color: #1B533E;
+  box-shadow: 0 12px 30px -10px rgba(28, 40, 34, 0.10);
 }
 
-/* Custom crisp architectural scrollbar */
+/* Custom organic editorial scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #F4F6F9;
+  background: #F5F3EC;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D5DCE6;
+  background: #D0D9CD;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #52647C;
+  background: #32443A;
 }
 
-/* Architectural blueprint grid background pattern */
+/* Organic subtle drafting pattern */
 .grid-pattern {
   background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(15, 31, 56, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 31, 56, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(28, 40, 34, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(28, 40, 34, 0.05) 1px, transparent 1px);
 }

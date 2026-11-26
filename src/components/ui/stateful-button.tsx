@@ -14,7 +14,7 @@ export interface StatefulButtonProps
   successText?: string;
   icon?: React.ReactNode;
   showIcon?: boolean;
-  variant?: "ochre" | "navy" | "outline";
+  variant?: "juniper" | "mustard" | "fig" | "outline" | "ochre" | "navy";
 }
 
 export function StatefulButton({
@@ -25,7 +25,7 @@ export function StatefulButton({
   successText,
   icon,
   showIcon = true,
-  variant = "ochre",
+  variant = "juniper",
   ...props
 }: StatefulButtonProps) {
   const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
@@ -71,14 +71,22 @@ export function StatefulButton({
     }
   };
 
-  const isOchre = variant === "ochre";
-  const textColor = isOchre ? "#0F1F38" : "#FFFFFF";
+  const isJuniper = variant === "juniper" || variant === "ochre"; // default primary CTA
+  const isMustard = variant === "mustard";
+  const isFig = variant === "fig" || variant === "navy";
+  const isOutline = variant === "outline";
+
+  let textColor = "#F5F3EC";
+  if (isMustard) textColor = "#1C2822";
+  else if (isOutline) textColor = "#1C2822";
 
   const defaultIcon = icon || (
     <ArrowUpRight
       className={cn(
         "w-4 h-4 transition-colors",
-        isOchre ? "text-[#0F1F38]/80 group-hover:text-[#0F1F38]" : "text-white/80 group-hover:text-white"
+        isMustard || isOutline
+          ? "text-[#1C2822]/80 group-hover:text-[#1C2822]"
+          : "text-[#F5F3EC]/90 group-hover:text-[#F5F3EC]"
       )}
     />
   );
@@ -112,7 +120,7 @@ export function StatefulButton({
             transition={{ duration: 0.15 }}
             className="inline-flex items-center gap-2"
           >
-            <Loader2 className={cn("w-4 h-4 animate-spin", isOchre ? "text-[#0F1F38]" : "text-[#E08E0B]")} />
+            <Loader2 className={cn("w-4 h-4 animate-spin", isMustard ? "text-[#1C2822]" : "text-[#D98A29]")} />
             <span style={{ color: textColor }} className="text-xs font-mono font-medium">Opening...</span>
           </motion.span>
         )}
@@ -126,7 +134,7 @@ export function StatefulButton({
             transition={{ duration: 0.15 }}
             className="inline-flex items-center gap-1.5"
           >
-            <Check className={cn("w-4 h-4", isOchre ? "text-[#0F1F38]" : "text-[#E08E0B]")} />
+            <Check className={cn("w-4 h-4", isMustard ? "text-[#1C2822]" : "text-[#D98A29]")} />
             <span style={{ color: textColor }} className="text-xs font-mono font-bold">
               {successText || "Connected"}
             </span>
@@ -138,9 +146,10 @@ export function StatefulButton({
 
   const baseClasses = cn(
     "group relative inline-flex items-center justify-center px-5 sm:px-6 py-2.5 sm:py-3 rounded-full transition-all shadow-sm active:scale-[0.98] cursor-pointer text-xs sm:text-sm font-semibold select-none",
-    isOchre && "bg-[#E08E0B] hover:bg-[#CF8106] text-[#0F1F38] border border-[#C47905] shadow-sm shadow-[#E08E0B]/20",
-    variant === "navy" && "bg-[#0F1F38] hover:bg-[#1A3154] text-white border border-[#0F1F38]",
-    variant === "outline" && "bg-white hover:bg-[#F4F6F9] text-[#0F1F38] border border-[#D5DCE6]",
+    isJuniper && "bg-[#1B533E] hover:bg-[#143F2F] text-[#F5F3EC] border border-[#143F2F] shadow-sm shadow-[#1B533E]/20",
+    isMustard && "bg-[#D98A29] hover:bg-[#C2781E] text-[#1C2822] border border-[#B36F1B] shadow-sm shadow-[#D98A29]/20",
+    isFig && "bg-[#1C2822] hover:bg-[#2A3C33] text-[#F5F3EC] border border-[#1C2822]",
+    isOutline && "bg-[#D0D9CD] hover:bg-[#E3E8E1] text-[#1C2822] border border-[rgba(28,40,34,0.16)]",
     status === "loading" && "cursor-wait opacity-90",
     className
   );

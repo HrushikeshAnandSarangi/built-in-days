@@ -58,18 +58,18 @@ export function TestimonialsSection() {
   return (
     <section
       id="testimonials"
-      className="py-20 sm:py-28 bg-[#F4F6F9] border-t border-[#D5DCE6] scroll-mt-16"
+      className="py-20 sm:py-28 bg-[#F5F3EC] border-t border-[rgba(28,40,34,0.16)] scroll-mt-16"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex items-center justify-between gap-6 pb-6 sm:pb-8 border-b border-[#D5DCE6]">
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.035em] leading-[1.0] text-[#0F1F38]">
+        <div className="flex items-center justify-between gap-6 pb-6 sm:pb-8 border-b border-[rgba(28,40,34,0.16)]">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.035em] leading-[1.0] text-[#1C2822]">
             Testimonials
           </h2>
 
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#E08E0B] hover:bg-[#CF8106] text-[#0F1F38] text-xs sm:text-[13px] font-bold transition-all shrink-0 shadow-sm border border-[#C47905] active:scale-95"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1B533E] hover:bg-[#143F2F] text-[#F5F3EC] text-xs sm:text-[13px] font-bold transition-all shrink-0 shadow-sm border border-[#143F2F] active:scale-95"
           >
             <span>Collaborate on a project ↗</span>
           </a>
@@ -80,42 +80,43 @@ export function TestimonialsSection() {
           {testimonials.map((t) => (
             <div
               key={t.id}
-              className="rounded-3xl border border-[#D5DCE6] bg-white p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 shadow-sm hover:shadow-md hover:border-[#1D56B3] group"
+              className="rounded-3xl border border-[rgba(28,40,34,0.16)] bg-[#D0D9CD] p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 shadow-sm hover:shadow-md hover:border-[#1B533E] group"
             >
               <div>
                 {/* Header row with index tag and verified badge */}
                 <div className="flex items-center justify-between gap-2 mb-5">
-                  <span className="font-mono text-xs font-semibold text-[#0F1F38] px-3 py-1 rounded-full bg-[#F4F6F9] border border-[#D5DCE6] shadow-2xs">
+                  <span className="font-mono text-xs font-semibold text-[#1C2822] px-3 py-1 rounded-full bg-[#F5F3EC] border border-[rgba(28,40,34,0.16)] shadow-2xs">
                     {t.index} · {t.projectTag}
                   </span>
-                  <span className="inline-flex items-center gap-1 text-[11px] font-mono text-[#1D56B3] bg-[#1D56B3]/10 px-2 py-0.5 rounded-full border border-[#1D56B3]/30 shrink-0 font-bold">
-                    <Check className="w-3 h-3 text-[#1D56B3]" />
+                  <span className="inline-flex items-center gap-1 text-[11px] font-mono text-[#1B533E] bg-[#1B533E]/10 px-2 py-0.5 rounded-full border border-[#1B533E]/30 shrink-0 font-bold">
+                    <Check className="w-3 h-3 text-[#1B533E]" />
                     <span>verified</span>
                   </span>
                 </div>
 
                 {/* Quote Text */}
                 <div className="relative">
-                  <Quote className="w-5 h-5 text-[#D5DCE6] absolute -top-1 -left-1 pointer-events-none group-hover:text-[#1D56B3]/40 transition-colors" />
-                  <p className="relative pl-4 text-xs sm:text-sm text-[#52647C] leading-relaxed font-sans font-normal">
+                  <Quote className="w-5 h-5 text-[rgba(28,40,34,0.2)] absolute -top-1 -left-1 pointer-events-none group-hover:text-[#1B533E]/40 transition-colors" />
+                  <p className="relative pl-4 text-xs sm:text-sm text-[#32443A] leading-relaxed font-sans font-normal">
                     &ldquo;{t.quote}&rdquo;
                   </p>
                 </div>
               </div>
 
-              {/* Author Info & Verified Metric Footer */}
-              <div className="mt-8 pt-5 border-t border-[#D5DCE6]/70 flex flex-col gap-2.5">
+              {/* Author Info & Metric Verification Badge */}
+              <div className="mt-6 pt-5 border-t border-[rgba(28,40,34,0.16)] flex flex-col gap-2.5">
                 <div>
-                  <div className="font-bold text-[#0F1F38] text-sm tracking-tight">
+                  <div className="font-display font-bold text-sm sm:text-base text-[#1C2822] tracking-tight">
                     {t.author}
                   </div>
-                  <div className="text-xs font-mono text-[#52647C]">
+                  <div className="text-xs text-[#32443A] font-mono">
                     {t.role} · {t.organization}
                   </div>
                 </div>
 
-                <div className="inline-flex items-center text-[10.5px] font-mono text-[#0F1F38] bg-[#F4F6F9] px-2.5 py-1 rounded-lg border border-[#D5DCE6] shadow-2xs self-start">
-                  <span className="text-[#1D56B3] font-bold mr-1.5">✓</span>
+                {/* Empirical metric tag */}
+                <div className="inline-flex items-center gap-1.5 text-[11px] font-mono text-[#D98A29] border border-[#D98A29]/30 bg-[#D98A29]/10 px-2.5 py-1 rounded-lg w-fit">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#D98A29]" />
                   <span>{t.metric}</span>
                 </div>
               </div>
