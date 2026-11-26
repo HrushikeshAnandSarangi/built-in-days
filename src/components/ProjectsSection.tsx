@@ -69,8 +69,8 @@ export function ProjectsSection() {
           <div className="flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
             <DiagnosticAuditAnimation className="w-44 h-32 shrink-0" />
             <div>
-              <div className="text-xs font-mono text-zinc-400 uppercase tracking-wider">
-                // empirical verification standard
+              <div className="text-xs font-mono text-emerald-700 font-semibold uppercase tracking-wider">
+                Empirical Verification Standard
               </div>
               <div className="text-lg sm:text-xl font-bold text-zinc-950 mt-1">
                 Every Product Backed by Reproducible Benchmarks

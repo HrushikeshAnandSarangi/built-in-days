@@ -28,7 +28,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           <span className="w-2.5 h-2.5 rounded-full bg-zinc-300" />
           <span className="w-2.5 h-2.5 rounded-full bg-zinc-300" />
           <span className="text-xs font-mono text-zinc-600 ml-2">
-            {projectNumber} // {project.id}.app
+            {projectNumber}
           </span>
         </div>
 
@@ -140,19 +140,6 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               </div>
             ))}
           </div>
-        </div>
-
-        {/* Tech Stack */}
-        <div className="mt-6 pt-4 border-t border-zinc-100 flex flex-wrap items-center gap-2">
-          <span className="text-xs font-mono text-zinc-400">// stack:</span>
-          {project.techStack.map((tech) => (
-            <span
-              key={tech}
-              className="text-xs font-mono text-zinc-700 px-2.5 py-0.5 rounded bg-zinc-100 border border-zinc-200"
-            >
-              {tech}
-            </span>
-          ))}
         </div>
       </div>
     </div>

@@ -50,7 +50,7 @@ export function OxideScreen() {
         {/* Live Build Stream Terminal */}
         <div className="p-3 rounded-lg bg-zinc-900/60 border border-zinc-800/80 space-y-1 text-[11px]">
           <div className="flex items-center justify-between text-zinc-500 text-[10px] pb-1 border-b border-zinc-800/60">
-            <span>// nix-build-stream.log</span>
+            <span>nix-build-stream.log</span>
             <span className="text-emerald-400">STAGE 4/4 COMPLETED</span>
           </div>
           <div className="text-zinc-400 flex items-center gap-2">
@@ -143,7 +143,7 @@ export function PolynotesScreen() {
         {/* Real-time Transcription Stream */}
         <div className="p-3 rounded-lg bg-zinc-900/60 border border-zinc-800 text-[11px] space-y-1.5">
           <div className="flex items-center justify-between text-zinc-400 text-[10px]">
-            <span>// live on-device speech-to-text token stream</span>
+            <span>live on-device speech-to-text token stream</span>
             <span className="text-emerald-400">48x REAL-TIME</span>
           </div>
           <p className="text-zinc-200 leading-relaxed text-xs">

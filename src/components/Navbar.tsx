@@ -30,9 +30,6 @@ export function Navbar() {
           className="text-zinc-950 font-bold tracking-tight text-sm sm:text-base hover:text-emerald-700 transition-colors flex items-center gap-1.5 shrink-0"
         >
           <span className="font-bold text-zinc-950 tracking-[-0.03em]">Hrushikesh</span>
-          <span className="text-zinc-400 font-normal hidden sm:inline text-xs font-mono tracking-normal">
-            / engineering
-          </span>
         </a>
 
         {/* Desktop Nav Links (Services, Testimonials, Case Study, Projects) */}

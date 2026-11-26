@@ -20,8 +20,6 @@ export function Footer() {
             <span className="font-bold text-zinc-950 font-sans text-xs">
               Hrushikesh Anand Sarangi
             </span>
-            <span className="text-zinc-300">/</span>
-            <span>Systems & Web Software</span>
           </div>
 
           <div className="flex items-center gap-5 sm:gap-6 shrink-0 text-zinc-700">
@@ -47,9 +45,9 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-4 pt-4 border-t border-zinc-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-zinc-400 text-[10px] font-mono">
-          <div>Built with Next.js 16, TypeScript, Tailwind CSS & Framer Motion. Zero bloat.</div>
-          <div>NIT Rourkela, Odisha, India · © 2026 Hrushikesh Anand Sarangi</div>
+        <div className="mt-4 pt-4 border-t border-zinc-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-zinc-400 text-[11px] font-mono">
+          <div>Rourkela, Odisha, India</div>
+          <div>© 2026 Hrushikesh Anand Sarangi</div>
         </div>
       </div>
     </footer>
