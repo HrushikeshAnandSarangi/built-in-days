@@ -69,6 +69,27 @@ export const projects: Project[] = [
     screenType: "web",
   },
   {
+    id: "codecanvax",
+    title: "CodeCanvax",
+    type: "Digital Agency & Software Studio Platform",
+    category: "Web Applications",
+    year: "2026",
+    tagline: "Official portfolio platform for a digital product and software development agency",
+    description:
+      "A bespoke digital agency web platform engineered for CodeCanvax, a software development and digital product studio based in Bhubaneswar. Features interactive spatial canvas typography, high-velocity case study routing, client testimonial integrations, and a clean engineering design system.",
+    highlights: [
+      "Custom Brand & Canvas Identity: Modular typography layout with interactive cursor handles and spatial grid aesthetics",
+      "Agency Capability Architecture: Dedicated sections for full-stack engineering, scalable systems, and digital product craft",
+      "Sub-Second Asset Delivery: Highly optimized asset pipeline delivering zero layout shift across all viewport sizes",
+      "Client Conversion Pipeline: Seamless inquiry routing, interactive contact triggers, and verified review showcases",
+    ],
+    techStack: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Framer Motion"],
+    image: "/projects/codecanvax.png",
+    githubUrl: undefined,
+    liveUrl: undefined,
+    screenType: "web",
+  },
+  {
     id: "ieee-indiscon-2025",
     title: "IEEE Indiscon 2025",
     type: "International Conference Portal",
