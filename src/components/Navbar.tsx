@@ -1,9 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { StatefulButton } from "./ui/stateful-button";
-import { LinkPreview } from "./ui/link-preview";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -19,7 +18,7 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-4 sm:pt-6 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-4 sm:pt-6 flex items-center justify-between relative">
         {/* Brand (Left) - Protected by frosted pill for 100% contrast on scroll */}
         <div className="pointer-events-auto shrink-0">
           <a
@@ -36,7 +35,7 @@ export function Navbar() {
         </div>
 
         {/* Floating Capsule (Center) - Matches reference pill with embedded CTA */}
-        <div className="pointer-events-auto hidden md:flex items-center">
+        <div className="pointer-events-auto hidden md:flex items-center md:absolute md:left-1/2 md:-translate-x-1/2">
           <div
             className={`glass-nav-capsule pl-6 pr-1.5 py-1.5 flex items-center gap-7 transition-all duration-300 ${
               scrolled ? "shadow-md bg-white/90" : "bg-white/80"
@@ -78,30 +77,6 @@ export function Navbar() {
             >
               Work Together
             </StatefulButton>
-          </div>
-        </div>
-
-        {/* Secondary Links (Right) - Protected by frosted pill for 100% contrast on scroll */}
-        <div className="pointer-events-auto hidden lg:flex items-center">
-          <div className="inline-flex items-center gap-4 px-4 py-2 rounded-full bg-white/90 backdrop-blur-md border border-white/80 shadow-xs text-xs font-medium text-[#2E4A3B]">
-            <LinkPreview url="https://github.com/hrushikeshsarangi7">
-              <span className="hover:text-[#14291E] transition-colors flex items-center gap-1 cursor-pointer">
-                <span>GitHub</span>
-                <ArrowUpRight className="w-3 h-3 text-[#1B533E]" />
-              </span>
-            </LinkPreview>
-
-            <span className="text-[rgba(26,56,40,0.2)]">|</span>
-
-            <a
-              href="https://hrushi.is-a.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-[#14291E] transition-colors flex items-center gap-1"
-            >
-              <span>Resume</span>
-              <ArrowUpRight className="w-3 h-3 text-[#1B533E]" />
-            </a>
           </div>
         </div>
 

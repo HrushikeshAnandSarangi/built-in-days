@@ -109,44 +109,15 @@ export const StickyScroll = ({
               }}
             />
 
-            {/* TOP ROW: Progress Tracker `1 ─── 3` matching reference */}
+            {/* TOP ROW: Service Category Badge & Tagline (Progress tracker removed as requested) */}
             <div>
               <div className="flex items-center justify-between pb-3 border-b border-[rgba(26,56,40,0.1)]">
-                <div className="flex items-center gap-3">
-                  {content.map((item, idx) => (
-                    <button
-                      key={item.id}
-                      type="button"
-                      onClick={() => handleSelectCard(idx)}
-                      className={cn(
-                        "font-mono text-xs transition-all cursor-pointer font-bold px-1.5 py-0.5 rounded",
-                        activeCard === idx
-                          ? "text-[#183627] bg-[#183627]/10"
-                          : "text-[#3A5646]/50 hover:text-[#183627]"
-                      )}
-                    >
-                      {item.num}
-                    </button>
-                  ))}
-
-                  {/* Connecting Progress Line */}
-                  <div className="w-20 sm:w-28 h-[2px] bg-[rgba(26,56,40,0.15)] relative overflow-hidden rounded-full">
-                    <motion.div
-                      className="absolute inset-y-0 left-0 bg-[#183627]"
-                      animate={{
-                        width: `${((activeCard + 1) / content.length) * 100}%`,
-                      }}
-                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                    />
-                  </div>
-
-                  <span className="font-mono text-xs text-[#3A5646]/60 font-medium">
-                    0{content.length}
-                  </span>
+                <div className="text-xs font-mono text-[#183627] font-bold uppercase tracking-wider flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#D98A29] shrink-0" />
+                  <span>{currentItem.badge}</span>
                 </div>
 
-                <div className="text-[11px] font-mono text-[#183627] font-bold uppercase tracking-wider hidden sm:flex items-center gap-1.5 ml-4 text-right truncate">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#D98A29] shrink-0" />
+                <div className="text-[11px] font-mono text-[#3A5646] font-medium hidden sm:flex items-center gap-1.5 ml-4 text-right truncate">
                   <span className="truncate">{currentItem.tagline}</span>
                 </div>
               </div>
