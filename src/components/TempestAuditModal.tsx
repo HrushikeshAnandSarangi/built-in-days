@@ -47,23 +47,23 @@ export function TempestAuditModal({ isOpen: controlledIsOpen, onClose: controlle
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-5xl max-h-[92vh] bg-[#F7F5EE] rounded-3xl border border-zinc-200 shadow-2xl flex flex-col overflow-hidden text-zinc-900"
+        className="relative w-full max-w-5xl max-h-[92vh] bg-[#F7F6F1] rounded-3xl border border-zinc-200 shadow-2xl flex flex-col overflow-hidden text-zinc-900"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Sticky Header */}
-        <div className="sticky top-0 z-20 flex items-center justify-between px-6 py-4 bg-[#F7F5EE]/95 backdrop-blur-md border-b border-[rgba(26,56,40,0.12)]">
+        <div className="sticky top-0 z-20 flex items-center justify-between px-6 py-4 bg-[#F7F6F1]/95 backdrop-blur-md border-b border-[#DCE6F2]">
           <div className="flex items-center gap-3">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#D98A29] animate-pulse" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#6C8EBF] animate-pulse" />
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-[11px] font-mono uppercase tracking-wider font-bold text-[#183627]">
+                <span className="text-[11px] font-mono uppercase tracking-wider font-bold text-[#1A2B4C]">
                   Verified Audit Case Study
                 </span>
-                <span className="text-xs font-mono text-[#3A5646] hidden sm:inline">
+                <span className="text-xs font-mono text-[#475D7A] hidden sm:inline">
                   Commit 0b57702
                 </span>
               </div>
-              <h2 className="font-display text-base sm:text-lg font-bold text-[#152E20] tracking-tight mt-0.5">
+              <h2 className="font-display text-base sm:text-lg font-bold text-[#1A2B4C] tracking-tight mt-0.5">
                 Tempest Performance &amp; Concurrency Audit
               </h2>
             </div>
@@ -74,7 +74,7 @@ export function TempestAuditModal({ isOpen: controlledIsOpen, onClose: controlle
             <a
               href="/audit/tempest-performance-audit.docx"
               download="tempest-performance-audit.docx"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#D98A29] hover:bg-[#C2781E] text-[#152E20] text-xs font-mono font-bold transition-all shadow-sm active:scale-95 border border-[#B36F1B]"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#6C8EBF] hover:bg-[#5778A8] text-[#1A2B4C] text-xs font-mono font-bold transition-all shadow-sm active:scale-95 border border-[#1A2B4C]"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Download (.docx)</span>
@@ -83,7 +83,7 @@ export function TempestAuditModal({ isOpen: controlledIsOpen, onClose: controlle
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="p-1.5 rounded-xl text-[#3A5646] hover:text-[#152E20] hover:bg-[#F7F5EE] transition-colors"
+              className="p-1.5 rounded-xl text-[#475D7A] hover:text-[#1A2B4C] hover:bg-[#F7F6F1] transition-colors"
               aria-label="Close modal"
             >
               <X className="w-5 h-5" />
@@ -92,37 +92,37 @@ export function TempestAuditModal({ isOpen: controlledIsOpen, onClose: controlle
         </div>
 
         {/* Scrollable Content Body */}
-        <div className="overflow-y-auto px-6 sm:px-8 py-6 space-y-10 text-xs sm:text-sm leading-relaxed text-[#3A5646] font-sans">
+        <div className="overflow-y-auto px-6 sm:px-8 py-6 space-y-10 text-xs sm:text-sm leading-relaxed text-[#475D7A] font-sans">
           {/* Executive Overview Banner */}
-          <div className="rounded-2xl border border-[rgba(26,56,40,0.12)] bg-[#F7F5EE] p-5 sm:p-6 space-y-3">
+          <div className="rounded-2xl border border-[#DCE6F2] bg-[#F7F6F1] p-5 sm:p-6 space-y-3">
             <div className="flex items-center justify-between flex-wrap gap-2">
-              <span className="text-xs font-mono font-bold text-[#152E20] uppercase tracking-wider">
+              <span className="text-xs font-mono font-bold text-[#1A2B4C] uppercase tracking-wider">
                 Production Readiness Review &amp; Technical Risk Assessment
               </span>
-              <span className="text-xs font-mono text-[#3A5646]">
+              <span className="text-xs font-mono text-[#475D7A]">
                 Client: Tempest Core Systems
               </span>
             </div>
-            <p className="text-[#152E20] text-sm leading-relaxed">
+            <p className="text-[#1A2B4C] text-sm leading-relaxed">
               <strong>Executive Summary:</strong> We executed an empirical performance, concurrency,
               and mutation audit of Tempest across its core workspace subsystems:{" "}
-              <code className="text-xs font-mono bg-[#F7F5EE] px-1.5 py-0.5 rounded text-[#152E20] border border-[rgba(26,56,40,0.12)]">
+              <code className="text-xs font-mono bg-[#F7F6F1] px-1.5 py-0.5 rounded text-[#1A2B4C] border border-[#DCE6F2]">
                 tasks_store
               </code>{" "}
               (SQLite persistence),{" "}
-              <code className="text-xs font-mono bg-[#F7F5EE] px-1.5 py-0.5 rounded text-[#152E20] border border-[rgba(26,56,40,0.12)]">
+              <code className="text-xs font-mono bg-[#F7F6F1] px-1.5 py-0.5 rounded text-[#1A2B4C] border border-[#DCE6F2]">
                 hephaestus
               </code>{" "}
               (network isolation proxy),{" "}
-              <code className="text-xs font-mono bg-[#F7F5EE] px-1.5 py-0.5 rounded text-[#152E20] border border-[rgba(26,56,40,0.12)]">
+              <code className="text-xs font-mono bg-[#F7F6F1] px-1.5 py-0.5 rounded text-[#1A2B4C] border border-[#DCE6F2]">
                 service_proxy
               </code>{" "}
               (internal routing),{" "}
-              <code className="text-xs font-mono bg-[#F7F5EE] px-1.5 py-0.5 rounded text-[#152E20] border border-[rgba(26,56,40,0.12)]">
+              <code className="text-xs font-mono bg-[#F7F6F1] px-1.5 py-0.5 rounded text-[#1A2B4C] border border-[#DCE6F2]">
                 dbiso
               </code>{" "}
               (ephemeral database management), and{" "}
-              <code className="text-xs font-mono bg-[#F7F5EE] px-1.5 py-0.5 rounded text-[#152E20] border border-[rgba(26,56,40,0.12)]">
+              <code className="text-xs font-mono bg-[#F7F6F1] px-1.5 py-0.5 rounded text-[#1A2B4C] border border-[#DCE6F2]">
                 node_ingest
               </code>{" "}
               (document IPC processing). While memory residency is stable (9.0 MB RSS) with zero heap
@@ -130,26 +130,26 @@ export function TempestAuditModal({ isOpen: controlledIsOpen, onClose: controlle
               database commits and untested error-recovery paths in the proxy hot path.
             </p>
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 border-t border-[rgba(26,56,40,0.12)] text-xs font-mono">
-              <div className="p-2.5 rounded-xl bg-[#F7F5EE] border border-[rgba(26,56,40,0.12)]">
-                <div className="text-[#3A5646] text-[11px]">Measured Speedup</div>
-                <div className="text-base font-bold text-[#D98A29] mt-0.5">141.5x</div>
-                <div className="text-[10px] text-[#3A5646]">782ms → 9.6ms P99</div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 border-t border-[#DCE6F2] text-xs font-mono">
+              <div className="p-2.5 rounded-xl bg-[#F7F6F1] border border-[#DCE6F2]">
+                <div className="text-[#475D7A] text-[11px]">Measured Speedup</div>
+                <div className="text-base font-bold text-[#6C8EBF] mt-0.5">141.5x</div>
+                <div className="text-[10px] text-[#475D7A]">782ms → 9.6ms P99</div>
               </div>
-              <div className="p-2.5 rounded-xl bg-[#F7F5EE] border border-[rgba(26,56,40,0.12)]">
-                <div className="text-[#3A5646] text-[11px]">Peak Heap Overhead</div>
-                <div className="text-base font-bold text-[#152E20] mt-0.5">&lt; 391 KB</div>
-                <div className="text-[10px] text-[#183627]">0 heap leaks (DHAT)</div>
+              <div className="p-2.5 rounded-xl bg-[#F7F6F1] border border-[#DCE6F2]">
+                <div className="text-[#475D7A] text-[11px]">Peak Heap Overhead</div>
+                <div className="text-base font-bold text-[#1A2B4C] mt-0.5">&lt; 391 KB</div>
+                <div className="text-[10px] text-[#1A2B4C]">0 heap leaks (DHAT)</div>
               </div>
-              <div className="p-2.5 rounded-xl bg-[#F7F5EE] border border-[rgba(26,56,40,0.12)]">
-                <div className="text-[#3A5646] text-[11px]">Soak Test RSS</div>
-                <div className="text-base font-bold text-[#152E20] mt-0.5">9.0 MB Flat</div>
-                <div className="text-[10px] text-[#3A5646]">1.6M ops / 300s</div>
+              <div className="p-2.5 rounded-xl bg-[#F7F6F1] border border-[#DCE6F2]">
+                <div className="text-[#475D7A] text-[11px]">Soak Test RSS</div>
+                <div className="text-base font-bold text-[#1A2B4C] mt-0.5">9.0 MB Flat</div>
+                <div className="text-[10px] text-[#475D7A]">1.6M ops / 300s</div>
               </div>
-              <div className="p-2.5 rounded-xl bg-[#F7F5EE] border border-[rgba(26,56,40,0.12)]">
-                <div className="text-[#3A5646] text-[11px]">Scheduler Traces</div>
-                <div className="text-base font-bold text-[#152E20] mt-0.5">16,265</div>
-                <div className="text-[10px] text-[#3A5646]">Linux perf events</div>
+              <div className="p-2.5 rounded-xl bg-[#F7F6F1] border border-[#DCE6F2]">
+                <div className="text-[#475D7A] text-[11px]">Scheduler Traces</div>
+                <div className="text-base font-bold text-[#1A2B4C] mt-0.5">16,265</div>
+                <div className="text-[10px] text-[#475D7A]">Linux perf events</div>
               </div>
             </div>
           </div>
@@ -173,7 +173,7 @@ export function TempestAuditModal({ isOpen: controlledIsOpen, onClose: controlle
                     <th className="py-2.5 px-4 font-bold">Production Severity</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-zinc-200 bg-[#F7F5EE]">
+                <tbody className="divide-y divide-zinc-200 bg-[#F7F6F1]">
                   <tr>
                     <td className="py-3 px-4 font-semibold text-zinc-950">
                       1. Database Mutex Lockout
@@ -298,7 +298,7 @@ export function TempestAuditModal({ isOpen: controlledIsOpen, onClose: controlle
                     <th className="py-2 px-3 font-bold">Observed Thread Impact</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-zinc-200 bg-[#F7F5EE] text-[11.5px]">
+                <tbody className="divide-y divide-zinc-200 bg-[#F7F6F1] text-[11.5px]">
                   <tr>
                     <td className="py-2.5 px-3 font-bold text-rose-700">sqlite3_step -&gt; fsync</td>
                     <td className="py-2.5 px-3">4,638</td>
@@ -358,7 +358,7 @@ export function TempestAuditModal({ isOpen: controlledIsOpen, onClose: controlle
                     <th className="py-2 px-3 font-bold">Timeouts</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-zinc-200 bg-[#F7F5EE] text-[11.5px]">
+                <tbody className="divide-y divide-zinc-200 bg-[#F7F6F1] text-[11.5px]">
                   <tr>
                     <td className="py-2 px-3 text-zinc-700">Baseline Async Task</td>
                     <td className="py-2 px-3">c = 1</td>
@@ -433,7 +433,7 @@ export function TempestAuditModal({ isOpen: controlledIsOpen, onClose: controlle
                     <th className="py-2 px-3 font-bold">Primary Failure Risk</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-zinc-200 bg-[#F7F5EE] text-[11.5px]">
+                <tbody className="divide-y divide-zinc-200 bg-[#F7F6F1] text-[11.5px]">
                   <tr>
                     <td className="py-2.5 px-3 font-semibold text-zinc-950">Hephaestus (Proxy)</td>
                     <td className="py-2.5 px-3">204</td>
@@ -475,7 +475,7 @@ export function TempestAuditModal({ isOpen: controlledIsOpen, onClose: controlle
                     <th className="py-2 px-3 font-bold">Observed Network Behavior</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-zinc-200 bg-[#F7F5EE] text-[11.5px]">
+                <tbody className="divide-y divide-zinc-200 bg-[#F7F6F1] text-[11.5px]">
                   <tr>
                     <td className="py-2 px-3">c = 10</td>
                     <td className="py-2 px-3">177.3</td>
@@ -570,7 +570,7 @@ export function TempestAuditModal({ isOpen: controlledIsOpen, onClose: controlle
                     <th className="py-2.5 px-4 font-bold">Speedup</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-zinc-200 bg-[#F7F5EE]">
+                <tbody className="divide-y divide-zinc-200 bg-[#F7F6F1]">
                   <tr>
                     <td className="py-3 px-4 text-zinc-700">
                       Baseline: DbState (Mutex&lt;Conn&gt;), DELETE/FULL
@@ -608,7 +608,7 @@ export function TempestAuditModal({ isOpen: controlledIsOpen, onClose: controlle
                     <th className="py-2 px-3 font-bold">Expected Impact & Value</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-zinc-200 bg-[#F7F5EE] text-[11.5px]">
+                <tbody className="divide-y divide-zinc-200 bg-[#F7F6F1] text-[11.5px]">
                   <tr>
                     <td className="py-2.5 px-3 font-bold text-zinc-950">Dedicated Writer + WAL NORMAL</td>
                     <td className="py-2.5 px-3 text-zinc-600">src-tauri/src/lib.rs, tasks_store.rs</td>
@@ -654,9 +654,9 @@ export function TempestAuditModal({ isOpen: controlledIsOpen, onClose: controlle
         </div>
 
         {/* Sticky Footer Bar with Download & Contact Buttons */}
-        <div className="sticky bottom-0 z-20 flex items-center justify-between px-6 py-4 bg-[#F7F5EE] border-t border-[rgba(26,56,40,0.12)]">
-          <div className="flex items-center gap-2 text-xs font-mono text-[#3A5646]">
-            <FileText className="w-4 h-4 text-[#183627]" />
+        <div className="sticky bottom-0 z-20 flex items-center justify-between px-6 py-4 bg-[#F7F6F1] border-t border-[#DCE6F2]">
+          <div className="flex items-center gap-2 text-xs font-mono text-[#475D7A]">
+            <FileText className="w-4 h-4 text-[#1A2B4C]" />
             <span>Complete technical deliverable: 805 KB (.docx)</span>
           </div>
 
@@ -664,7 +664,7 @@ export function TempestAuditModal({ isOpen: controlledIsOpen, onClose: controlle
             <a
               href="/audit/tempest-performance-audit.docx"
               download="tempest-performance-audit.docx"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#D98A29] hover:bg-[#C2781E] text-[#152E20] font-mono text-xs font-bold transition-all shadow-sm active:scale-95 border border-[#B36F1B]"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6C8EBF] hover:bg-[#5778A8] text-[#1A2B4C] font-mono text-xs font-bold transition-all shadow-sm active:scale-95 border border-[#1A2B4C]"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Download Audit Document (.docx)</span>
@@ -673,7 +673,7 @@ export function TempestAuditModal({ isOpen: controlledIsOpen, onClose: controlle
             <a
               href="#contact"
               onClick={onClose}
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-[#152E20] hover:bg-[#25352D] text-white font-mono text-xs font-semibold transition-all"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-[#1A2B4C] hover:bg-[#25352D] text-white font-mono text-xs font-semibold transition-all"
             >
               <span>Book an Audit ↗</span>
             </a>

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { StatefulButton } from "./ui/stateful-button";
+import { PixelFlowerIcon, PixelSparkle } from "./ui/pixel-sprites";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -10,142 +10,113 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 25);
+      setScrolled(window.scrollY > 24);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navLinks = [
+    { label: "Services", href: "#services" },
+    { label: "Work", href: "#projects" },
+    { label: "Case Study", href: "#case-study" },
+    { label: "Kind Words", href: "#testimonials" },
+  ];
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-4 sm:pt-6 flex items-center justify-between relative">
-        {/* Brand (Left) - Protected by frosted pill for 100% contrast on scroll */}
-        <div className="pointer-events-auto shrink-0">
-          <a
-            href="#"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 backdrop-blur-md border border-white/80 shadow-xs text-[#14291E] transition-all hover:bg-white hover:shadow-sm"
-          >
-            <span className="text-sm select-none">🌲</span>
-            <span className="font-display font-bold text-base sm:text-lg text-[#14291E] tracking-tight">
-              Hrushikesh
+    <header
+      className={`sticky top-0 z-50 w-full transition-all duration-200 ${
+        scrolled
+          ? "bg-[#F7F6F1]/95 backdrop-blur-md border-b-[1.5px] border-[#1A2B4C] shadow-[0_3px_0_#DCE6F2]"
+          : "bg-[#F7F6F1]/90 backdrop-blur-sm border-b border-[#DCE6F2]"
+      }`}
+    >
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+        {/* Brand Monogram */}
+        <a
+          href="#"
+          className="inline-flex items-center gap-2.5 group shrink-0"
+        >
+          <span className="w-9 h-9 rounded bg-white border-[1.5px] border-[#1A2B4C] shadow-[2px_2px_0px_#DCE6F2] group-hover:shadow-[3px_3px_0px_#A3BFE0] group-hover:-translate-y-0.5 transition-all flex items-center justify-center">
+            <PixelFlowerIcon size={24} />
+          </span>
+          <div className="flex flex-col leading-none">
+            <span className="font-pixel-display font-bold text-lg sm:text-xl text-[#1A2B4C] tracking-tight flex items-center gap-1">
+              HRUSHIKESH
+              <PixelSparkle size={12} />
             </span>
-            <span className="text-[10px] font-mono font-bold text-[#1B533E] -mt-1.5">
-              ™
+            <span className="font-pixel text-[9px] text-[#475D7A] tracking-widest uppercase">
+              SYSTEMS &amp; FULL-STACK
             </span>
-          </a>
-        </div>
-
-        {/* Floating Capsule (Center) - Matches reference pill with embedded CTA */}
-        <div className="pointer-events-auto hidden md:flex items-center md:absolute md:left-1/2 md:-translate-x-1/2">
-          <div
-            className={`glass-nav-capsule pl-5 pr-1.5 py-1.5 flex items-center gap-5 sm:gap-6 transition-all duration-300 ${
-              scrolled ? "shadow-md bg-white/95" : "bg-white/85"
-            }`}
-          >
-            <nav className="flex items-center gap-5 text-[13px] font-sans font-medium text-[#2E4A3B] whitespace-nowrap">
-              <a
-                href="#services"
-                className="hover:text-[#14291E] transition-colors py-1"
-              >
-                Services
-              </a>
-              <a
-                href="#case-study"
-                className="hover:text-[#14291E] transition-colors py-1"
-              >
-                Case Study
-              </a>
-              <a
-                href="#projects"
-                className="hover:text-[#14291E] transition-colors py-1"
-              >
-                Projects
-              </a>
-              <a
-                href="#testimonials"
-                className="hover:text-[#14291E] transition-colors py-1"
-              >
-                Testimonials
-              </a>
-            </nav>
-
-            {/* Quiet Place Coral Accent CTA inside pill */}
-            <StatefulButton
-              href="#contact"
-              variant="coral"
-              successText="Opening..."
-              className="py-1.5 px-4 text-xs font-semibold tracking-wide whitespace-nowrap shrink-0"
-            >
-              Start Journey →
-            </StatefulButton>
           </div>
-        </div>
+        </a>
 
-        {/* Mobile Hamburger (Right on small screens) */}
-        <div className="pointer-events-auto md:hidden flex items-center">
+        {/* Desktop Nav Links */}
+        <nav className="hidden md:flex items-center gap-1 bg-white border-[1.5px] border-[#1A2B4C] rounded-md px-2 py-1 shadow-[3px_3px_0px_#DCE6F2]">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="px-3 py-1.5 rounded font-pixel text-[11px] font-bold uppercase tracking-wider text-[#475D7A] hover:text-[#1A2B4C] hover:bg-[#DCE6F2]/60 transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        {/* Right Actions */}
+        <div className="flex items-center gap-2.5 shrink-0">
+          <a
+            href="#contact"
+            className="hidden sm:inline-flex pixel-btn-primary py-2 px-4 text-[11px]"
+          >
+            <span>GET IN TOUCH</span>
+            <span>&gt;</span>
+          </a>
+
+          {/* Mobile Menu Toggle */}
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-full text-[#14291E] bg-white/85 backdrop-blur-md border border-white/80 shadow-sm"
-            aria-label="Toggle navigation menu"
+            className="md:hidden p-2 rounded bg-white border-[1.5px] border-[#1A2B4C] text-[#1A2B4C] shadow-[2px_2px_0px_#DCE6F2]"
+            aria-label="Toggle Menu"
           >
-            {mobileMenuOpen ? (
-              <X className="w-5 h-5 text-[#14291E]" />
-            ) : (
-              <Menu className="w-5 h-5 text-[#14291E]" />
-            )}
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="pointer-events-auto mx-4 mt-3 bg-white/95 backdrop-blur-xl border border-white/80 rounded-3xl p-6 shadow-2xl md:hidden flex flex-col gap-4 animate-in fade-in slide-in-from-top-2 duration-200">
-          <nav className="flex flex-col gap-2.5 text-sm font-medium text-[#14291E]">
+        <div className="md:hidden bg-[#F7F6F1] border-t-[1.5px] border-b-[1.5px] border-[#1A2B4C] px-4 py-4 space-y-2 shadow-[0_6px_0_#DCE6F2]">
+          {navLinks.map((link, idx) => (
             <a
-              href="#services"
+              key={link.href}
+              href={link.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="px-4 py-2.5 rounded-2xl hover:bg-[#F7F5EE] flex items-center justify-between"
+              className="flex items-center justify-between px-3 py-2.5 rounded bg-white border-[1.5px] border-[#1A2B4C] font-pixel text-xs font-bold text-[#1A2B4C]"
             >
-              <span>Services</span>
-              <span className="text-xs text-[#5C8970]">01</span>
+              <span>{link.label}</span>
+              <span className="text-[#6C8EBF]">0{idx + 1}</span>
             </a>
-            <a
-              href="#case-study"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-4 py-2.5 rounded-2xl hover:bg-[#F7F5EE] flex items-center justify-between"
-            >
-              <span>Case Study</span>
-              <span className="text-xs text-[#5C8970]">02</span>
-            </a>
-            <a
-              href="#projects"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-4 py-2.5 rounded-2xl hover:bg-[#F7F5EE] flex items-center justify-between"
-            >
-              <span>Projects</span>
-              <span className="text-xs text-[#5C8970]">03</span>
-            </a>
-            <a
-              href="#testimonials"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-4 py-2.5 rounded-2xl hover:bg-[#F7F5EE] flex items-center justify-between"
-            >
-              <span>Testimonials</span>
-              <span className="text-xs text-[#5C8970]">04</span>
-            </a>
-          </nav>
-
-          <div className="pt-3 border-t border-[rgba(26,56,40,0.12)] flex flex-col gap-3">
-            <StatefulButton
-              href="#contact"
-              variant="forest"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full justify-center py-3"
-            >
-              Work Together
-            </StatefulButton>
-          </div>
+          ))}
+          <a
+            href="https://github.com/HrushikeshAnandSarangi"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMobileMenuOpen(false)}
+            className="flex items-center justify-between px-3 py-2.5 rounded bg-[#DCE6F2] border-[1.5px] border-[#1A2B4C] font-pixel text-xs font-bold text-[#1A2B4C]"
+          >
+            <span>GitHub: @HrushikeshAnandSarangi</span>
+            <span>↗</span>
+          </a>
+          <a
+            href="#contact"
+            onClick={() => setMobileMenuOpen(false)}
+            className="w-full pixel-btn-primary py-3 mt-2"
+          >
+            <span>GET IN TOUCH &gt;</span>
+          </a>
         </div>
       )}
     </header>

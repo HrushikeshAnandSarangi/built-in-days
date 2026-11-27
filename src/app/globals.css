@@ -1,51 +1,50 @@
 @import "tailwindcss";
 
 :root {
-  --bg-primary: #F7F5EE;
-  --bg-surface: #EBF0E8;
-  --text-primary: #152E20;
-  --text-muted: #3A5646;
-  --accent-primary: #183627;
-  --accent-secondary: #5C8970;
-  --accent-sunlight: #D98A29;
-  --border-subtle: rgba(26, 56, 40, 0.14);
+  --bg-cream: #F7F6F1;
+  --bg-paper: #FBFBF9;
+  --bg-ice: #DCE6F2;
+  --bg-sky: #EBF1F8;
+  --ink-navy: #1A2B4C;
+  --ink-slate: #475D7A;
+  --blue-periwinkle: #A3BFE0;
+  --blue-cobalt: #6C8EBF;
 
-  --background: #F7F5EE;
-  --foreground: #152E20;
-  --surface: #EBF0E8;
-  --border: rgba(26, 56, 40, 0.14);
-  --text-primary: #152E20;
-  --text-muted: #3A5646;
-  --accent-primary: #183627;
-  --accent-secondary: #5C8970;
-
-  --font-display: var(--font-space-grotesk), sans-serif;
+  --font-display: var(--font-pixel-display), monospace;
+  --font-pixel: var(--font-silkscreen), monospace;
+  --font-mono-body: var(--font-space-mono), var(--font-geist-mono), monospace;
   --font-handwriting: var(--font-caveat), cursive;
 }
 
 html {
-  background-color: #F7F5EE;
-  color: #152E20;
+  background-color: #F7F6F1;
+  color: #1A2B4C;
   scroll-behavior: smooth;
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01", "tnum";
 }
 
 body {
-  background-color: #F7F5EE;
-  color: #152E20;
-  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #F7F6F1;
+  color: #1A2B4C;
+  font-family: var(--font-space-mono), var(--font-geist-sans), monospace;
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  letter-spacing: -0.015em;
 }
 
 /* ========================================================================== */
-/* Cinematic Forest & Misty Sage Typography (Space Grotesk + Caveat + Geist)  */
+/* Pixel Bloom Digital Garden Typography                                      */
 /* ========================================================================== */
-.font-display {
-  font-family: var(--font-space-grotesk), sans-serif;
+.font-pixel-display {
+  font-family: var(--font-pixel-display), monospace;
+}
+
+.font-pixel {
+  font-family: var(--font-silkscreen), monospace;
+}
+
+.font-mono-body {
+  font-family: var(--font-space-mono), var(--font-geist-mono), monospace;
 }
 
 .font-handwriting {
@@ -53,46 +52,14 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-pixel-display), monospace;
+  color: #1A2B4C;
   text-wrap: balance;
-  letter-spacing: -0.035em;
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum";
-  color: #152E20;
 }
 
 p {
+  color: #475D7A;
   text-wrap: pretty;
-  letter-spacing: -0.015em;
-  color: #3A5646;
-}
-
-/* Precision micro-labels & technical metadata */
-.type-eyebrow {
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #3A5646;
-}
-
-/* Display hero typography with signature tight leading */
-.type-display {
-  font-family: var(--font-space-grotesk), sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.035em;
-  line-height: 1.05;
-  text-wrap: balance;
-  color: #152E20;
-}
-
-/* Section titles */
-.type-headline {
-  font-family: var(--font-space-grotesk), sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.035em;
-  line-height: 1.05;
-  text-wrap: balance;
-  color: #152E20;
 }
 
 @layer base {
@@ -105,97 +72,151 @@ p {
   }
 }
 
-/* Tabular figures for numbers and technical data */
 .tabular-nums {
   font-variant-numeric: tabular-nums;
 }
 
 /* ========================================================================== */
-/* Frosted Glassmorphism Optics tuned for Morning Mist & Forest Landscape     */
+/* Pixel Borders, Cards, Buttons & Micro-Interaction Primitives               */
 /* ========================================================================== */
-.glass-pill {
+.pixel-dot-bg {
+  background-color: #F7F6F1;
+  background-image: radial-gradient(rgba(108, 142, 191, 0.18) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.pixel-card {
+  background-color: #FFFFFF;
+  border: 1.5px solid #1A2B4C;
+  border-radius: 6px;
+  box-shadow: 3px 3px 0px #DCE6F2;
+  transition:
+    transform 160ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 160ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 160ms ease,
+    background-color 160ms ease;
+}
+
+.pixel-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px #A3BFE0;
+}
+
+.pixel-window {
+  background-color: #FBFBF9;
+  border: 1.5px solid #1A2B4C;
+  border-radius: 8px;
+  box-shadow: 4px 4px 0px #DCE6F2;
+}
+
+.pixel-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background-color: #DCE6F2;
+  border: 1.5px solid #1A2B4C;
+  border-radius: 4px;
+  box-shadow: 2px 2px 0px #1A2B4C;
+  font-family: var(--font-silkscreen), monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #1A2B4C;
+}
+
+.pixel-btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 44px;
-  padding: 0 18px;
-  border-radius: 9999px !important;
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  color: #152E20;
-  font-family: inherit;
-  text-decoration: none;
-  white-space: nowrap;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: #1A2B4C;
+  color: #F7F6F1;
+  border: 1.5px solid #1A2B4C;
+  border-radius: 5px;
+  box-shadow: 3px 3px 0px #A3BFE0;
+  font-family: var(--font-silkscreen), monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   cursor: pointer;
-  -webkit-backdrop-filter: blur(14px) saturate(160%);
-  backdrop-filter: blur(14px) saturate(160%);
-  box-shadow: 
-    0 4px 20px -2px rgba(21, 46, 32, 0.08),
-    0 1px 3px rgba(21, 46, 32, 0.04),
-    inset 1px 1px 0 rgba(255, 255, 255, 0.9);
-  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    transform 120ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 120ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 120ms ease;
 }
 
-.glass-pill:hover {
-  background: #FFFFFF;
-  border-color: rgba(26, 56, 40, 0.25);
-  box-shadow: 
-    0 8px 24px -2px rgba(24, 54, 39, 0.16),
-    0 2px 6px rgba(21, 46, 32, 0.06);
-  transform: translateY(-1px);
+.pixel-btn-primary:hover {
+  background-color: #243B66;
+  transform: translate(-1.5px, -1.5px);
+  box-shadow: 4.5px 4.5px 0px #6C8EBF;
 }
 
-/* BridgeAI-inspired Floating Nav Capsule */
-.glass-nav-capsule {
-  background: rgba(255, 255, 255, 0.80);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 
-    0 6px 24px -4px rgba(21, 46, 32, 0.08),
-    0 1px 4px rgba(21, 46, 32, 0.03),
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.9);
-  border-radius: 9999px;
-  transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+.pixel-btn-primary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #A3BFE0;
 }
 
-.glass-nav-capsule:hover {
-  background: rgba(255, 255, 255, 0.92);
-  border-color: rgba(255, 255, 255, 1);
+.pixel-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: #FFFFFF;
+  color: #1A2B4C;
+  border: 1.5px solid #1A2B4C;
+  border-radius: 5px;
+  box-shadow: 3px 3px 0px #DCE6F2;
+  font-family: var(--font-silkscreen), monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    transform 120ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 120ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 120ms ease;
 }
 
-.glass-card {
-  background: #EBF0E8;
-  border: 1px solid rgba(26, 56, 40, 0.12);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+.pixel-btn-secondary:hover {
+  background-color: #EBF1F8;
+  transform: translate(-1.5px, -1.5px);
+  box-shadow: 4.5px 4.5px 0px #A3BFE0;
 }
 
-.glass-card:hover {
-  transform: translateY(-2px);
-  border-color: #183627;
-  box-shadow: 0 12px 32px -10px rgba(21, 46, 32, 0.12);
+.pixel-btn-secondary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #DCE6F2;
 }
 
-/* Custom misty forest scrollbar */
+/* Custom pixel scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #F7F5EE;
+  background: #F7F6F1;
+  border-left: 1px solid #DCE6F2;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D5DFD2;
-  border-radius: 3px;
+  background: #A3BFE0;
+  border: 1.5px solid #1A2B4C;
+  border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3A5646;
+  background: #6C8EBF;
 }
 
-/* Organic subtle drafting pattern */
-.grid-pattern {
-  background-size: 32px 32px;
-  background-image: 
-    linear-gradient(to right, rgba(21, 46, 32, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(21, 46, 32, 0.04) 1px, transparent 1px);
+/* Hide scrollbar for clean pill lists */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

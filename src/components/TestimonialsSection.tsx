@@ -1,131 +1,173 @@
 "use client";
 
-import React from "react";
-import { Quote } from "lucide-react";
-import { HandwrittenHook, CurlyUnderline } from "./ui/curly-underline";
+import React, { useState } from "react";
+import { PixelTestimonialAvatar, PixelHeart, PixelCat } from "./ui/pixel-sprites";
 
 interface Testimonial {
   id: string;
-  index: string;
-  quote: string;
   author: string;
   role: string;
   organization: string;
   projectTag: string;
   metric: string;
-  year: string;
+  quote: string;
+  avatarVariant: number;
 }
 
 const testimonials: Testimonial[] = [
   {
     id: "restora",
-    index: "01",
     author: "Bikram Jena",
     role: "Co-Founder, Codecanvax",
     organization: "Restora POS",
-    projectTag: "Restora",
-    year: "2026",
+    projectTag: "RESTORA POS",
+    metric: "4 OS TARGETS · OFFLINE SYNC",
+    avatarVariant: 0,
     quote:
-      "Hrushikesh architected our entire Restora POS application across Windows, macOS, Linux, and Android. The offline-first SQLite synchronization is rock-solid — during network dropouts in peak restaurant dinner rushes, zero orders are lost and tables sync instantaneously the moment connectivity returns.",
-    metric: "4 OS targets · offline-first sync",
+      "Hrushikesh architected our entire Restora POS across Windows, macOS, Linux, and Android. Zero orders are lost during peak rushes and sync happens instantaneously.",
   },
   {
     id: "ipf",
-    index: "02",
     author: "Yuvrag Singh",
     role: "Lead Coordinator",
     organization: "IPF NGO",
-    projectTag: "IPF NGO",
-    year: "2025",
+    projectTag: "IPF PLATFORM",
+    metric: "LOW-BANDWIDTH OPTIMIZED",
+    avatarVariant: 1,
     quote:
-      "Hrushikesh engineered our NGO outreach platform from the ground up, making sure volunteer coordinators and donors across rural regions could access humanitarian program data and field updates even on low-bandwidth mobile connections without lag.",
-    metric: "High throughput · low-bandwidth optimized",
+      "He engineered our outreach platform from the ground up so coordinators across rural regions can access updates smoothly even on slow connections without lag.",
   },
   {
     id: "tempest",
-    index: "03",
     author: "Prharsha G",
     role: "Core Maintainer",
     organization: "Tempest",
-    projectTag: "Benchmarking Audit",
-    year: "2026",
+    projectTag: "SYSTEMS AUDIT",
+    metric: "141.5X GAIN · 0 UI LOCKS",
+    avatarVariant: 2,
     quote:
-      "The benchmarking audit report delivered by Hrushikesh pinpointed our exact database query locking and memory garbage collection stalls. His empirical profiling and actionable remediation plan delivered a measured 141.5x throughput gain and eliminated our 1s UI thread lockouts.",
-    metric: "141.5x speedup · 16,265 scheduler switch events",
+      "His benchmarking audit pinpointed our exact SQLite lock stalls and GC pauses, delivering a measured 141.5x throughput gain and eliminating 1s UI lockouts.",
   },
 ];
 
+function PixelSpeechBubbleIcon() {
+  return (
+    <svg width="20" height="18" viewBox="0 0 18 16" fill="none" shapeRendering="crispEdges">
+      <path d="M2 1h14v10H7l-3 3v-3H2V1z" fill="#1A2B4C" />
+      <path d="M3 2h12v8H6.5L5 11.5V10H3V2z" fill="#FFFFFF" />
+      <rect x="5" y="5" width="2" height="2" fill="#6C8EBF" />
+      <rect x="8" y="5" width="2" height="2" fill="#6C8EBF" />
+      <rect x="11" y="5" width="2" height="2" fill="#6C8EBF" />
+    </svg>
+  );
+}
+
 export function TestimonialsSection() {
+  const [heartsMap, setHeartsMap] = useState<Record<string, number>>({
+    restora: 4,
+    ipf: 4,
+    tempest: 4,
+  });
+
+  const handleHeartClick = (id: string, starNum: number) => {
+    setHeartsMap((prev) => ({
+      ...prev,
+      [id]: starNum,
+    }));
+  };
+
   return (
     <section
       id="testimonials"
-      className="py-20 sm:py-28 bg-[#F7F5EE] border-t border-[rgba(26,56,40,0.12)] scroll-mt-16"
+      className="relative py-16 sm:py-22 bg-[#F7F6F1] border-t border-[#DCE6F2] scroll-mt-16"
     >
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-6 sm:pb-8 border-b border-[rgba(26,56,40,0.12)]">
-          <div>
-            <div className="flex items-center gap-2 mb-1.5">
-              <HandwrittenHook className="text-xl sm:text-2xl text-[#183627] -rotate-1">
-                trusted by founders &amp; teams
-              </HandwrittenHook>
-              <span className="w-8 h-[1px] bg-[#183627]/30" />
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        {/* Eyebrow Badge matching reference KIND WORDS + speech bubble */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+          <div className="flex items-center gap-3">
+            <div className="pixel-pill-badge">
+              <span>KIND WORDS</span>
             </div>
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.035em] leading-[1.0] text-[#152E20]">
-              Testimonials
-            </h2>
+            <PixelSpeechBubbleIcon />
           </div>
 
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#183627] hover:bg-[#11261B] text-[#FAF8F2] text-xs sm:text-[13px] font-semibold transition-all shrink-0 shadow-sm border border-[#11261B] active:scale-95"
-          >
-            <span>Collaborate on a project ↗</span>
-          </a>
+          <span className="font-mono-body text-xs text-[#475D7A]">
+            Verified feedback from founders &amp; core maintainers
+          </span>
         </div>
 
-        {/* Testimonials 3-Column Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 mt-10">
-          {testimonials.map((t) => (
-            <div
-              key={t.id}
-              className="rounded-3xl border border-[rgba(26,56,40,0.12)] bg-[#EBF0E8] p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 shadow-sm hover:shadow-md hover:border-[#183627] group"
-            >
-              <div>
-                {/* Header row with project name and year */}
-                <div className="flex items-center justify-between text-xs font-mono text-[#3A5646] mb-4">
-                  <span className="font-semibold text-[#152E20]">{t.projectTag}</span>
-                  <span>{t.year}</span>
-                </div>
-
-                {/* Quote Text */}
-                <div className="relative">
-                  <Quote className="w-5 h-5 text-[rgba(26,56,40,0.18)] absolute -top-1 -left-1 pointer-events-none group-hover:text-[#183627]/40 transition-colors" />
-                  <p className="relative pl-4 text-xs sm:text-sm text-[#3A5646] leading-relaxed font-sans font-normal">
-                    &ldquo;{t.quote}&rdquo;
-                  </p>
-                </div>
-              </div>
-
-              {/* Author Info & Metric Verification */}
-              <div className="mt-6 pt-5 border-t border-[rgba(26,56,40,0.12)] flex flex-col gap-2.5">
-                <div>
-                  <div className="font-display font-bold text-sm sm:text-base text-[#152E20] tracking-tight">
-                    {t.author}
+        {/* 3-Column Horizontal Cards with Responsive Avatar & Quote */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          {testimonials.map((t) => {
+            const rating = heartsMap[t.id] ?? 4;
+            return (
+              <div
+                key={t.id}
+                className="pixel-card p-4 sm:p-6 flex flex-col sm:flex-row items-start gap-3.5 sm:gap-4"
+              >
+                {/* Pixel Avatar Square (Row header on mobile, left col on sm+) */}
+                <div className="shrink-0 flex sm:flex-col items-center gap-2.5 sm:gap-2 w-full sm:w-auto pb-2 sm:pb-0 border-b sm:border-b-0 border-[#DCE6F2]">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded border-[1.5px] border-[#1A2B4C] overflow-hidden shadow-[2px_2px_0px_#DCE6F2] bg-[#EBF1F8] shrink-0">
+                    <PixelTestimonialAvatar variant={t.avatarVariant} />
                   </div>
-                  <div className="text-xs text-[#3A5646] font-mono">
-                    {t.role} · {t.organization}
+                  <div className="flex flex-col sm:items-center min-w-0">
+                    <span className="font-pixel text-[8px] px-1.5 py-0.5 bg-[#DCE6F2] border border-[#1A2B4C] rounded-xs text-[#1A2B4C] font-bold text-center w-fit">
+                      {t.projectTag}
+                    </span>
+                    <span className="sm:hidden font-pixel text-[10px] font-bold text-[#1A2B4C] uppercase mt-1 truncate">
+                      {t.author}
+                    </span>
                   </div>
                 </div>
 
-                {/* Empirical metric */}
-                <div className="text-[11px] font-mono text-[#8C4F00] font-semibold flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#D98A29]" />
-                  <span>{t.metric}</span>
+                {/* Right Quote + Attribution + Interactive Pixel Hearts */}
+                <div className="flex-1 min-w-0 flex flex-col justify-between h-full w-full">
+                  <div>
+                    <p className="font-mono-body text-xs text-[#475D7A] leading-relaxed italic">
+                      &ldquo;{t.quote}&rdquo;
+                    </p>
+                  </div>
+
+                  <div className="mt-4 pt-3 border-t border-[#DCE6F2] space-y-1.5">
+                    <div>
+                      <div className="hidden sm:block font-pixel text-[11px] font-bold text-[#1A2B4C] uppercase">
+                        {t.author}
+                      </div>
+                      <div className="font-mono-body text-[10px] text-[#6C8EBF] font-bold">
+                        {t.role} · {t.organization}
+                      </div>
+                    </div>
+
+                    {/* Pixel Hearts Rating Row */}
+                    <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
+                      <div className="flex items-center gap-1">
+                        {[1, 2, 3, 4].map((num) => (
+                          <button
+                            key={num}
+                            type="button"
+                            onClick={() => handleHeartClick(t.id, num)}
+                            className="cursor-pointer focus:outline-none p-0.5"
+                            aria-label={`Rate ${num} hearts`}
+                          >
+                            <PixelHeart filled={num <= rating} size={13} interactive />
+                          </button>
+                        ))}
+                      </div>
+
+                      <span className="font-pixel text-[8px] text-[#475D7A]">
+                        {t.metric}
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
+        </div>
+
+        {/* Bottom-right sitting pixel cat accent matching reference */}
+        <div className="hidden lg:flex justify-end pt-3">
+          <PixelCat />
         </div>
       </div>
     </section>

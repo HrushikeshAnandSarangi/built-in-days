@@ -1,146 +1,127 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import { ArrowUpRight, Check } from "lucide-react";
-import { GithubIcon } from "./icons";
+import { motion } from "framer-motion";
+import { ArrowUpRight, Maximize2 } from "lucide-react";
 import { Project } from "@/data/projects";
-import { LinkPreview } from "./ui/link-preview";
+import { PixelHeart } from "./ui/pixel-sprites";
 
 interface ProjectCardProps {
   project: Project;
   index: number;
+  onInspect: (project: Project) => void;
 }
 
-export function ProjectCard({ project, index }: ProjectCardProps) {
-  const hasGithubLink = Boolean(project.githubUrl && project.githubUrl.trim().length > 0);
-  const hasLiveLink = Boolean(project.liveUrl && project.liveUrl.trim().length > 0);
-  const hasAnyLink = hasGithubLink || hasLiveLink;
-  const primaryUrl = project.liveUrl || project.githubUrl;
-  const projectNumber = String(index + 1).padStart(2, "0");
+export function ProjectCard({ project, index, onInspect }: ProjectCardProps) {
+  const [liked, setLiked] = useState(index === 0 || index === 2);
 
   return (
-    <div className="rounded-3xl border border-[rgba(26,56,40,0.12)] bg-[#EBF0E8] overflow-hidden shadow-sm hover:border-[#183627] transition-all duration-300">
-      {/* Window Mockup Chrome Header */}
-      <div className="px-5 py-3.5 bg-[#F7F5EE] border-b border-[rgba(26,56,40,0.12)] flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-[rgba(26,56,40,0.2)]" />
-          <span className="w-2.5 h-2.5 rounded-full bg-[rgba(26,56,40,0.2)]" />
-          <span className="w-2.5 h-2.5 rounded-full bg-[rgba(26,56,40,0.2)]" />
-          <span className="text-xs font-mono font-bold text-[#152E20] ml-2 tabular-nums">
-            {projectNumber}
-          </span>
+    <motion.div
+      layout
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -12 }}
+      transition={{ duration: 0.2 }}
+      className="pixel-card p-3.5 sm:p-4 flex flex-col justify-between group"
+    >
+      {/* Top Bevel Window Chrome */}
+      <div>
+        <div
+          onClick={() => onInspect(project)}
+          className="relative w-full aspect-[16/10] bg-[#1A2B4C] rounded border-[1.5px] border-[#1A2B4C] overflow-hidden cursor-pointer group/img"
+        >
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            sizes="(max-width: 768px) 100vw, 400px"
+            className="object-cover object-top transition-transform duration-300 group-hover/img:scale-[1.04]"
+            priority={index < 3}
+            unoptimized
+          />
+
+          {/* Top-left Index Badge */}
+          <div className="absolute top-2 left-2 px-1.5 py-0.5 bg-[#F7F6F1] border border-[#1A2B4C] rounded-xs font-pixel text-[9px] font-bold text-[#1A2B4C] shadow-[1.5px_1.5px_0px_#1A2B4C]">
+            {String(index + 1).padStart(2, "0")}
+          </div>
+
+          {/* Hover Inspect Pill */}
+          <div className="absolute inset-0 bg-[#1A2B4C]/35 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#F7F6F1] border-[1.5px] border-[#1A2B4C] rounded font-pixel text-[10px] font-bold text-[#1A2B4C] shadow-[2px_2px_0px_#1A2B4C]">
+              <Maximize2 className="w-3 h-3" />
+              <span>INSPECT PROJECT</span>
+            </span>
+          </div>
         </div>
 
-        <div className="flex items-center gap-2">
-          <span className="text-xs font-mono text-[#3A5646]">
-            {project.category}
-          </span>
-          <span className="text-xs font-mono text-[rgba(26,56,40,0.25)]">·</span>
-          <span className="text-xs font-mono text-[#3A5646] tabular-nums">{project.year}</span>
-        </div>
-      </div>
-
-      <div className="p-6 sm:p-10">
-        {/* Title & Tagline & Conditional Action Links */}
-        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-6 border-b border-[rgba(26,56,40,0.12)]">
-          <div>
-            {primaryUrl ? (
-              <LinkPreview url={primaryUrl} imageSrc={project.image}>
-                <h3 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#152E20] hover:text-[#183627] transition-colors">
-                  {project.title}
-                </h3>
-              </LinkPreview>
-            ) : (
-              <h3 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#152E20]">
-                {project.title}
-              </h3>
-            )}
-            <p className="text-xs sm:text-[13px] font-mono font-semibold text-[#8C4F00] tracking-[-0.01em] mt-1">
-              {project.tagline}
+        {/* Title Row with Heart Like Button */}
+        <div className="mt-3.5 flex items-start justify-between gap-2">
+          <div className="min-w-0">
+            <button
+              type="button"
+              onClick={() => onInspect(project)}
+              className="text-left font-pixel text-xs sm:text-[13px] font-bold text-[#1A2B4C] uppercase hover:text-[#6C8EBF] transition-colors truncate block cursor-pointer"
+            >
+              {project.title}
+            </button>
+            <p className="font-mono-body text-[11px] text-[#475D7A] truncate mt-0.5">
+              {project.type}
             </p>
           </div>
 
-          {/* Action links with Aceternity LinkPreview popup on hover */}
-          {hasAnyLink && (
-            <div className="flex items-center gap-2 shrink-0">
-              {hasGithubLink && (
-                <LinkPreview
-                  url={project.githubUrl!}
-                  imageSrc={project.image}
-                  className="cursor-pointer"
-                >
-                  <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-[rgba(26,56,40,0.12)] bg-white/80 hover:bg-white text-[#152E20] text-xs font-mono font-medium transition-colors hover:border-[#183627]">
-                    <GithubIcon className="w-3.5 h-3.5" />
-                    <span>GitHub ↗</span>
-                  </span>
-                </LinkPreview>
-              )}
-              {hasLiveLink && (
-                <LinkPreview
-                  url={project.liveUrl!}
-                  imageSrc={project.image}
-                  className="cursor-pointer"
-                >
-                  <span
-                    className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#183627] hover:bg-[#11261B] text-[#FAF8F2] text-xs font-mono font-semibold transition-colors shadow-sm"
-                  >
-                    <span>Live app ↗</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-[#D98A29]" />
-                  </span>
-                </LinkPreview>
-              )}
-            </div>
-          )}
+          <button
+            type="button"
+            onClick={() => setLiked(!liked)}
+            className="p-1 shrink-0 cursor-pointer focus:outline-none"
+            title={liked ? "Unlike project" : "Like project"}
+            aria-label={`Favorite ${project.title}`}
+          >
+            <PixelHeart filled={liked} size={16} interactive />
+          </button>
         </div>
 
-        {/* Dedicated Application UI Screenshot Frame */}
-        <div className="my-6 rounded-2xl border border-[rgba(26,56,40,0.12)] bg-[#12241A] overflow-hidden relative shadow-md">
-          {primaryUrl ? (
-            <LinkPreview url={primaryUrl} imageSrc={project.image} className="w-full block">
-              <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] md:max-h-[580px] overflow-hidden bg-[#0D1C13] cursor-pointer">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 1100px"
-                  className="object-cover object-top transition-transform duration-300 hover:scale-[1.01]"
-                  priority={index < 2}
-                  unoptimized
-                />
-              </div>
-            </LinkPreview>
-          ) : (
-            <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] md:max-h-[580px] overflow-hidden bg-[#0D1C13]">
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                sizes="(max-width: 768px) 100vw, 1100px"
-                className="object-cover object-top transition-transform duration-300 hover:scale-[1.01]"
-                priority={index < 2}
-                unoptimized
-              />
-            </div>
-          )}
+        {/* Brief Summary */}
+        <p className="mt-2 font-mono-body text-[11.5px] text-[#475D7A] leading-snug line-clamp-2">
+          {project.tagline}
+        </p>
+      </div>
+
+      {/* Footer Tags + Inspect/Live Links */}
+      <div className="mt-4 pt-3 border-t border-[#DCE6F2] flex items-center justify-between gap-2">
+        <div className="flex flex-wrap gap-1">
+          {project.techStack.slice(0, 2).map((tech) => (
+            <span
+              key={tech}
+              className="px-2 py-0.5 bg-[#EBF1F8] border border-[#1A2B4C] rounded-xs font-pixel text-[9px] font-bold text-[#1A2B4C] uppercase"
+            >
+              {tech}
+            </span>
+          ))}
         </div>
 
-        {/* Narrative Description & Highlights */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-2">
-          <div className="lg:col-span-6 text-xs sm:text-[13.5px] text-[#3A5646] leading-[1.6] tracking-[-0.015em] text-pretty font-normal">
-            {project.description}
-          </div>
-
-          <div className="lg:col-span-6 space-y-2.5">
-            {project.highlights.map((h, i) => (
-              <div key={i} className="flex items-start gap-2 text-xs text-[#152E20]">
-                <Check className="w-3.5 h-3.5 text-[#183627] shrink-0 mt-0.5" />
-                <span className="leading-snug">{h}</span>
-              </div>
-            ))}
-          </div>
+        <div className="flex items-center gap-1.5 shrink-0">
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-0.5 px-2 py-1 bg-[#1A2B4C] hover:bg-[#243B66] text-[#F7F6F1] rounded-xs font-pixel text-[9px] font-bold transition-colors"
+              title="Open Live Deployment"
+            >
+              <span>LIVE</span>
+              <ArrowUpRight className="w-2.5 h-2.5" />
+            </a>
+          )}
+          <button
+            type="button"
+            onClick={() => onInspect(project)}
+            className="px-2 py-1 bg-white hover:bg-[#DCE6F2] border border-[#1A2B4C] rounded-xs font-pixel text-[9px] font-bold text-[#1A2B4C] transition-colors cursor-pointer"
+          >
+            DETAILS
+          </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

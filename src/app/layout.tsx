@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Space_Grotesk, Caveat } from "next/font/google";
+import { Geist, Geist_Mono, Pixelify_Sans, Silkscreen, Space_Mono, Caveat } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,10 +12,22 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const pixelifySans = Pixelify_Sans({
+  variable: "--font-pixel-display",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+});
+
+const silkscreen = Silkscreen({
+  variable: "--font-silkscreen",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+
+const spaceMono = Space_Mono({
+  variable: "--font-space-mono",
+  subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
 const caveat = Caveat({
@@ -58,12 +70,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} ${caveat.variable} h-full antialiased`}
-      style={{ backgroundColor: "#F7F5EE", color: "#152E20" }}
+      className={`${geistSans.variable} ${geistMono.variable} ${pixelifySans.variable} ${silkscreen.variable} ${spaceMono.variable} ${caveat.variable} h-full antialiased`}
+      style={{ backgroundColor: "#F7F6F1", color: "#1A2B4C" }}
     >
       <body
-        className="min-h-full flex flex-col font-sans"
-        style={{ backgroundColor: "#F7F5EE", color: "#152E20" }}
+        className="min-h-full flex flex-col font-mono-body"
+        style={{ backgroundColor: "#F7F6F1", color: "#1A2B4C" }}
       >
         {children}
       </body>
