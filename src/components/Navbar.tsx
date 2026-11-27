@@ -38,11 +38,11 @@ export function Navbar() {
         {/* Floating Capsule (Center) - Matches reference pill with embedded CTA */}
         <div className="pointer-events-auto hidden md:flex items-center md:absolute md:left-1/2 md:-translate-x-1/2">
           <div
-            className={`glass-nav-capsule pl-6 pr-1.5 py-1.5 flex items-center gap-7 transition-all duration-300 ${
+            className={`glass-nav-capsule pl-5 pr-1.5 py-1.5 flex items-center gap-5 sm:gap-6 transition-all duration-300 ${
               scrolled ? "shadow-md bg-white/95" : "bg-white/85"
             }`}
           >
-            <nav className="flex items-center gap-6 text-[13px] font-sans font-medium text-[#2E4A3B]">
+            <nav className="flex items-center gap-5 text-[13px] font-sans font-medium text-[#2E4A3B] whitespace-nowrap">
               <a
                 href="#services"
                 className="hover:text-[#14291E] transition-colors py-1"
@@ -74,9 +74,9 @@ export function Navbar() {
               href="#contact"
               variant="coral"
               successText="Opening..."
-              className="py-2 px-5 text-xs font-semibold tracking-wide"
+              className="py-1.5 px-4 text-xs font-semibold tracking-wide whitespace-nowrap shrink-0"
             >
-              Start Your Journey →
+              Start Journey →
             </StatefulButton>
           </div>
         </div>
