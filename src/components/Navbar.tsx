@@ -23,8 +23,9 @@ export function Navbar() {
         <div className="pointer-events-auto shrink-0">
           <a
             href="#"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/90 backdrop-blur-md border border-white/80 shadow-xs text-[#14291E] transition-all hover:bg-white hover:shadow-sm"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 backdrop-blur-md border border-white/80 shadow-xs text-[#14291E] transition-all hover:bg-white hover:shadow-sm"
           >
+            <span className="text-sm select-none">🌲</span>
             <span className="font-display font-bold text-base sm:text-lg text-[#14291E] tracking-tight">
               Hrushikesh
             </span>
@@ -38,7 +39,7 @@ export function Navbar() {
         <div className="pointer-events-auto hidden md:flex items-center md:absolute md:left-1/2 md:-translate-x-1/2">
           <div
             className={`glass-nav-capsule pl-6 pr-1.5 py-1.5 flex items-center gap-7 transition-all duration-300 ${
-              scrolled ? "shadow-md bg-white/90" : "bg-white/80"
+              scrolled ? "shadow-md bg-white/95" : "bg-white/85"
             }`}
           >
             <nav className="flex items-center gap-6 text-[13px] font-sans font-medium text-[#2E4A3B]">
@@ -68,14 +69,14 @@ export function Navbar() {
               </a>
             </nav>
 
-            {/* Dark Forest Capsule CTA inside pill */}
+            {/* Quiet Place Coral Accent CTA inside pill */}
             <StatefulButton
               href="#contact"
-              variant="forest"
+              variant="coral"
               successText="Opening..."
               className="py-2 px-5 text-xs font-semibold tracking-wide"
             >
-              Work Together
+              Start Your Journey →
             </StatefulButton>
           </div>
         </div>

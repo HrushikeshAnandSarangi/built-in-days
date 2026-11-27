@@ -14,7 +14,7 @@ export interface StatefulButtonProps
   successText?: string;
   icon?: React.ReactNode;
   showIcon?: boolean;
-  variant?: "forest" | "juniper" | "white" | "ghost" | "mustard" | "fig" | "outline" | "ochre" | "navy";
+  variant?: "forest" | "juniper" | "white" | "ghost" | "mustard" | "fig" | "outline" | "ochre" | "navy" | "coral";
 }
 
 export function StatefulButton({
@@ -72,6 +72,7 @@ export function StatefulButton({
   };
 
   const isForest = variant === "forest" || variant === "juniper" || variant === "ochre";
+  const isCoral = variant === "coral";
   const isWhite = variant === "white";
   const isGhost = variant === "ghost";
   const isMustard = variant === "mustard";
@@ -148,6 +149,7 @@ export function StatefulButton({
   const baseClasses = cn(
     "group relative inline-flex items-center justify-center px-4 sm:px-5 py-2 sm:py-2.5 rounded-full transition-all shadow-sm active:scale-[0.98] cursor-pointer text-xs sm:text-[13px] font-semibold select-none",
     isForest && "bg-[#183627] hover:bg-[#11261B] text-[#FAF8F2] border border-[#11261B] shadow-sm shadow-[#183627]/20",
+    isCoral && "bg-[#ED6C5A] hover:bg-[#E05B48] text-white border border-[#E05B48] shadow-sm shadow-[#ED6C5A]/25",
     isWhite && "bg-white hover:bg-[#FAF8F2] text-[#152E20] border border-white/80 shadow-sm shadow-black/5",
     isGhost && "bg-white/40 hover:bg-white/60 text-[#152E20] backdrop-blur-md border border-white/60",
     isMustard && "bg-[#D98A29] hover:bg-[#C2781E] text-[#152E20] border border-[#B36F1B] shadow-sm shadow-[#D98A29]/20",
